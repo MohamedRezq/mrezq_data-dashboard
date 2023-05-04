@@ -33,8 +33,8 @@ export const saasSlice = createSlice({
       }
       initialState.saasList.map((item, i) => {
         if (
-          item.title.search(state.searchText) ||
-          item.text.search(state.searchText)
+          item.title.search(new RegExp(state.searchText, "i")) !== -1 ||
+          item.text.search(new RegExp(state.searchText, "i")) !== -1
         ) {
           state.saasList.push(item);
         }

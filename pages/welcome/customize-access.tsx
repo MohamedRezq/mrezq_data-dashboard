@@ -9,15 +9,15 @@ import type { RootState } from "@/app/store";
 import { useSelector, useDispatch } from "react-redux";
 import { searchByText } from "@/app/features/saas/saasSlice";
 
-const SelectSaasPage = () => {
-  const saasList = useSelector((state: RootState) => state.saas.saasList);
+const CustomizeAccessPage = () => {
+  const saas = useSelector((state: RootState) => state.saas);
+  const dispatch = useDispatch();
 
   return (
     <main className="flex w-full m-auto min-h-screen flex-col items-center pt-16 h-full">
-      <SearchInput onChange={() => searchByText("dcdc")} />
       <div className="min-w-xl">
         <div className="grid grid-cols-3 gap-x-10 gap-y-5 mt-8">
-          {saasList.map((item, i) => (
+          {saas.saasList.map((item, i) => (
             <SaasCard
               logo={item.logo}
               key={`${item.title}-${i}`}
@@ -50,4 +50,4 @@ const SelectSaasPage = () => {
   );
 };
 
-export default SelectSaasPage;
+export default CustomizeAccessPage;
