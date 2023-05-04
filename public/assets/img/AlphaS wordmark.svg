@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1033 224.9">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Quicksand-Bold, Quicksand;
+        font-size: 190px;
+        font-weight: 700;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #545554;
+      }
+
+      .cls-4 {
+        fill: #2d9f48;
+      }
+
+      .cls-3 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <text class="cls-1" transform="translate(0 161.5)"><tspan class="cls-4" x="0" y="0">alpha</tspan><tspan class="cls-2" x="520.59" y="0">S</tspan><tspan class="cls-3" x="634.02" y="0">a</tspan><tspan class="cls-2" x="755.24" y="0">aS</tspan></text>
+  </g>
+</svg>
