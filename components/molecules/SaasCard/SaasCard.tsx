@@ -35,7 +35,7 @@ const SaasCard = (props: SaasCardProps) => {
               active: !checked,
             }));
           }}
-          checked={checked}
+          checked={(checked === undefined)?false:checked}
           uncheckedIcon={false}
           checkedIcon={false}
           handleDiameter={18}
