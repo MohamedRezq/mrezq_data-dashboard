@@ -8,7 +8,6 @@ import saas from "../../public/assets/json/saas.json";
 import type { RootState } from "@/redux/store";
 import { useSelector, useDispatch } from "react-redux";
 import { searchByText } from "@/redux/features/saas/saasSlice";
-import ScrollArea from 'react-scrollbar';
 const SelectSaasPage = () => {
   const saasList = useSelector((state: RootState) => state.saas.saasList);
 
