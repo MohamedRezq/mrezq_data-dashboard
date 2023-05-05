@@ -1,7 +1,7 @@
 import React from "react";
 import { BiSearch } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
-import { searchByText } from "@/app/features/saas/saasSlice";
+import { searchByText } from "@/redux/features/saas/saasSlice";
 
 interface SearchInputProps {
   onChange: any;

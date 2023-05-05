@@ -1,25 +1,23 @@
 import React from "react";
-import validateInput from "../../../helpers/validate";
+import { BasicInputProps } from "@/types";
+import { setUserInput } from "@/redux/features/user/userSlice";
+import { useDispatch } from "react-redux";
 
-interface BasicInputProps {
-  id: string;
-  type: string;
-  label: string;
-}
-
-const BasicInput = (props: BasicInputProps) => {
+const BasicInput = (props: any) => {
+  const dispatch = useDispatch();
   return (
     <div>
-      <label className="pl-12 pb-2 text-xs text-silverchalice" htmlFor={`${props.id}`}>
+      <label
+        className="pl-12 pb-2 text-xs text-silverchalice"
+        htmlFor={`${props.id}`}
+      >
         {props.label}
       </label>
       <input
         id={`${props.id}`}
         type={`${props.type}`}
-        className="w-full px-6 py-3 rounded-3xl focus:outline-2 focus:outline-hippiegreen bg-alto text-emperor"
-        onChange={(e) => {
-          validateInput({ type: props.type, input: e.target.value });
-        }}
+        className="w-full px-8 py-3 rounded-3xl focus:outline-2 focus:outline-hippiegreen bg-alto text-emperor"
+        onChange={(e) => props.onChange(e.target.value)}
       />
     </div>
   );

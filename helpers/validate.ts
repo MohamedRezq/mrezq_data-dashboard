@@ -1,12 +1,10 @@
 import validator from "validator";
 
-const validateInput = (props: { input: string; type: string }) => {
-  switch (props.type) {
+export const validateInput = (input: string, type: string): boolean => {
+  switch (type) {
     case "email":
-      return validator.isEmail(props.input);
+      return validator.isEmail(input);
     default:
-      return;
+      return false;
   }
 };
-
-export default validateInput ;

@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import saasReducer from "./features/saas/saasSlice";
-
+import userReducer from "./features/user/userSlice";
 export const store = configureStore({
   reducer: {
     saas: saasReducer,
+    user: userReducer,
   },
 });
 

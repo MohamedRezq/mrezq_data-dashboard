@@ -16,7 +16,7 @@ module.exports = {
         emperor: '#545454',
         silverchalice: '#A4A4A4',
         emerald: '#2ACB48',
-        gallery: '#EDEDED'
+        gallery: '#EDEDED',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -25,5 +25,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')],
 }
