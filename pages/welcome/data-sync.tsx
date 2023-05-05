@@ -1,15 +1,10 @@
-import SearchInput from "@/components/atoms/Input/SearchInput";
-import SaasCard from "@/components/molecules/SaasCard/SaasCard";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import logo from "../../public/assets/img/AlphaS wordmark.svg";
 import Bullets from "@/components/atoms/Paging/Bullets";
-import saas from "../../public/assets/json/saas.json";
 import type { RootState } from "@/redux/store";
 import { useSelector, useDispatch } from "react-redux";
-import { searchByText } from "@/redux/features/saas/saasSlice";
 import SaasSyncCard from "@/components/molecules/SaasSyncCard.tsx/SaasSyncCard";
-import { ProgressBar } from "react-loader-spinner";
 
 const DataSyncPage = () => {
   const saasList = useSelector((state: RootState) => state.saas.saasList);
