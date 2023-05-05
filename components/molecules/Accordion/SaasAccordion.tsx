@@ -14,8 +14,9 @@ import {
 // Demo styles, see 'Styles' section below for some notes on use.
 import "react-accessible-accordion/dist/fancy-example.css";
 import { SaasAccordionProps } from "@/types/SaasAccordionProps.interface";
+import { SaasCardProps } from "@/types/SaasCardProps.interface";
 
-export default function SaasAccordion(props: SaasAccordionProps) {
+export default function SaasAccordion(props: SaasCardProps) {
   return (
     <div className="px-0 sm:px-5 py-2 rounded-3xl bg-alto">
       <Accordion

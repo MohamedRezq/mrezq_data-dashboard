@@ -1,17 +1,14 @@
+import { updateSelectedList } from "@/redux/features/saas/saasSlice";
+import { SaasCardProps } from "@/types/SaasCardProps.interface";
 import Image from "next/image";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Switch from "react-switch";
 
-interface SaasCardProps {
-  logo: string;
-  title: string;
-  text: string;
-  active: boolean;
-  checked: boolean;
-}
-
 const SaasCard = (props: SaasCardProps) => {
-  const [checked, setChecked] = useState(props.checked);
+  const [checked, setChecked] = useState(props.active);
+  const dispatch = useDispatch();
+
   return (
     <div className="w-52 h-36 rounded-3xl bg-wildsand relative">
       <div className="pl-4 pt-5 flex items-center">
@@ -31,7 +28,13 @@ const SaasCard = (props: SaasCardProps) => {
         }`}
       >
         <Switch
-          onChange={() => setChecked(!checked)}
+          onChange={() => {
+            setChecked(!checked);
+            dispatch(updateSelectedList({
+              ...props,
+              active: !checked,
+            }));
+          }}
           checked={checked}
           uncheckedIcon={false}
           checkedIcon={false}
@@ -40,7 +43,6 @@ const SaasCard = (props: SaasCardProps) => {
           onColor="#eee"
           height={8}
           width={30}
-          //onHandleColor='#509051'
           className=""
         />
       </div>

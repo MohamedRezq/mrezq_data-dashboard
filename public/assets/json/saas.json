@@ -1,77 +1,63 @@
 [
   {
     "logo": "/assets/img/zoho-books.png",
-    "title": "Zoho Books",
+    "title": "Zoho Books 1",
     "text": "Lorem ipsum connect something like this",
-    "active": true,
-    "checked": true
+    "active": false,
+    "checked": false
   },
   {
     "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
-    "title": "Quick Books",
+    "title": "Quick Books 1",
     "text": "Lorem ipsum connect something like this",
     "active": false,
     "checked": false
   },
   {
     "logo": "/assets/img/FreshBooks_logo_(2020).svg",
-    "title": "Fresh Books",
+    "title": "Fresh Books 1",
     "text": "Lorem ipsum connect something like this",
-    "active": true,
-    "checked": true
+    "active": false,
+    "checked": false
   },
   {
     "logo": "/assets/img/zoho-books.png",
-    "title": "Zoho Books",
+    "title": "Zoho Books 2",
     "text": "Lorem ipsum connect something like this",
     "active": false,
     "checked": false
   },
   {
     "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
-    "title": "Quick Books",
-    "text": "Lorem ipsum connect something like this",
-    "active": true,
-    "checked": true
-  },
-  {
-    "logo": "/assets/img/FreshBooks_logo_(2020).svg",
-    "title": "Fresh Books",
-    "text": "Lorem ipsum connect something like this",
-    "active": false,
-    "checked": false
-  },
-  {
-    "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
-    "title": "Quick Books",
+    "title": "Quick Books 2",
     "text": "Lorem ipsum connect something like this",
     "active": false,
     "checked": false
   },
   {
     "logo": "/assets/img/FreshBooks_logo_(2020).svg",
-    "title": "Fresh Books",
+    "title": "Fresh Books 2",
     "text": "Lorem ipsum connect something like this",
-    "active": true,
-    "checked": true
+    "active": false,
+    "checked": false
   },
   {
     "logo": "/assets/img/zoho-books.png",
-    "title": "Zoho Books",
+    "title": "Zoho Books 3",
     "text": "Lorem ipsum connect something like this",
     "active": false,
     "checked": false
   },
   {
     "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
-    "title": "Quick Books",
+    "title": "Quick Books 3",
     "text": "Lorem ipsum connect something like this",
-    "active": true,
-    "checked": true
+    "active": false,
+    "checked": false
   },
   {
     "logo": "/assets/img/FreshBooks_logo_(2020).svg",
-    "title": "Fresh Books",
+    "title": "Fresh Books 3",
     "text": "Lorem ipsum connect something like this",
     "active": false,
     "checked": false

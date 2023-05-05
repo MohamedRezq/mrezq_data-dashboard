@@ -4,13 +4,16 @@ import Image from "next/image";
 import React, { useState } from "react";
 import logo from "../../public/assets/img/AlphaS wordmark.svg";
 import Bullets from "@/components/atoms/Paging/Bullets";
-import saas from "../../public/assets/json/saas.json";
 import type { RootState } from "@/redux/store";
 import { useSelector, useDispatch } from "react-redux";
 import { searchByText } from "@/redux/features/saas/saasSlice";
+import Link from "next/link";
+
 const SelectSaasPage = () => {
   const saasList = useSelector((state: RootState) => state.saas.saasList);
-
+  const selectSaas = async () => {
+    console.log("selected");
+  };
   return (
     <main className="flex w-full m-auto min-h-screen flex-col items-center min-w-xl pt-16 h-full">
       <SearchInput onChange={() => searchByText("dcdc")} />
@@ -23,20 +26,21 @@ const SelectSaasPage = () => {
               title={item.title}
               text={item.text}
               active={item.active}
-              checked={item.checked}
             />
           ))}
         </div>
         <div className="flex items-center justify-between mt-12">
-          <button className="bg-alto hover:bg-emperor rounded-xl px-5 py-2 text-white text-lg">
+          <button disabled className="bg-alto rounded-xl px-5 py-2 text-white text-lg">
             Back
           </button>
           <div className="text-emperor">Select your Saas</div>
-          <button
-            className={`bg-emerald hover:bg-hippiegreen rounded-xl px-5 py-2 text-white text-lg`}
-          >
-            Next
-          </button>
+          <Link href="/welcome/customize-access">
+            <button
+              className={`bg-emerald hover:bg-hippiegreen rounded-xl px-5 py-2 text-white text-lg`}
+            >
+              Next
+            </button>
+          </Link>
         </div>
       </div>
       <div className="flex flex-col-reverse md:flex-row items-center relative w-full justify-center px-16 mt-10">
