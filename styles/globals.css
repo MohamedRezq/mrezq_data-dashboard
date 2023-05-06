@@ -123,3 +123,13 @@ body {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.rc-menu {
+  border-radius: 10px !important;
+}
+.rc-menu-item {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}

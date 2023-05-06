@@ -17,11 +17,22 @@ module.exports = {
         silverchalice: '#A4A4A4',
         emerald: '#2ACB48',
         gallery: '#EDEDED',
+        killarney: '#3F7541',
+        mineshaft: '#2C2C2C',
+        bonjour: '#E3E0E0',
+        cuttysark: '#578182',
+        thunderbird: '#D51414'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      fontFamily: {
+        quicksand: ['normal normal bold 30px/38px Quicksand'],
+      },
+      fontSize: {
+        xxs: '7pt',
       },
     },
   },
