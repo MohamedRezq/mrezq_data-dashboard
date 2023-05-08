@@ -13,7 +13,7 @@ const SearchInput = () => {
         id="search"
         type="text"
         placeholder="Find Your Saas"
-        className="min-w-lg pl-12 py-2 outline-none text-sm bg-transparent border-b border-b-grayish focus:border-b-hippiegreen text-emperor"
+        className="min-w-lg pl-12 py-2 outline-none text-sm bg-transparent border-b border-b-grayish border-opacity-30 w-[304px] focus:border-b-hippiegreen text-emperor"
         onChange={(e) => {
           dispatch(searchByText(e.target.value));
         }}

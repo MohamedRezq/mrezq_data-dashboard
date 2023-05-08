@@ -49,7 +49,7 @@ const Home = (props: DashboardHomeProps) => {
       <div className="hidden lg:block">
         <Sidebar />
       </div>
-      <div className="col-span-4 lg:col-span-3 flex flex-col p-5 gap-y-5">
+      <div className="col-span-4 lg:col-span-3 flex flex-col p-5 gap-y-5 max-h-[95vh]">
         <DashboardHeader date={props.date} />
         <div className="flex w-40 justify-around items-center gap-x-2 text-sm bg-bonjour rounded-2xl px-5 py-2 text-mineshaft pr-6">
           <Image src={monthIcon} alt="calendar" />
@@ -58,7 +58,7 @@ const Home = (props: DashboardHomeProps) => {
             <Image src={dropDown} alt="Menu" className="w-3 cursor-pointer" />
           </Dropdown>
         </div>
-        <div className="h-full lg:max-h-[440px] w-full flex flex-col gap-y-4 pr-4 py-3 lg:overflow-y-auto lg:scrollbar-thin lg:scrollbar-thumb-emerald lg:scrollbar-track-alto">
+        <div className="h-full w-full flex flex-col gap-y-4 pr-4 py-3 lg:overflow-y-auto lg:scrollbar-thin lg:scrollbar-thumb-emerald lg:scrollbar-track-alto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {props.statsData.map((item, i) => (
               <StatsCard
