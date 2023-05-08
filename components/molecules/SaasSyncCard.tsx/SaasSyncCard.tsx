@@ -25,11 +25,11 @@ const SaasSyncCard = (props: SaasCardProps) => {
     >
       <div className="flex items-center">
         <div
-          className={`w-7 rounded-md h-7 p-1 flex justify-center items-center bg-hippiegreen`}
+          className={`w-6 h-6 rounded-md p-1 flex justify-center items-center bg-hippiegreen`}
         >
           <img src={props.logo} alt="Logo" className="" />
         </div>
-        <div className="text-emperor text-md ml-3">{props.title}</div>
+        <div className="text-emperor text-lg font-bold ml-3">{props.title}</div>
       </div>
       <div className="flex items-center gap-x-3">
         <PageSpinner />

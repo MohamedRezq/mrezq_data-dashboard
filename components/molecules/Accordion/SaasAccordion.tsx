@@ -18,28 +18,28 @@ import { SaasCardProps } from "@/types/SaasCardProps.interface";
 
 export default function SaasAccordion(props: SaasCardProps) {
   return (
-    <div className="px-0 sm:px-5 py-2 rounded-3xl bg-alto">
+    <div className="px-0 sm:px-5 py-2 rounded-3xl bg-wildsand">
       <Accordion
-        className="w-full rounded-sm sm:w-96 bg-alto"
+        className="w-full rounded-sm sm:w-96 bg-wildsand"
         allowZeroExpanded={true}
       >
-        <AccordionItem className="w-full rounded-sm sm:w-96 bg-alto">
+        <AccordionItem className="w-full rounded-sm sm:w-96 bg-wildsand">
           <AccordionItemHeading>
             <AccordionItemButton>
               <div className="flex items-center text-xl font-medium">
                 <div
-                  className={`w-7 rounded-md h-7 p-1 flex justify-center items-center bg-hippiegreen`}
+                  className={` w-6 h-6 rounded-md p-1 flex justify-center items-center bg-hippiegreen`}
                 >
                   <img src={props.logo} alt="Logo" className="" />
                 </div>
-                <div className="text-emperor text-md ml-3">{props.title}</div>
+                <div className="text-emperor text-sm font-bold ml-3">{props.title}</div>
               </div>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <hr className="border-silverchalice mb-5 h-px" />
-            <p className="text-sm text-dovegray">{props.text}</p>
-            <p className="text-md text-emperor font-medium my-2">Access</p>
+            <p className="text-[10px] text-grayish2">{props.text}</p>
+            <p className="text-[11px] text-emperor font-bold my-2">Access</p>
             <CheckBox label="Invoice Access" />
             <CheckBox label="Some Access" />
             <CheckBox label="Random Access" />

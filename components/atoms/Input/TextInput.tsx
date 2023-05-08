@@ -9,6 +9,7 @@ const BasicInput = (props: any) => {
     <div>
       <label
         className="pl-12 pb-2 text-xs text-silverchalice"
+        style={{font: "normal normal medium 10px/13px Quicksand"}}
         htmlFor={`${props.id}`}
       >
         {props.label}
@@ -16,7 +17,8 @@ const BasicInput = (props: any) => {
       <input
         id={`${props.id}`}
         type={`${props.type}`}
-        className="w-full px-8 py-3 rounded-3xl focus:outline-2 focus:outline-hippiegreen bg-alto text-emperor"
+        style={{font: "normal normal bold 14px/18px Quicksand"}}
+        className="w-full px-8 py-3 rounded-2xl focus:outline focus:outline-hippiegreen bg-wildsand text-emperor"
         onChange={(e) => props.onChange(e.target.value)}
       />
     </div>

@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Spend Summary by department",
+    "subTitle": "Total Spend",
+    "value": 2478,
+    "subValues": [
+      {
+        "subValue": "$78",
+        "subTitle": "HR"
+      },
+      {
+        "subValue": "$1200",
+        "subTitle": "Marketing"
+      },
+      {
+        "subValue": "$800",
+        "subTitle": "Finance"
+      }
+    ],
+    "chartType": "line",
+    "chartSeries": [
+      {
+        "name": "Human R.",
+        "data": [200, 250, 300, 280, 400, 260, 360, 320, 560]
+      },
+      {
+        "name": "Marketing",
+        "data": [560, 750, 660, 200, 250, 300, 510, 280, 400]
+      },
+      {
+        "name": "Finance",
+        "data": [260, 360, 320, 560, 750, 660, 510, 200, 250]
+      }
+    ],
+    "xData": ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"]
+  },
+  {
+    "title": "Top 4 Apps by Spend",
+    "subTitle": "Total Spend",
+    "value": 4249,
+    "subValues": [
+      {
+        "subValue": "$249",
+        "subTitle": "Office"
+      },
+      {
+        "subValue": "$1000",
+        "subTitle": "Hubspot"
+      },
+      {
+        "subValue": "$1800",
+        "subTitle": "Atlassian"
+      },
+      {
+        "subValue": "$1200",
+        "subTitle": "G Suite"
+      }
+    ],
+    "chartType": "pie",
+    "chartSeries": [30, 25, 25, 10],
+    "xData": ["Atlassian", "G Suite", "Hubspot", "Office", ""]
+  },
+  {
+    "title": "License Summary",
+    "subTitle": "Total Wasted Value",
+    "value": 2478,
+    "subValues": [
+      {
+        "subValue": "110",
+        "subTitle": "Total Licenses"
+      },
+      {
+        "subValue": "80",
+        "subTitle": "Used Licenses"
+      },
+      {
+        "subValue": "30",
+        "subTitle": "Unused Licenses"
+      },
+      {
+        "subValue": "$1200",
+        "subTitle": "G Suite"
+      }
+    ],
+    "chartType": "bar",
+    "chartSeries": [
+      {
+        "name": "Data 1",
+        "data": [1100, 700, 550, 1300, 520, 850]
+      },
+      {
+        "name": "Data 2",
+        "data": [120, 300, 520, 90, 350, 450]
+      }
+    ],
+    "xData": ["Marketing", "Finance", "HR", "IT", "Engineering", "R&D"]
+  }
+]

@@ -11,12 +11,10 @@ import Link from "next/link";
 
 const SelectSaasPage = () => {
   const saasList = useSelector((state: RootState) => state.saas.saasList);
-  const selectSaas = async () => {
-    console.log("selected");
-  };
+
   return (
     <main className="flex w-full m-auto min-h-screen flex-col items-center min-w-xl pt-16 h-full">
-      <SearchInput onChange={() => searchByText("dcdc")} />
+      <SearchInput />
       <div className="min-w-xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-5 mt-8 max-h-80 overflow-y-auto px-10 scrollbar-thin scrollbar-thumb-emerald scrollbar-track-alto">
           {saasList.map((item, i) => (
@@ -30,13 +28,13 @@ const SelectSaasPage = () => {
           ))}
         </div>
         <div className="flex items-center justify-between mt-12">
-          <button disabled className="bg-alto rounded-xl px-5 py-2 text-white text-lg">
+          <button disabled className="bg-alto rounded-xl px-6 py-3 text-white text-[10px] font-semibold">
             Back
           </button>
           <div className="text-emperor">Select your Saas</div>
           <Link href="/welcome/customize-access">
             <button
-              className={`bg-emerald hover:bg-hippiegreen rounded-xl px-5 py-2 text-white text-lg`}
+              className={`bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-semibold`}
             >
               Next
             </button>

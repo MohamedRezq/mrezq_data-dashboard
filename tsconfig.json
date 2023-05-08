@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types/BasicInputProps.interface.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types/BasicInputProps.interface.ts", "components/atoms/Chart/PieChart.jsx", "LineChart.jsx"],
   "exclude": ["node_modules"]
 }

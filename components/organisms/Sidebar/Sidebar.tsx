@@ -26,9 +26,9 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="flex mr-5 flex-col px-6 py-10 justify-between rounded-2xl bg-hippiegreen text-white h-full">
+    <div className="hidden lg:flex mr-5 flex-col px-6 py-10 justify-between rounded-2xl bg-hippiegreen text-white h-full">
       <div>
-        <div className="mb-16 font-quicksand text-3xl font-bold text-center">
+        <div className="mb-16 font-quicksandLogo text-3xl font-bold text-center">
           alpha
         </div>
         <div>

@@ -39,17 +39,17 @@ const DataSyncPage = () => {
         </div>
         <div className="flex items-center justify-between mt-12">
           <Link href="/welcome/customize-access">
-            <button className="bg-emerald hover:bg-hippiegreen rounded-xl px-5 py-2 text-white text-lg">
+            <button className="bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-semibold`">
               Back
             </button>
           </Link>
-          <div className="text-emperor mx-10">Your data is being synced</div>
+          <div className="text-emperor text-[10px]">Your data is being synced</div>
           <button
             className={`${
               nextActive
                 ? "bg-emerald hover:bg-hippiegreen cursor-pointer"
                 : "bg-alto cursor-progress"
-            } rounded-xl px-5 py-2 text-white text-lg`}
+            } rounded-xl px-6 py-3 text-white text-[10px] font-semibold`}
             onClick={(e) => {
               e.preventDefault();
               if (nextActive) {

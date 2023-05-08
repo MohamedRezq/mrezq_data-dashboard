@@ -27,22 +27,16 @@ const FormLogin = () => {
     <form className="flex flex-col gap-y-5">
       <BasicInput id="email" type="email" label="Email Id" onChange={setEmail} />
       <BasicInput id="password" type="password" label="Password" onChange={setPassword} />
-      <div
-        className={`text-center text-xs text-red-800 ${
-          isWrongCred ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        Wrong email/password. Try again!
-      </div>
+     
       <Link
         href="#"
-        className="hover:underline text-emperor cursor-pointer pr-5 self-end"
+        className="hover:underline text-xs text-dustygray cursor-pointer pr-5 self-end"
       >
         Forgot Password?
       </Link>
       <button
         onClick={handleLogin}
-        className="w-full mt-5 text-white text-xl bg-hippiegreen rounded-3xl py-5 flex justify-center items-center gap-x-4 bg-opacity-90 hover:bg-opacity-100"
+        className="w-full mt-5 text-[16px] text-white bg-hippiegreen rounded-2xl py-2 flex justify-center items-center gap-x-4 bg-opacity-90 hover:bg-opacity-100"
       >
         <TbLogout />
         Sign In

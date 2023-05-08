@@ -30,16 +30,18 @@ const CustomizeAccessPage = () => {
         ))}
         
       </div>
-      <div className="flex  sm:max-w-lg flex-col-reverse gap-y-3 sm:flex-row items-center justify-around mt-12">
+      <div className="flex sm:max-w-lg flex-col-reverse gap-y-3 sm:flex-row items-center justify-between w-full mt-12">
           <Link href='/welcome/select-saas'>
-            <button className="bg-alto hover:bg-emperor hover:text-white rounded-xl px-5 py-2 text-emperor text-lg">
+          <button
+              className={`bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-semibold`}
+            >
               Back
             </button>
           </Link>
-          <div className="text-emperor mx-10">Customize your access</div>
+          <div className="text-emperor text-[10px]">Customize your access</div>
           <Link href="/welcome/data-sync">
-            <button
-              className={`bg-emerald hover:bg-hippiegreen rounded-xl px-5 py-2 text-white text-lg`}
+          <button
+              className={`bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-semibold`}
             >
               Next
             </button>

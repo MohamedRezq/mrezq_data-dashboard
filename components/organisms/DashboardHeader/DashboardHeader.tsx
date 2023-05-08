@@ -21,11 +21,11 @@ const menu = (
 
 const DashboardHeader = (props: DashboardHeaderProps) => {
   return (
-    <div className="flex justify-between">
-      <div className="text-3xl opacity-75 text-mineshaft">
+    <div className="flex flex-col-reverse gap-y-3 items-center lg:flex-row justify-between">
+      <div className="text-3xl opacity-75 text-mineshaft self-start lg:self-auto">
         Good {`Morning`}, {`User`}!
       </div>
-      <div className="flex gap-x-4 items-center">
+      <div className="flex gap-x-4 items-center self-end lg:self-auto">
         <div className="flex items-center gap-x-2 text-sm bg-bonjour rounded-2xl px-4 py-2 text-mineshaft pr-6">
           <Image src={calendarIcon} alt="calendar" />
           <div>{props.date}</div>

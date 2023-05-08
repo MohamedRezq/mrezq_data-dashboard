@@ -14,7 +14,7 @@ const SaasCard = (props: SaasCardProps) => {
       <div className="pl-4 pt-5 flex items-center">
         <div
           className={`w-7 rounded-md h-7 p-1 flex justify-center items-center ${
-            checked ? "bg-hippiegreen" : "bg-silverchalice"
+            checked ? "bg-hippiegreen" : "bg-grayish"
           }`}
         >
           <img src={props.logo} alt="Logo" className="" />
@@ -24,7 +24,7 @@ const SaasCard = (props: SaasCardProps) => {
       <div className="pl-4 pt-2 text-silverchalice text-xs">{props.text}</div>
       <div
         className={`w-full absolute flex justify-end items-center pr-5 bottom-0 h-9 rounded-br-3xl rounded-bl-3xl ${
-          checked ? "bg-hippiegreen" : "bg-silverchalice"
+          checked ? "bg-hippiegreen" : "bg-mercury"
         }`}
       >
         <Switch
@@ -39,8 +39,9 @@ const SaasCard = (props: SaasCardProps) => {
           uncheckedIcon={false}
           checkedIcon={false}
           handleDiameter={18}
-          offHandleColor="#545454"
-          onColor="#eee"
+          offHandleColor="#A5A5A5"
+          onHandleColor="#509051"
+          onColor="#B1B1B1"
           height={8}
           width={30}
           className=""

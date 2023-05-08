@@ -21,7 +21,14 @@ module.exports = {
         mineshaft: '#2C2C2C',
         bonjour: '#E3E0E0',
         cuttysark: '#578182',
-        thunderbird: '#D51414'
+        thunderbird: '#D51414',
+        sunsetorange: '#FF5252',
+        chateaugreen: '#32AD49',
+        grayish: '#848484',
+        seagreen: '#2C9F41',
+        dustygray: '#989898',
+        mercury: '#E3E3E3',
+        grayish2: '#939393'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -29,10 +36,11 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        quicksand: ['normal normal bold 30px/38px Quicksand'],
+        quicksandLogo: ['normal normal bold 30px/38px Quicksand'],
+        quicksand: ['Quicksand']
       },
       fontSize: {
-        xxs: '7pt',
+        xxs: '8pt',
       },
     },
   },
