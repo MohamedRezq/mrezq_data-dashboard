@@ -8,9 +8,9 @@ import { ChartCardProps } from "@/types/ChartCardProps.interface";
 
 const ChartCard = (props: ChartCardProps) => {
   const chartTypetoApexChart = new Map([
-    ["line", <LineChart chartSeries={props.chartSeries} xData={props.xData} />],
-    ["pie", <PieChart chartSeries={props.chartSeries} xData={props.xData} />],
-    ["bar", <ColChart chartSeries={props.chartSeries} xData={props.xData} />],
+    ["line", <LineChart key="line-1" chartSeries={props.chartSeries} xData={props.xData} />],
+    ["pie", <PieChart key="pie-1" chartSeries={props.chartSeries} xData={props.xData} />],
+    ["bar", <ColChart key="bar-1" chartSeries={props.chartSeries} xData={props.xData} />],
   ]);
   return (
     <div className="rounded-2xl md:h-48 text-mineshaft w-full">
