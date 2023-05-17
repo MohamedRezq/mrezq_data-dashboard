@@ -10,7 +10,7 @@ const SaasCard = (props: SaasCardProps) => {
   const dispatch = useDispatch();
 
   return (
-    <div className=" w-[200px] h-[118px] rounded-3xl bg-wildsand relative">
+    <div className=" w-[200px] h-[118px] rounded-2xl bg-wildsand relative">
       <div className="pl-4 pt-5 flex items-center">
         <div
           className={`w-7 rounded-md h-7 p-1 flex justify-center items-center ${
@@ -23,7 +23,7 @@ const SaasCard = (props: SaasCardProps) => {
       </div>
       <div className=" pl-5 pr-7 pt-1 text-silverchalice text-[9px] pb-2">{props.text}</div>
       <div
-        className={`w-full absolute flex justify-end items-center pr-5 bottom-0 h-[26px] rounded-br-3xl rounded-bl-3xl ${
+        className={`w-full absolute flex justify-end items-center pr-5 bottom-0 h-[30px] rounded-br-3xl rounded-bl-3xl ${
           checked ? "bg-hippiegreen" : "bg-mercury"
         }`}
       >

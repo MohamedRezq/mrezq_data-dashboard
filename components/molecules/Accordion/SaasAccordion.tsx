@@ -2,6 +2,8 @@ import CheckBox from "@/components/atoms/Input/CheckBox";
 import Link from "next/link";
 import React from "react";
 import { HiOutlineExternalLink } from "react-icons/hi";
+import { TiTick } from "react-icons/ti";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
 import {
   Accordion,
@@ -18,12 +20,12 @@ import { SaasCardProps } from "@/types/SaasCardProps.interface";
 
 export default function SaasAccordion(props: SaasCardProps) {
   return (
-    <div className="px-0 sm:px-5 py-2 rounded-3xl bg-wildsand">
+    <div className="px-0 w-full md:w-[460px] sm:px-5 mx-2 py-2 rounded-2xl bg-wildsand">
       <Accordion
-        className="w-full rounded-sm sm:w-96 bg-wildsand"
+        className="w-full rounded-sm bg-wildsand"
         allowZeroExpanded={true}
       >
-        <AccordionItem className="w-full rounded-sm sm:w-96 bg-wildsand">
+        <AccordionItem className="w-full rounded-sm bg-wildsand">
           <AccordionItemHeading>
             <AccordionItemButton>
               <div className="flex items-center text-xl font-medium">
@@ -32,17 +34,34 @@ export default function SaasAccordion(props: SaasCardProps) {
                 >
                   <img src={props.logo} alt="Logo" className="" />
                 </div>
-                <div className="text-emperor text-sm font-bold ml-3">{props.title}</div>
+                <div className="text-emperor text-sm font-bold ml-3">
+                  {props.title}
+                </div>
               </div>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <hr className="border-silverchalice mb-5 h-px" />
             <p className="text-[10px] text-grayish2">{props.text}</p>
-            <p className="text-[11px] text-emperor font-bold my-2">Access</p>
-            <CheckBox label="Invoice Access" />
-            <CheckBox label="Some Access" />
-            <CheckBox label="Random Access" />
+            <p className="text-[11px] text-emperor flex items-center gap-x-[5px] ml-1 font-bold my-2"><BsFillInfoCircleFill className=" text-[#B2B2B2] w-2 h-2" /> Access</p>
+            <div className="flex gap-x-1">
+              <TiTick className="text-[#509051]" />
+              <div className="text-grayish2 text-[9px] font-medium">
+                Invoice Access
+              </div>
+            </div>
+            <div className="flex gap-x-1">
+              <TiTick className="text-[#509051]" />
+              <div className="text-grayish2 text-[9px] font-medium">
+                Some Access
+              </div>
+            </div>
+            <div className="flex gap-x-1">
+              <TiTick className="text-[#509051]" />
+              <div className="text-grayish2 text-[9px] font-medium">
+                Random Access
+              </div>
+            </div>
             <hr className="border-silverchalice my-5 h-px" />
             <CheckBox
               label={
@@ -58,6 +77,13 @@ export default function SaasAccordion(props: SaasCardProps) {
                 </span>
               }
             />
+            <Link href="">
+              <button
+                className={`bg-[#5EBF60] hover:bg-hippiegreen rounded-xl py-3 pr-3 pl-[14px] mt-4 text-white text-[10px] font-bold`}
+              >
+                Sync Now
+              </button>
+            </Link>
           </AccordionItemPanel>
         </AccordionItem>
       </Accordion>

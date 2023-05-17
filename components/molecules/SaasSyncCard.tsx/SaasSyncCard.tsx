@@ -21,7 +21,7 @@ const SaasSyncCard = (props: SaasCardProps) => {
     <div
       className={`${
         removed ? "hidden" : "block"
-      } px-10 py-3 rounded-xl bg-alto flex items-center justify-between text-lg font-medium w-full mx-10 sm:mx-0 sm:w-96`}
+      } px-8 py-[26px] rounded-2xl max-w-[335px] bg-wildsand flex items-center justify-between text-sm font-medium w-full whitespace-nowrap`}
     >
       <div className="flex items-center">
         <div
@@ -29,13 +29,13 @@ const SaasSyncCard = (props: SaasCardProps) => {
         >
           <img src={props.logo} alt="Logo" className="" />
         </div>
-        <div className="text-emperor text-lg font-bold ml-3">{props.title}</div>
+        <div className="text-emperor text-sm font-bold ml-3">{props.title}</div>
       </div>
       <div className="flex items-center gap-x-3">
         <PageSpinner />
         <AiOutlineClose
           onClick={removeSaas}
-          className="text-emperor text-opacity-80 hover:text-opacity-100 cursor-pointer"
+          className="text-[#A4BABA] cursor-pointer w-3 h-3"
         />
       </div>
     </div>
