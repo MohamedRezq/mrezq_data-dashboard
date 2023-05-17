@@ -10,9 +10,7 @@ const HelloPage = () => {
     router.push("/welcome/login");
   }, []);
 
-  return (
-    <main className="flex max-w-md m-auto min-h-screen flex-col items-center justify-between py-16 h-full"></main>
-  );
+  return <></>;
 };
 
 export default HelloPage;

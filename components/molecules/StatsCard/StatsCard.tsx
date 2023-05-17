@@ -8,15 +8,15 @@ const StatsCard = (props: StatsCardProps) => {
     ["value", "text-emperor"],
   ]);
   const subValueStatesToStyles = new Map([
-    ["positive", "text-seagreen"],
+    ["positive", "text-chateaugreen"],
     ["negative", "text-sunsetorange"],
     ["normal", "text-grayish"],
   ]);
   return (
-    <div className="rounded-2xl flex bg-wildsand p-1">
+    <div className="rounded-2xl flex bg-wildsand p-1 text-mineshaft">
       <div className="w-1/2 flex flex-col items-start justify-center h-20 gap-y-1 pl-4">
-        <div className=" text-xxs">{props.title}</div>
-        <div className={`text-3xl ${valueTypesToStyles.get(props.valueType)}`}>
+        <div className="text-[10px]">{props.title}</div>
+        <div className={`text-3xl ${valueTypesToStyles.get(props.valueType)} font-bold opacity-80`}>
           {props.value}
         </div>
       </div>
@@ -26,7 +26,7 @@ const StatsCard = (props: StatsCardProps) => {
             key={`${item.subTitle}-${item.subValue}-${i}`}
             className="flex items-center gap-x-1"
           >
-            <div className={`${subValueStatesToStyles.get(item.subValueState)} font-medium text-xxs`}>
+            <div className={`${subValueStatesToStyles.get(item.subValueState)} font-bold text-[11px]`}>
               {item.subValue}
             </div>
             <div>{item.subTitle}</div>

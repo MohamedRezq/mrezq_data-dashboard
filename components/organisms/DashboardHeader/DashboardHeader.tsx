@@ -11,42 +11,72 @@ interface DashboardHeaderProps {
   date: string;
 }
 
-const menu = (
+const LoginMenu = (
   <Menu className="px-4" onSelect={() => {}}>
     {["Profile", "Sign out"].map((item, i) => (
-      <MenuItem key={`${item}-${i}`} className="text-base hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer">{item}</MenuItem>
+      <MenuItem
+        key={`${item}-${i}`}
+        className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold"
+      >
+        {item}
+      </MenuItem>
+    ))}
+  </Menu>
+);
+
+const NotificationMenu = (
+  <Menu className="px-4" onSelect={() => {}}>
+    {["Notification 1", "Notification 2"].map((item, i) => (
+      <MenuItem
+        key={`${item}-${i}`}
+        className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold"
+      >
+        {item}
+      </MenuItem>
     ))}
   </Menu>
 );
 
 const DashboardHeader = (props: DashboardHeaderProps) => {
   return (
-    <div className="flex flex-col-reverse gap-y-3 items-center lg:flex-row justify-between">
-      <div className="text-3xl opacity-75 text-mineshaft self-start lg:self-auto">
+    <div className="flex flex-col-reverse gap-y-3 items-center md:flex-row justify-between text-mineshaft">
+      <div className="text-[30px] font-medium opacity-70 self-start md:self-auto">
         Good {`Morning`}, {`User`}!
       </div>
       <div className="flex gap-x-4 items-center self-end lg:self-auto">
-        <div className="flex items-center gap-x-2 text-sm bg-bonjour rounded-2xl px-4 py-2 text-mineshaft pr-6">
+        <div className="flex items-center gap-x-2 text-sm bg-bonjour rounded-xl px-4 py-2 pr-6">
           <Image src={calendarIcon} alt="calendar" />
-          <div>{props.date}</div>
+          <div className="opacity-70">{props.date}</div>
         </div>
-        <div className="relative">
-          <HiBell className="text-cuttysark w-7 h-7" />
-          <div className="h-4 w-4 bg-thunderbird font-semibold rounded-full flex items-center justify-center text-xxs absolute top-[2px] border border-white -right-1 text-white p-2">
-            12
+        <Dropdown
+          trigger={["click"]}
+          overlay={NotificationMenu}
+          animation="slide-up"
+          onVisibleChange={() => {}}
+        >
+          <div className="relative cursor-pointer hover:bg-mineshaft rounded-full hover:bg-opacity-10">
+            <HiBell className="text-cuttysark w-7 h-7" />
+            <div className="h-4 w-4 bg-thunderbird font-semibold rounded-full flex items-center justify-center text-xxs absolute top-[2px] border border-white -right-1 text-white p-2">
+              12
+            </div>
           </div>
-        </div>
+        </Dropdown>
+
         <div className="flex gap-x-1 items-center">
-          <div className=" rounded-full h-12 w-12 border border-cuttysark p-1">
+          <div className="rounded-full h-12 w-12 border border-cuttysark p-1">
             <img src="/assets/img/user.png" alt="user" />
           </div>
           <Dropdown
             trigger={["click"]}
-            overlay={menu}
+            overlay={LoginMenu}
             animation="slide-up"
             onVisibleChange={() => {}}
           >
-            <Image src={dropDownIcon} alt="Menu" className="w-3 cursor-pointer" />
+            <Image
+              src={dropDownIcon}
+              alt="Menu"
+              className="w-3 cursor-pointer"
+            />
           </Dropdown>
         </div>
       </div>

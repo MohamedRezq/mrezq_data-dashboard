@@ -1,20 +1,9 @@
-import SearchInput from "@/components/atoms/Input/SearchInput";
-import SaasCard from "@/components/molecules/SaasCard/SaasCard";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import logo from "../../public/assets/img/AlphaS wordmark.svg";
-import Bullets from "@/components/atoms/Paging/Bullets";
-import saas from "../../public/assets/json/saas.json";
-import type { RootState } from "@/redux/store";
-import { useSelector, useDispatch } from "react-redux";
-import { searchByText } from "@/redux/features/saas/saasSlice";
-import SaasAccordion from "@/components/molecules/Accordion/SaasAccordion";
 import Link from "next/link";
-import allSet from "../../public/assets/img/Loading_Animation.json";
 
 const AllSetPage = () => {
-  const saas = useSelector((state: RootState) => state.saas);
-  const dispatch = useDispatch();
 
   return (
     <main className="flex w-full m-auto min-h-screen flex-col items-center pt-16 h-full bg-white">

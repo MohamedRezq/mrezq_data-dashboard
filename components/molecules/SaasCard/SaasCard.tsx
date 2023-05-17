@@ -40,7 +40,7 @@ const SaasCard = (props: SaasCardProps) => {
           checkedIcon={false}
           handleDiameter={18}
           offHandleColor="#A5A5A5"
-          onHandleColor="#509051"
+          onHandleColor="#eee"
           onColor="#B1B1B1"
           height={8}
           width={30}

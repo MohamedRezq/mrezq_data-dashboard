@@ -26,9 +26,9 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="hidden lg:flex mr-5 flex-col px-6 py-10 justify-between rounded-2xl bg-hippiegreen text-white h-full">
+    <div className="hidden lg:flex mr-5 w-full flex-col px-5 py-10 justify-between rounded-2xl bg-hippiegreen text-white h-full">
       <div>
-        <div className="mb-16 font-quicksandLogo text-3xl font-bold text-center">
+        <div className="mb-16 font-quicksandLogo text-[30px] font-bold text-center">
           alpha
         </div>
         <div>
@@ -48,7 +48,7 @@ const Sidebar = () => {
               active={false}
               icon={<IoSettingsSharp />}
             />
-            <div className="text-sm opacity-50 font-light mx-12 pl-1">Version 0.01</div>
+            <div className="text-[10px] opacity-50 font-light mx-12 pl-1">Version 0.01</div>
       </div>
     </div>
   );

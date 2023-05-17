@@ -21,14 +21,14 @@ const ChartCard = (props: ChartCardProps) => {
       <div className="h-full px-7 bg-wildsand py-1 flex flex-col gap-y-3 md:flex-row justify-between items-center rounded-br-2xl rounded-bl-2xl">
         <div className="flex flex-col gap-y-1 text-xs mr-6">
           <div>{props.subTitle}</div>
-          <div className="text-3xl opacity-80 mb-5">${props.value}</div>
+          <div className="text-[20px] font-bold opacity-80 mt-1 mb-5">${props.value}</div>
           {props.subValues.map((item, i) => (
             <div
               key={`${item.subValue}-${i}`}
-              className="flex items-center gap-x-1 ml-1"
+              className="flex items-center gap-x-1 ml-1 text-[10px] font-medium"
             >
-              <div className="">{item.subValue}</div>
-              <div className="text-grayish">{item.subTitle}</div>
+              <div className="font-bold">{item.subValue}</div>
+              <div className="text-grayish font-medium">{item.subTitle}</div>
             </div>
           ))}
         </div>

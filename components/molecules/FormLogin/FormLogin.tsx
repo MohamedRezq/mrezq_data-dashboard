@@ -1,10 +1,7 @@
-import BasicInput from "@/components/atoms/Input/TextInput";
+import TextInput from "@/components/atoms/Input/TextInput";
 import { TbLogout } from "react-icons/tb";
 import React, { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { validateUser } from "@/redux/features/user/userSlice";
-import { RootState } from "@/redux/store";
 import { useRouter } from "next/router";
 
 const FormLogin = () => {
@@ -24,21 +21,21 @@ const FormLogin = () => {
   }
   
   return (
-    <form className="flex flex-col gap-y-5">
-      <BasicInput id="email" type="email" label="Email Id" onChange={setEmail} />
-      <BasicInput id="password" type="password" label="Password" onChange={setPassword} />
+    <form className="flex flex-col">
+      <TextInput id="email" type="email" label="Email Id" onChange={setEmail} />
+      <TextInput id="password" type="password" label="Password" onChange={setPassword} />
      
       <Link
         href="#"
-        className="hover:underline text-xs text-dustygray cursor-pointer pr-5 self-end"
+        className="underline text-xs text-dustygray hover:text-emperor cursor-pointer pr-5 self-end mt-2"
       >
         Forgot Password?
       </Link>
       <button
         onClick={handleLogin}
-        className="w-full mt-5 text-[16px] text-white bg-hippiegreen rounded-2xl py-2 flex justify-center items-center gap-x-4 bg-opacity-90 hover:bg-opacity-100"
+        className="w-full relative mt-8 text-sm pl-3 text-white bg-hippiegreen rounded-2xl py-2 flex justify-center items-center gap-x-4 bg-opacity-100"
       >
-        <TbLogout />
+        <TbLogout className="absolute self-center left-24 w-4 h-4" />
         Sign In
       </button>
     </form>
