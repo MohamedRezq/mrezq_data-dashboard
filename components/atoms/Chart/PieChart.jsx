@@ -31,7 +31,7 @@ const PieChart = (props) => {
     },
   }
   return (
-    <div id="chart">
+    <div id="chart" className="w-full mr-1">
       <ReactApexChart
         options={data.options}
         series={data.series}

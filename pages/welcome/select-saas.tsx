@@ -15,7 +15,7 @@ const SelectSaasPage = () => {
   return (
     <WelcomeTemplate>
       <SearchInput />
-      <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10 scrollbar-thin scrollbar-thumb-emerald scrollbar-track-alto">
+      <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10">
         <div className="flex items-center justify-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {saasList.map((item, i) => (

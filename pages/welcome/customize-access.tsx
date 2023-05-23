@@ -20,7 +20,7 @@ const CustomizeAccessPage = () => {
 
   return (
     <WelcomeTemplate>
-      <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10 scrollbar-thin scrollbar-thumb-emerald scrollbar-track-alto">
+      <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center justify-center gap-3 w-full">
             {selectedSaas.map((item, i) => (

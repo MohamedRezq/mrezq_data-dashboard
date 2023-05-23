@@ -47,7 +47,7 @@ const DashboardTemplate = (props: DashboardTemplateProps) => {
             <Image src={dropDown} alt="Menu" className="w-[10px] h-[6px] cursor-pointer" />
           </Dropdown>
         </div>
-        <div className="h-full w-full flex flex-col gap-y-4 pr-4 py-3 lg:overflow-y-auto lg:scrollbar-thin lg:scrollbar-thumb-emerald lg:scrollbar-track-alto">
+        <div className="h-full w-full flex flex-col gap-y-4 pr-4 py-3 lg:overflow-y-auto">
           {props.children !== undefined ? props.children : <></>}
         </div>
       </div>
