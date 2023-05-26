@@ -16,7 +16,7 @@ type DashboardTemplateProps = {
 const DashboardTemplate = (props: DashboardTemplateProps) => {
   const menu = (
     <Menu
-      className="px-6"
+      className=" p-5"
       onSelect={(e) => {
         setSelectedMonth(e.key);
       }}
@@ -24,7 +24,7 @@ const DashboardTemplate = (props: DashboardTemplateProps) => {
       {props.months.map((item, i) => (
         <MenuItem
           key={`${item}`}
-          className="text-xs font-semibold hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer"
+          className=" text-xs font-semibold hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer"
         >
           {item}
         </MenuItem>
@@ -34,11 +34,11 @@ const DashboardTemplate = (props: DashboardTemplateProps) => {
 
   const [selectedMonth, setSelectedMonth] = useState("Month");
   return (
-    <main className="w-full flex m-auto p-3 h-[100vh] bg-white font-medium">
-      <div className="hidden lg:block w-64 h-full">
+    <main className="w-full flex m-auto p-3 h-[100vh] bg-[#F8F8F8] font-medium">
+      <div className="hidden xl:block w-64 h-full">
         <Sidebar />
       </div>
-      <div className="flex flex-col p-5 gap-y-5 w-full">
+      <div className="flex flex-col gap-y-5 w-full md:w-[925px] mx-auto">
         <DashboardHeader date={props.date} />
         <div className="flex w-40 justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft pr-6">
           <Image src={monthIcon} alt="calendar" />
@@ -47,7 +47,7 @@ const DashboardTemplate = (props: DashboardTemplateProps) => {
             <Image src={dropDown} alt="Menu" className="w-[10px] h-[6px] cursor-pointer" />
           </Dropdown>
         </div>
-        <div className="h-full w-full flex flex-col gap-y-4 pr-4 py-3 lg:overflow-y-auto">
+        <div className="h-full w-full flex flex-col md:pr-10 mx-auto gap-y-4 py-3 lg:overflow-y-auto">
           {props.children !== undefined ? props.children : <></>}
         </div>
       </div>

@@ -18,7 +18,7 @@ const ColChart = (props) => {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: "55%",
+          columnWidth: "10px",
           endingShape: "rounded",
           borderRadius: 3,
           colors: {

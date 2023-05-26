@@ -22,7 +22,6 @@
 body {
   color: rgb(var(--foreground-rgb));
   font-family: 'Quicksand';
-
 }
 
 .accordion__button {
@@ -124,7 +123,12 @@ body {
 }
 
 .rc-menu {
-  border-radius: 10px !important;
+  border-radius: 16px !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  padding-right: 11px !important;
+  padding-left: 7px !important;
+
 }
 .rc-menu-item {
   padding-left: 10px !important;

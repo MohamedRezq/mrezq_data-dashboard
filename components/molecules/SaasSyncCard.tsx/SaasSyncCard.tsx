@@ -2,7 +2,7 @@ import PageSpinner from "@/components/atoms/Loader/PageSpinner";
 import { updateSelectedList } from "@/redux/features/saas/saasSlice";
 import { SaasCardProps } from "@/types/SaasCardProps.interface";
 import React, { useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { IoCloseSharp } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 
 const SaasSyncCard = (props: SaasCardProps) => {
@@ -33,9 +33,10 @@ const SaasSyncCard = (props: SaasCardProps) => {
       </div>
       <div className="flex items-center gap-x-3">
         <PageSpinner />
-        <AiOutlineClose
+        <IoCloseSharp
           onClick={removeSaas}
-          className="text-[#A4BABA] cursor-pointer w-3 h-3"
+          className="text-[#A4BABA] cursor-pointer"
+          size={20}
         />
       </div>
     </div>

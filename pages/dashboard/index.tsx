@@ -40,7 +40,7 @@ const Home = (props: DashboardHomeProps) => {
   return (
     <DashboardTemplate date={props.date} months={props.months}>
       <>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
           {props.statsData.map((item, i) => (
             <StatsCard
               key={`${item.title}-${item.value}-${i}`}

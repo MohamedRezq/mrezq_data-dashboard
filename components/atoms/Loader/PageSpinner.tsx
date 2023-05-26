@@ -4,8 +4,8 @@ import { TailSpin } from "react-loader-spinner";
 const PageSpinner = () => {
   return (
     <TailSpin
-      height="25"
-      width="25"
+      height="20"
+      width="40px"
       color="#4fa94d"
       ariaLabel="tail-spin-loading"
       radius="1"
