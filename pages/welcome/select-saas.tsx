@@ -1,15 +1,21 @@
 import SearchInput from "@/components/atoms/Input/SearchInput";
 import SaasCard from "@/components/molecules/SaasCard/SaasCard";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../public/assets/img/AlphaS wordmark.svg";
 import Bullets from "@/components/atoms/Paging/Bullets";
 import type { RootState } from "@/redux/store";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
+import { clearSelectedList } from "@/redux/features/saas/saasSlice";
+import { SaasCardProps } from "@/types/SaasCardProps.interface";
 
 const SelectSaasPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(clearSelectedList());
+  }, []);
   const saasList = useSelector((state: RootState) => state.saas.saasList);
 
   return (
@@ -18,13 +24,14 @@ const SelectSaasPage = () => {
       <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10">
         <div className="flex items-center justify-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {saasList.map((item, i) => (
+            {saasList.map((item: SaasCardProps, i: number) => (
               <SaasCard
                 logo={item.logo}
                 key={`${item.title}-${i}`}
                 title={item.title}
                 text={item.text}
                 active={item.active}
+                app_id={item.app_id}
               />
             ))}
           </div>
@@ -57,3 +64,4 @@ const SelectSaasPage = () => {
 };
 
 export default SelectSaasPage;
+

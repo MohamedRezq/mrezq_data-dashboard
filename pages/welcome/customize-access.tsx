@@ -1,34 +1,45 @@
-import SearchInput from "@/components/atoms/Input/SearchInput";
-import SaasCard from "@/components/molecules/SaasCard/SaasCard";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import logo from "../../public/assets/img/AlphaS wordmark.svg";
 import Bullets from "@/components/atoms/Paging/Bullets";
-import saas from "../../public/assets/json/saas.json";
 import type { RootState } from "@/redux/store";
-import { useSelector, useDispatch } from "react-redux";
-import { searchByText } from "@/redux/features/saas/saasSlice";
+import { useDispatch, useSelector } from "react-redux";
 import SaasAccordion from "@/components/molecules/Accordion/SaasAccordion";
 import Link from "next/link";
 import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
+import { useRouter } from "next/router";
+import { SaasCardProps } from "@/types/SaasCardProps.interface";
+import { updateConnectedSaas } from "@/redux/features/saas/saasSlice";
 
 const CustomizeAccessPage = () => {
   const selectedSaas = useSelector(
     (state: RootState) => state.saas.selectedList
   );
+  const router = useRouter();
   const dispatch = useDispatch();
+
+  const updateConnectedApps = () => {
+    if(router?.query?.response === undefined) return;
+    const { app_id } = JSON.parse(router?.query?.response);
+    dispatch(updateConnectedSaas(app_id))
+  }
+
+  updateConnectedApps();
 
   return (
     <WelcomeTemplate>
       <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center justify-center gap-3 w-full">
-            {selectedSaas.map((item, i) => (
+            {selectedSaas.map((item: SaasCardProps, i: number) => (
               <SaasAccordion
                 key={`${item.title}-${i}`}
                 logo={item.logo}
                 title={item.title}
                 text={item.text}
+                app_id={item.app_id}
+                connected={item.connected}
+                preExpand={i === 0 ? true : false}
               />
             ))}
           </div>

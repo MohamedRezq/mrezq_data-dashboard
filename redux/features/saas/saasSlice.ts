@@ -19,7 +19,7 @@ export const saasSlice = createSlice({
   name: "saas",
   initialState,
   reducers: {
-    searchByText: (state, action: PayloadAction<string>) => {
+    searchByText: (state: SaasState, action: PayloadAction<string>) => {
       state.searchText = action.payload;
       state.saasList = [];
       if (state.searchText === "") {
@@ -36,7 +36,10 @@ export const saasSlice = createSlice({
       });
       return;
     },
-    updateSelectedList: (state, action: PayloadAction<SaasCardProps>) => {
+    updateSelectedList: (
+      state: SaasState,
+      action: PayloadAction<SaasCardProps>
+    ) => {
       if (action.payload.active === true) {
         state.selectedList.push(action.payload);
       } else {
@@ -47,14 +50,32 @@ export const saasSlice = createSlice({
       }
       return;
     },
-    customizeSaasAccess: (state, action: PayloadAction<SaasCardProps>) => {
-      
+    clearSelectedList: (state: SaasState) => {
+      state = initialState;
       return;
     },
+    updateConnectedSaas: (state: SaasState, action: PayloadAction<string>) => {
+      console.log(action.payload)
+      const connectedSaas = state.selectedList.findIndex((item) => {
+        return item.app_id == action.payload;
+      });
+      //console.log("connectedSaas = ", JSON.parse(JSON.stringify(connectedSaas)));
+      state.selectedList[connectedSaas].connected = true;
+      return;
+    },
+    // customizeSaasAccess: (state, action: PayloadAction<SaasCardProps>) => {
+
+    //   return;
+    // },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { searchByText, updateSelectedList } = saasSlice.actions;
+export const {
+  searchByText,
+  updateSelectedList,
+  clearSelectedList,
+  updateConnectedSaas,
+} = saasSlice.actions;
 
 export default saasSlice.reducer;

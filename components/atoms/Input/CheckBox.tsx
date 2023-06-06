@@ -1,10 +1,18 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const CheckBox = (props: any) => {
+type CheckBoxProps = {
+  label: ReactNode;
+  setCheckBox: Function;
+};
+
+const CheckBox = (props: CheckBoxProps) => {
   return (
     <label className="checkbox-container text-grayish2 text-[9px]">
       {props.label}
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        onClick={(e) => props.setCheckBox(e.target?.checked)}
+      />
       <span className="checkmark"></span>
     </label>
   );
