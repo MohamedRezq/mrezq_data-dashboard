@@ -1,6 +1,6 @@
 import CheckBox from "@/components/atoms/Input/CheckBox";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { TiTick } from "react-icons/ti";
 import { BsFillInfoCircleFill } from "react-icons/bs";
@@ -14,33 +14,52 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 
-import app_config from "@/app_config";
 import { SaasCardProps } from "@/types/SaasCardProps.interface";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { updateConnectedSaas } from "@/redux/features/saas/saasSlice";
-
+import { request } from "https";
+import { quickbooksAuth } from "@/actions/quickbooks";
+//----------------------------------------------------------------------------------//
+//----------------------------------------------------------------------------------//
+//----------------------------------------------------------------------------------//
 export default function SaasAccordion(props: any) {
   const [termsAgreement, setTermsAgreement] = useState(false);
-
+  //----------------------------------------------------------------------------------//
   const router = useRouter();
+  //----------------------------------------------------------------------------------//
   //const [connected, setConnected] = useState(false);
-
-  const handleConnect = async () => {
-    await axios
-      .get(`${app_config.api_base_url_local}/api/quickbooks/authenticate`)
-      .then((res) => {
-        router.push(res.data?.authUri);
-      });
+  //----------------------------------------------------------------------------------//
+  const getLoggedUserData = (e: Event) => {
+    console.log("TODO:Getting logged user data");
+    e.currentTarget?.removeEventListener("focus", getLoggedUserData);
   };
-
+  //----------------------------------------------------------------------------------//
+  const handleConnect = () => {
+    const win = window;
+    win.addEventListener("focus", getLoggedUserData); 
+    win.open(
+      `https://appcenter.intuit.com/connect/oauth2?client_id=ABG5n8VdIoWzIFGRA7Iivyp6zqTnuHU4Zl1pDwgMBokaiTbEkC&response_type=code&scope=com.intuit.quickbooks.accounting&redirect_uri=http://localhost:3000/welcome/customize-access&state=security_token%3D138r5719ru3e1%26url%3Dhttp://localhost:3000/welcome/customize-access`,
+      "_blank",
+      "location=yes,height=570,width=520,scrollbars=yes,status=yes"
+    );
+  };
+  //----------------------------------------------------------------------------------//
+  useEffect(() => {
+    // condition to check if this window is opened by auth process
+    if (window.location.href.includes("code")) {
+      quickbooksAuth(window.location.href);
+    }
+  }, []);
+  //----------------------------------------------------------------------------------//
   return (
     <div className="px-0 w-full md:w-[460px] sm:px-5 mx-2 py-2 rounded-2xl bg-wildsand">
-      <Accordion
-        className="w-full rounded-sm bg-wildsand"
-      >
-        <AccordionItem dangerouslySetExpanded={(props.preExpand)?true:undefined} className="w-full rounded-sm bg-wildsand">
+      <Accordion className="w-full rounded-sm bg-wildsand">
+        <AccordionItem
+          dangerouslySetExpanded={props.preExpand ? true : undefined}
+          className="w-full rounded-sm bg-wildsand"
+        >
           <AccordionItemHeading>
             <AccordionItemButton>
               <div className="flex items-center text-xl font-medium">
@@ -83,7 +102,7 @@ export default function SaasAccordion(props: any) {
             <hr className="border-silverchalice my-5 h-px" />
             {props.connected ? (
               <div className=" bg-hippiegreen text-white text-xs px-3 py-1 w-fit rounded-xl flex items-center">
-                Connected 
+                Connected
               </div>
             ) : (
               <>
