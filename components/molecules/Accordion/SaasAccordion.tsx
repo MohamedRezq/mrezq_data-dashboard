@@ -6,6 +6,10 @@ import { TiTick } from "react-icons/ti";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import "react-accessible-accordion/dist/fancy-example.css";
 import { AiOutlineCheck } from "react-icons/ai";
+
+// Configurations
+import { App_Config, Integrations } from "@/app_config";
+
 import {
   Accordion,
   AccordionItem,
@@ -21,6 +25,8 @@ import { useDispatch } from "react-redux";
 import { updateConnectedSaas } from "@/redux/features/saas/saasSlice";
 import { request } from "https";
 import { quickbooksAuth } from "@/actions/quickbooks";
+import { setPageLoading } from "@/redux/features/loading/loadingSlice";
+import AccordionTickItem from "@/components/atoms/AccordionTickItem/AccordionTickItem";
 //----------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------//
@@ -28,6 +34,7 @@ export default function SaasAccordion(props: any) {
   const [termsAgreement, setTermsAgreement] = useState(false);
   //----------------------------------------------------------------------------------//
   const router = useRouter();
+  const dispatch = useDispatch();
   //----------------------------------------------------------------------------------//
   //const [connected, setConnected] = useState(false);
   //----------------------------------------------------------------------------------//
@@ -38,20 +45,15 @@ export default function SaasAccordion(props: any) {
   //----------------------------------------------------------------------------------//
   const handleConnect = () => {
     const win = window;
-    win.addEventListener("focus", getLoggedUserData); 
+    win.addEventListener("focus", getLoggedUserData);
     win.open(
-      `https://appcenter.intuit.com/connect/oauth2?client_id=ABG5n8VdIoWzIFGRA7Iivyp6zqTnuHU4Zl1pDwgMBokaiTbEkC&response_type=code&scope=com.intuit.quickbooks.accounting&redirect_uri=http://localhost:3000/welcome/customize-access&state=security_token%3D138r5719ru3e1%26url%3Dhttp://localhost:3000/welcome/customize-access`,
+      Integrations.Quickbooks.AUTH_URL,
       "_blank",
-      "location=yes,height=570,width=520,scrollbars=yes,status=yes"
+      "location=yes,height=90vh,width=520,scrollbars=yes,status=yes"
     );
+    //dispatch(setPageLoading(true));
   };
   //----------------------------------------------------------------------------------//
-  useEffect(() => {
-    // condition to check if this window is opened by auth process
-    if (window.location.href.includes("code")) {
-      quickbooksAuth(window.location.href);
-    }
-  }, []);
   //----------------------------------------------------------------------------------//
   return (
     <div className="px-0 w-full md:w-[460px] sm:px-5 mx-2 py-2 rounded-2xl bg-wildsand">
@@ -81,24 +83,14 @@ export default function SaasAccordion(props: any) {
               <BsFillInfoCircleFill className=" text-[#B2B2B2] w-2 h-2" />{" "}
               Access
             </p>
-            <div className="flex gap-x-1">
-              <TiTick className="text-[#509051]" />
-              <div className="text-grayish2 text-[9px] font-medium">
-                Invoice Access
-              </div>
-            </div>
-            <div className="flex gap-x-1">
-              <TiTick className="text-[#509051]" />
-              <div className="text-grayish2 text-[9px] font-medium">
-                Some Access
-              </div>
-            </div>
-            <div className="flex gap-x-1">
-              <TiTick className="text-[#509051]" />
-              <div className="text-grayish2 text-[9px] font-medium">
-                Random Access
-              </div>
-            </div>
+            {["Invoice Access", "Some Access", "Random Access"].map(
+              (item: string) => (
+                <AccordionTickItem
+                  key={`accordion-tick-item-${item}`}
+                  text={item}
+                />
+              )
+            )}
             <hr className="border-silverchalice my-5 h-px" />
             {props.connected ? (
               <div className=" bg-hippiegreen text-white text-xs px-3 py-1 w-fit rounded-xl flex items-center">

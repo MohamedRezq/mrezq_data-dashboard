@@ -10,11 +10,13 @@ import Link from "next/link";
 import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
 import { clearSelectedList } from "@/redux/features/saas/saasSlice";
 import { SaasCardProps } from "@/types/SaasCardProps.interface";
+import { setPageLoading } from "@/redux/features/loading/loadingSlice";
 
 const SelectSaasPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(clearSelectedList());
+    dispatch(setPageLoading(false));
   }, []);
   const saasList = useSelector((state: RootState) => state.saas.saasList);
 
@@ -64,4 +66,3 @@ const SelectSaasPage = () => {
 };
 
 export default SelectSaasPage;
-

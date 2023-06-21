@@ -3,7 +3,7 @@ export interface ChartCardProps {
   subTitle: string;
   value: number;
   subValues: {
-    subValue: string;
+    subValue: number;
     subTitle: string;
   }[];
   chartType: string;

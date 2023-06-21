@@ -1,6 +1,5 @@
 import { updateSelectedList } from "@/redux/features/saas/saasSlice";
 import { SaasCardProps } from "@/types/SaasCardProps.interface";
-import Image from "next/image";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Switch from "react-switch";

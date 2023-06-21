@@ -1,4 +1,4 @@
-import PageSpinner from "@/components/atoms/Loader/PageSpinner";
+import { SpinnerLoader } from "@/components/atoms/Loader";
 import { updateSelectedList } from "@/redux/features/saas/saasSlice";
 import { SaasCardProps } from "@/types/SaasCardProps.interface";
 import React, { useState } from "react";
@@ -32,7 +32,7 @@ const SaasSyncCard = (props: SaasCardProps) => {
         <div className="text-emperor text-sm font-bold ml-3">{props.title}</div>
       </div>
       <div className="flex items-center gap-x-3">
-        <PageSpinner />
+        <SpinnerLoader height="20" width="40" />
         <IoCloseSharp
           onClick={removeSaas}
           className="text-[#A4BABA] cursor-pointer"

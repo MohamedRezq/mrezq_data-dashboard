@@ -3,28 +3,24 @@ import React from "react";
 import logo from "../../public/assets/img/AlphaS wordmark.svg";
 import Bullets from "@/components/atoms/Paging/Bullets";
 import type { RootState } from "@/redux/store";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SaasAccordion from "@/components/molecules/Accordion/SaasAccordion";
 import Link from "next/link";
 import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
-import { useRouter } from "next/router";
 import { SaasCardProps } from "@/types/SaasCardProps.interface";
-import { updateConnectedSaas } from "@/redux/features/saas/saasSlice";
+import { quickbooksAuth } from "@/actions/quickbooks";
+import ActiveBtn from "@/components/atoms/Button/ActiveBtn";
 
 const CustomizeAccessPage = () => {
   const selectedSaas = useSelector(
     (state: RootState) => state.saas.selectedList
   );
-  const router = useRouter();
-  const dispatch = useDispatch();
-
-  const updateConnectedApps = () => {
-    if(router?.query?.response === undefined) return;
-    const { app_id } = JSON.parse(router?.query?.response);
-    dispatch(updateConnectedSaas(app_id))
-  }
-
-  updateConnectedApps();
+  React.useEffect(() => {
+    // condition to check if this window is opened by auth process
+    if (window.location.href.includes("code")) {
+      quickbooksAuth(window.location.href);
+    }
+  }, []);
 
   return (
     <WelcomeTemplate>
@@ -47,19 +43,11 @@ const CustomizeAccessPage = () => {
       </div>
       <div className="flex gap-y-2 mt-16 items-center w-full px-10 sm:w-[410px] lg:w-[615px] justify-between">
         <Link href="/welcome/select-saas">
-          <button
-            className={`bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-semibold`}
-          >
-            Back
-          </button>
+          <ActiveBtn text="Back" />
         </Link>
         <div className="text-emperor text-[10px]">Customize your access</div>
         <Link href="/welcome/data-sync">
-          <button
-            className={`bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-semibold`}
-          >
-            Next
-          </button>
+          <ActiveBtn text="Next" />
         </Link>
       </div>
       <div className="w-full"></div>

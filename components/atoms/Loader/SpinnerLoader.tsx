@@ -1,11 +1,16 @@
 import React from "react";
 import { TailSpin } from "react-loader-spinner";
 
-const PageSpinner = () => {
+type SpinnerLoaderProps = {
+  height: string;
+  width: string;
+};
+
+const SpinnerLoader = (props: SpinnerLoaderProps) => {
   return (
     <TailSpin
-      height="20"
-      width="40px"
+      height={props.height}
+      width={props.width}
       color="#4fa94d"
       ariaLabel="tail-spin-loading"
       radius="1"
@@ -16,4 +21,4 @@ const PageSpinner = () => {
   );
 };
 
-export default PageSpinner;
+export default SpinnerLoader;

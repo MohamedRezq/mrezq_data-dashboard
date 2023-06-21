@@ -13,11 +13,13 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import sessionStorage from 'redux-persist/lib/storage/session'
+import sessionStorage from "redux-persist/lib/storage/session";
 //import storage from "redux-persist/lib/storage";
 
 import saasReducer from "./features/saas/saasSlice";
 import userReducer from "./features/user/userSlice";
+import loadingReducer from "./features/loading/loadingSlice";
+import dashboardPeriodReducer from "./features/dashboardPeriod/dashboardPeriodSlice";
 
 const persistConfig = {
   key: "root",
@@ -28,6 +30,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   saas: saasReducer,
   user: userReducer,
+  loading: loadingReducer,
+  dashboardPeriod: dashboardPeriodReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -106,7 +106,7 @@ const ChartCard = (props: ChartCardProps) => {
               key={`${item.subValue}-${i}`}
               className="flex items-center gap-x-1 ml-1 text-[10px] font-medium"
             >
-              <div className="font-bold">{item.subValue}</div>
+              <div className="font-bold">$ {Math.round(item.subValue)}</div>
               <div className="text-grayish font-medium">{item.subTitle}</div>
             </div>
           ))}

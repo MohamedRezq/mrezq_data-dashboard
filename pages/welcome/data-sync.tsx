@@ -17,6 +17,7 @@ const DataSyncPage = () => {
   const [nextActive, setNextActive] = useState(false);
   const router = useRouter();
   useEffect(() => {
+
     const interval = setInterval(() => {
       if (loaderPercentage === 100) {
         setNextActive(true);

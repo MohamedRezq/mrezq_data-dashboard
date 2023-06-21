@@ -1,14 +1,1 @@
-[
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-]
+["Last Month", "Last 3 Months", "Last 6 Months", "Last Year", "Last 5 Years"]
