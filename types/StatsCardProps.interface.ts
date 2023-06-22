@@ -1,9 +1,9 @@
 export interface StatsCardProps {
   title: string;
-  value: string;
+  value: number;
   valueType: string;
   subValues: {
-    subValue: string;
+    subValue: number;
     subValueState: string;
     subTitle: string;
   }[];

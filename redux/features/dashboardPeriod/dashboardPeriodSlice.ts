@@ -6,7 +6,7 @@ export interface DashboardPeriodState {
 }
 
 const initialState: DashboardPeriodState = {
-  currentPeriod: 4,
+  currentPeriod: 0,
 };
 
 export const dashboardPeriodSlice = createSlice({
@@ -15,7 +15,7 @@ export const dashboardPeriodSlice = createSlice({
   reducers: {
     setDashboardPeriod: (
       state: DashboardPeriodState,
-      action: PayloadAction<boolean>
+      action: PayloadAction<number>
     ) => {
       state.currentPeriod = action.payload;
       return;

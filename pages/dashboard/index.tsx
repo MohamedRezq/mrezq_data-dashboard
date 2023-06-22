@@ -32,10 +32,8 @@ const Home = () => {
   useEffect(() => {
     dispatch(setPageLoading(true));
     const response: any = quickbooksSyncData(user.info.organizationId);
-    if (response && response.status === 200) {
-      console.log("now");
-      setDashboardData(data);
-    } else setFetchError(true);
+    if (response && response.status === 200) setDashboardData(response.data);
+    else setFetchError(true);
     dispatch(setPageLoading(false));
   }, []);
 
@@ -44,10 +42,14 @@ const Home = () => {
   // 2 --> Last 6 Months
   // 3 --> Last Year
   // 4 --> Last 5 Years
-  console.log("dashboard: ", dashboardData);
   return (
     <DashboardTemplate date={date} periods={periods}>
       <>
+        {fetchError && (
+          <div className="w-full my-3 flex text-center items-center justify-center text-xs text-red-500">
+            Error connecting to Alpha Saas. Please reload the page !
+          </div>
+        )}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
           {dashboardData[currentDashboardPeriod].statsCards.map(
             (item: any, i: number) => (
