@@ -7,7 +7,6 @@ import { BsThreeDots } from "react-icons/bs";
 import { ChartCardProps } from "@/types/ChartCardProps.interface";
 import Menu, { Item as MenuItem } from "rc-menu";
 import Dropdown from "rc-dropdown";
-import { MdOutlineModeEdit } from "react-icons/md";
 import Image from "next/image";
 
 const ChartCard = (props: ChartCardProps) => {
@@ -99,7 +98,7 @@ const ChartCard = (props: ChartCardProps) => {
         <div className="flex flex-col gap-y-1 text-xs mr-6">
           <div>{props.subTitle}</div>
           <div className="text-[20px] font-extrabold text-[#2C2C2C] opacity-90 mt-1 mb-5">
-            ${props.value}
+            ${Math.round(props.value)}
           </div>
           {props.subValues.map((item, i) => (
             <div

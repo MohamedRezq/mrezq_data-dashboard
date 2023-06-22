@@ -85,7 +85,9 @@ const StatsCard = (props: StatsCardProps) => {
                 item.subValueState
               )} font-bold text-[11px]`}
             >
-              {item.subValue}
+              {item.subTitle == "Per user spend"
+                ? `$${Math.round(item.subValue)}`
+                : Math.round(item.subValue)}
             </div>
             <div>{item.subTitle}</div>
           </div>

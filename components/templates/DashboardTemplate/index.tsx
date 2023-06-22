@@ -6,6 +6,8 @@ import monthIcon from "../../../public/assets/img/icons/month.svg";
 import dropDown from "../../../public/assets/img/icons/arrow-down-sign-to-navigate.svg";
 import Dropdown from "rc-dropdown";
 import Menu, { Item as MenuItem } from "rc-menu";
+import { useDispatch } from "react-redux";
+import { setDashboardPeriod } from "@/redux/features/dashboardPeriod/dashboardPeriodSlice";
 
 type DashboardTemplateProps = {
   children: ReactElement<any, any>;
@@ -14,11 +16,17 @@ type DashboardTemplateProps = {
 };
 
 const DashboardTemplate = (props: DashboardTemplateProps) => {
+  const dispatch = useDispatch();
   const menu = (
     <Menu
       className=" p-5"
       onSelect={(e) => {
         setSelectedMonth(e.key);
+        dispatch(
+          setDashboardPeriod(
+            props.periods.findIndex((period) => period === e.key)
+          )
+        );
       }}
     >
       {props.periods.map((item, i) => (
