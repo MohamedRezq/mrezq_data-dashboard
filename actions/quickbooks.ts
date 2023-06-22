@@ -24,7 +24,7 @@ export const quickbooksAuth = async (url: string | null) => {
   }
 };
 
-export const quickbooksSyncData = async () => {
+export const quickbooksSyncData = async (organizationId: number) => {
   //TODO get organization_id from local storage
   try {
     await httpServices.post(
@@ -51,12 +51,10 @@ export const quickbooksSyncData = async () => {
         },
       }
     );
-    console.log("response: ", response.data);
     return { status: response.status, data: response.data };
   } catch (error: any | null) {
     return {
-      status: error.response.status,
-      statusText: error.response.statusText,
+      error,
     };
   }
 };

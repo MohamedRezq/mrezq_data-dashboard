@@ -4,30 +4,45 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { userLogin } from "@/actions/user";
+import { useDispatch, useSelector } from "react-redux";
+import { setPageLoading } from "@/redux/features/loading/loadingSlice";
+import { setIsWrongCred, setUser } from "@/redux/features/user/userSlice";
+import { RootState } from "@/redux/store";
+import { JWT } from "@/app_config";
+import jwt from "jsonwebtoken";
 //--------------------------------------------------------------//
-const FormLogin = () => {
+const FormLogin: React.FC<{}> = () => {
   const [email, setEmail] = useState("");
   //--------------------------------------------------------------//
   const [password, setPassword] = useState("");
   //--------------------------------------------------------------//
-  const [isWrongCred, setIsWrongCred] = useState(false);
-  //--------------------------------------------------------------//
   const router = useRouter();
+  //--------------------------------------------------------------//
+  const dispatch = useDispatch();
+  const isWrongCred = useSelector((state: RootState) => state.user.isWrongCred);
   //--------------------------------------------------------------//
   const handleLogin = async (e: any) => {
     e.preventDefault();
+    dispatch(setPageLoading(true));
     const user = {
       email,
       password,
     };
     const response = await userLogin(user);
-    if (response && response.status === 200) {
-      //TODO 1-dispatch to store 2-save organization_id to local storage (quickbooks auth)
-      localStorage.setItem("organizationId", response.data.organization_id);
-      router.push("/welcome/select-saas");
+    if (response.status === 200) {
+      console.log("response: ", response.data);
+      try {
+        const token = response.data.token;
+        const decoded = jwt.verify(token, JWT.jwtsecretkey || "");
+        dispatch(setUser({ info: decoded, token: token }));
+      } catch (error) {
+        console.log("error: ", error);
+        dispatch(setIsWrongCred(true));
+      }
     } else if (response && response.status === 400) {
-      setIsWrongCred(true);
+      dispatch(setIsWrongCred(true));
     }
+    dispatch(setPageLoading(false));
   };
   //--------------------------------------------------------------//
   return (
@@ -46,9 +61,16 @@ const FormLogin = () => {
       >
         Forgot Password?
       </Link>
+      {isWrongCred ? (
+        <div className="h-4 text-center mt-3 text-xs text-red-600">
+          Wrong username or password !
+        </div>
+      ) : (
+        <div className="h-4 mt-3"></div>
+      )}
       <button
         onClick={handleLogin}
-        className="w-full relative mt-8 text-sm pl-3 text-white bg-hippiegreen rounded-2xl py-2 flex justify-center items-center gap-x-4 bg-opacity-100"
+        className="w-full relative mt-5 text-sm pl-3 text-white bg-hippiegreen rounded-2xl py-2 flex justify-center items-center gap-x-4 bg-opacity-100"
       >
         <TbLogout className="absolute self-center left-24 w-4 h-4" />
         Sign In

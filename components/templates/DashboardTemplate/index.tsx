@@ -10,7 +10,7 @@ import Menu, { Item as MenuItem } from "rc-menu";
 type DashboardTemplateProps = {
   children: ReactElement<any, any>;
   date: string;
-  months: string[];
+  periods: string[];
 };
 
 const DashboardTemplate = (props: DashboardTemplateProps) => {
@@ -21,7 +21,7 @@ const DashboardTemplate = (props: DashboardTemplateProps) => {
         setSelectedMonth(e.key);
       }}
     >
-      {props.months.map((item, i) => (
+      {props.periods.map((item, i) => (
         <MenuItem
           key={`${item}`}
           className=" text-xs font-semibold hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer"
@@ -42,9 +42,15 @@ const DashboardTemplate = (props: DashboardTemplateProps) => {
         <DashboardHeader date={props.date} />
         <div className="flex w-44 justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft pr-6">
           <Image src={monthIcon} alt="calendar" />
-          <div className="text-center font-medium text-sm w-40">{selectedMonth}</div>
+          <div className="text-center font-medium text-sm w-40">
+            {selectedMonth}
+          </div>
           <Dropdown trigger={["click"]} overlay={menu} animation="slide-up">
-            <Image src={dropDown} alt="Menu" className="w-[10px] h-[6px] cursor-pointer" />
+            <Image
+              src={dropDown}
+              alt="Menu"
+              className="w-[10px] h-[6px] cursor-pointer"
+            />
           </Dropdown>
         </div>
         <div className="h-full w-full flex flex-col md:pr-10 mx-auto gap-y-4 py-3 lg:overflow-y-auto">

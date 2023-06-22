@@ -1,10 +1,15 @@
+//import { BasicInputProps } from "@/types";
 import React from "react";
-import { BasicInputProps } from "@/types";
-import { setUserInput } from "@/redux/features/user/userSlice";
 import { useDispatch } from "react-redux";
 
-const BasicInput = (props: any) => {
-  const dispatch = useDispatch();
+type BasicInputProps = {
+  id: string;
+  type: string;
+  label: string;
+  onChange: any;
+};
+
+const BasicInput = (props: BasicInputProps) => {
   return (
     <div className="mt-4 w-72">
       <label
@@ -16,7 +21,7 @@ const BasicInput = (props: any) => {
       <input
         id={`${props.id}`}
         type={`${props.type}`}
-        style={{font: "normal normal bold 14px/18px Quicksand"}}
+        style={{ font: "normal normal bold 14px/18px Quicksand" }}
         className="w-full px-5 py-3 text-sm rounded-2xl focus:outline focus:outline-seagreen font-bold bg-wildsand text-emperor text-opacity-95"
         onChange={(e) => props.onChange(e.target.value)}
       />

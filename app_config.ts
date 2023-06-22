@@ -17,3 +17,7 @@ export const Integrations = {
     AUTH_URL: `${process.env.NEXT_PUBLIC_QUICKBOOKS_OAUTH_URL}?client_id=${process.env.NEXT_PUBLIC_QUICKBOOKS_CLIENT_ID}&response_type=code&scope=com.intuit.quickbooks.accounting&redirect_uri=${App_Config.APP_BASE_URL}${process.env.NEXT_PUBLIC_QUICKBOOKS_REDIRECT_URL}&state=security_token`,
   },
 };
+
+export const JWT = {
+  jwtsecretkey: process.env.NEXT_PUBLIC_JWT_SECRET_KEY,
+};

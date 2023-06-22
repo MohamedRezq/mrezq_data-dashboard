@@ -7,7 +7,7 @@ const HelloPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/welcome/login");
+    router.push("/login");
   }, []);
 
   return <></>;

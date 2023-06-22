@@ -1,23 +1,29 @@
-import React, { createContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { useEffect, ReactElement, useState } from "react";
+import SelectSaasPage from "@/pages/welcome/select-saas";
+import LoginPage from "@/pages/login";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import { PageLoading } from "@/components/atoms/Loader";
-import { userLogin } from "@/actions/user";
+import { setPageLoading } from "@/redux/features/loading/loadingSlice";
 
-function AuthProvider<T>(Component: React.ComponentType<T>) {
-  return (props: T) => {
-    const {response, loading, error} = userLogin();
-    const router = useRouter();
+type AuthProviderProps = {
+  children: ReactElement<any, any>;
+};
+const AuthProvider = ({ children }: AuthProviderProps) => {
+  const user = useSelector((state: RootState) => state.user);
+  const router = useRouter();
+  const pathname = usePathname();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setPageLoading(true));
+    //if (user.token && !user.active) router.push("/welcome/select-saas");
+    if (!user.token) router.push("/login");
+    if (user.token && pathname === "/login") router.push("/dashboard");
+    dispatch(setPageLoading(false));
+  }, [user]);
 
-    if (loading) {
-      return <PageLoading />;
-    }
-
-    if (error || !response) {
-      router.push("/welcome/login");
-    }
-
-    return <Component {...props!} />;
-  };
-}
+  return <>{children}</>;
+};
 
 export default AuthProvider;

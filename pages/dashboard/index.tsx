@@ -1,38 +1,55 @@
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //---------------------Components---------------------------------------------//
 import StatsCard from "@/components/molecules/StatsCard/StatsCard";
 import ChartCard from "@/components/molecules/ChartCard/ChartCard";
-import monthsData from "../../public/assets/json/months.json";
-import chartsData from "../../public/assets/json/charts.json";
-import { StatsCardProps } from "@/types/StatsCardProps.interface";
-import { ChartCardProps } from "@/types/ChartCardProps.interface";
+import periodsData from "../../public/assets/json/months.json";
+import { quickbooksDefault } from "../../public/assets/json/quickbooksDefault";
 import DashboardTemplate from "../../components/templates/DashboardTemplate";
 import { quickbooksSyncData } from "@/actions/quickbooks";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import { dateFormatter } from "@/helpers/dateFormatter";
+import { setPageLoading } from "@/redux/features/loading/loadingSlice";
 
-interface DashboardHomeProps {
-  date: string;
-  dashboardData: any[];
-  months: string[];
-  charts: ChartCardProps[];
-}
-
-const Home = (props: DashboardHomeProps) => {
+const Home = () => {
+  //-------------------------------------------------------------------------//
+  const user = useSelector((state: RootState) => state.user);
+  //-------------------------------------------------------------------------//
+  const date = dateFormatter();
+  //-------------------------------------------------------------------------//
+  const dispatch = useDispatch();
+  //-------------------------------------------------------------------------//
+  const [dashboardData, setDashboardData] = useState(quickbooksDefault());
+  const [fetchError, setFetchError] = useState(false);
+  //-------------------------------------------------------------------------//
+  const periods = periodsData;
+  //-------------------------------------------------------------------------//
   const currentDashboardPeriod = useSelector(
     (state: RootState) => state.dashboardPeriod.currentPeriod
   );
+
+  useEffect(() => {
+    dispatch(setPageLoading(true));
+    const { status, data } = quickbooksSyncData(user.info.organizationId);
+    if (status == 200) {
+      console.log("now");
+      setDashboardData(data);
+    } else setFetchError(true);
+    dispatch(setPageLoading(false));
+  }, []);
+
   // 0 --> Last Month
   // 1 --> Last 3 Months
   // 2 --> Last 6 Months
   // 3 --> Last Year
   // 4 --> Last 5 Years
+  console.log("dashboard: ", dashboardData);
   return (
-    <DashboardTemplate date={props.date} months={props.months}>
+    <DashboardTemplate date={date} periods={periods}>
       <>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-          {props?.dashboardData[currentDashboardPeriod].statsCards.map(
+          {dashboardData[currentDashboardPeriod].statsCards.map(
             (item: any, i: number) => (
               <StatsCard
                 key={`${item.title}-${item.value}-${i}`}
@@ -47,8 +64,8 @@ const Home = (props: DashboardHomeProps) => {
           )}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-3">
-          {props?.dashboardData[currentDashboardPeriod].chartsData.map(
-            (item, i) => (
+          {dashboardData[currentDashboardPeriod].chartsData.map(
+            (item: any, i: number) => (
               <div
                 key={`${item.title}-${item.value}-${i}`}
                 className={`${
@@ -71,27 +88,6 @@ const Home = (props: DashboardHomeProps) => {
       </>
     </DashboardTemplate>
   );
-};
-
-export const getServerSideProps: GetServerSideProps<{
-  date: string;
-}> = async (context) => {
-  const date = new Date();
-  const response = await quickbooksSyncData();
-  return {
-    props: {
-      date: `${date.getDate()}${" "}${date.toLocaleString("en-US", {
-        month: "short",
-      })}${" "}${date.getFullYear()}, ${date.toLocaleString("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      })}`,
-      dashboardData: response.status === 200 ? response.data : [],
-      months: monthsData,
-      charts: chartsData,
-    },
-  };
 };
 
 export default Home;

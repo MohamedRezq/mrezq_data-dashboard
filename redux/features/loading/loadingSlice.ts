@@ -2,25 +2,25 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface LoadingState {
-  isPageLoading: boolean;
+  isLoading: boolean;
 }
 
 const initialState: LoadingState = {
-  isPageLoading: false,
+  isLoading: false,
 };
 
-export const saasSlice = createSlice({
-  name: "saas",
+export const loadingSlice = createSlice({
+  name: "loading",
   initialState,
   reducers: {
     setPageLoading: (state: LoadingState, action: PayloadAction<boolean>) => {
-      state.isPageLoading = action.payload;
+      state.isLoading = action.payload;
       return;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setPageLoading } = saasSlice.actions;
+export const { setPageLoading } = loadingSlice.actions;
 
-export default saasSlice.reducer;
+export default loadingSlice.reducer;
