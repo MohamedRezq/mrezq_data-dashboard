@@ -31,9 +31,10 @@ const Home = () => {
   //-------------------------------------------------------------------------//
   useEffect(() => {
     dispatch(setPageLoading(true));
-    const response: any = quickbooksSyncData(user.info.organizationId);
-    if (response && response.status === 200) setDashboardData(response.data);
-    else setFetchError(true);
+    quickbooksSyncData(user.info.organizationId).then((response) => {
+      if (response && response.status === 200) setDashboardData(response.data);
+      else setFetchError(true);
+    });
     dispatch(setPageLoading(false));
   }, []);
 

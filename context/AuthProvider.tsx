@@ -13,13 +13,21 @@ type AuthProviderProps = {
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const user = useSelector((state: RootState) => state.user);
   const router = useRouter();
-  const pathname = usePathname();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setPageLoading(true));
     //if (user.token && !user.active) router.push("/welcome/select-saas");
     if (!user.token) router.push("/login");
-    if (user.token && pathname === "/login") router.push("/dashboard");
+    if (user.token && user.role === "member") router.push("/dashboard");
+    if (user.token && user.role !== "member") {
+      const inactiveApplications = user.info.applications.filter(
+        (application: any) => application.integration_status !== "active"
+      );
+      if (inactiveApplications.length > 0)
+        router.push("/welcome/customize-access");
+      else router.push("/dashboard");
+    }
+    // if (user.token && pathname === "/login") router.push("/dashboard");
     dispatch(setPageLoading(false));
   }, [user]);
 
