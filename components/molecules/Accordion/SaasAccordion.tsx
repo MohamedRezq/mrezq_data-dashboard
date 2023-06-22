@@ -33,9 +33,6 @@ import AccordionTickItem from "@/components/atoms/AccordionTickItem/AccordionTic
 export default function SaasAccordion(props: any) {
   const [termsAgreement, setTermsAgreement] = useState(false);
   //----------------------------------------------------------------------------------//
-  const router = useRouter();
-  const dispatch = useDispatch();
-  //----------------------------------------------------------------------------------//
   //const [connected, setConnected] = useState(false);
   //----------------------------------------------------------------------------------//
   const getLoggedUserData = (e: Event) => {

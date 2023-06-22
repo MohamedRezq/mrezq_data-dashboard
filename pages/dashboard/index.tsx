@@ -1,4 +1,3 @@
-import { GetServerSideProps } from "next";
 import { useState, useEffect } from "react";
 //---------------------Components---------------------------------------------//
 import StatsCard from "@/components/molecules/StatsCard/StatsCard";
@@ -11,7 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { dateFormatter } from "@/helpers/dateFormatter";
 import { setPageLoading } from "@/redux/features/loading/loadingSlice";
-
+//-------------------------------------------------------------------------//
+//-------------------------------------------------------------------------//
 const Home = () => {
   //-------------------------------------------------------------------------//
   const user = useSelector((state: RootState) => state.user);
@@ -28,11 +28,11 @@ const Home = () => {
   const currentDashboardPeriod = useSelector(
     (state: RootState) => state.dashboardPeriod.currentPeriod
   );
-
+  //-------------------------------------------------------------------------//
   useEffect(() => {
     dispatch(setPageLoading(true));
-    const { status, data } = quickbooksSyncData(user.info.organizationId);
-    if (status == 200) {
+    const response: any = quickbooksSyncData(user.info.organizationId);
+    if (response && response.status === 200) {
       console.log("now");
       setDashboardData(data);
     } else setFetchError(true);

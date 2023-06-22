@@ -2,13 +2,12 @@ import httpServices from "@/services/httpServices";
 import { App_Config } from "@/app_config";
 //--------------------------------------------------------------//
 export const quickbooksAuth = async (url: string | null) => {
-  //TODO get organization_id from local storage
   try {
     await httpServices.post(
       `${App_Config.API_BASE_URL}/api/quickbooks/exchange-code`,
       {
         url: url,
-        organizationId: 1, //localStorage.getItem("organizationId"),
+        organizationId: localStorage.getItem("organizationId"),
         applicationId: 1, // 1-->quickbooks , 2-->zoho
       },
       {
@@ -23,15 +22,13 @@ export const quickbooksAuth = async (url: string | null) => {
     if (error.response.status === 400) console.log(error.response.data.message);
   }
 };
-
+//--------------------------------------------------------------//
 export const quickbooksSyncData = async (organizationId: number) => {
-  //TODO get organization_id from local storage
   try {
     await httpServices.post(
       `${App_Config.API_BASE_URL}/api/quickbooks/validate-tokens`,
       {
-        organizationId: 1,
-        //applicationId: 1, // 1-->quickbooks , 2-->zoho
+        organizationId: organizationId,
       },
       {
         headers: {
@@ -42,8 +39,7 @@ export const quickbooksSyncData = async (organizationId: number) => {
     const response = await httpServices.post(
       `${App_Config.API_BASE_URL}/api/quickbooks/sync-data`,
       {
-        organizationId: 1,
-        //applicationId: 1, // 1-->quickbooks , 2-->zoho
+        organizationId: organizationId,
       },
       {
         headers: {
@@ -51,10 +47,8 @@ export const quickbooksSyncData = async (organizationId: number) => {
         },
       }
     );
-    return { status: response.status, data: response.data };
+    return response;
   } catch (error: any | null) {
-    return {
-      error,
-    };
+    return error.response;
   }
 };

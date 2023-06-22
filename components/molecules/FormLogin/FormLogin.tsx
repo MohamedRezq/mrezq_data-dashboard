@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPageLoading } from "@/redux/features/loading/loadingSlice";
 import { setIsWrongCred, setUser } from "@/redux/features/user/userSlice";
 import { RootState } from "@/redux/store";
-import { JWT } from "@/app_config";
 import jwt from "jsonwebtoken";
 //--------------------------------------------------------------//
 const FormLogin: React.FC<{}> = () => {
@@ -23,22 +22,23 @@ const FormLogin: React.FC<{}> = () => {
   //--------------------------------------------------------------//
   const handleLogin = async (e: any) => {
     e.preventDefault();
+    dispatch(setIsWrongCred(false));
     dispatch(setPageLoading(true));
     const user = {
       email,
       password,
     };
     const response = await userLogin(user);
-    if (response.status === 200) {
-      console.log("response: ", response.data);
-      try {
-        const token = response.data.token;
-        const decoded = jwt.verify(token, JWT.jwtsecretkey || "");
+    if (response && response.status === 200) {
+      const token = response.data.token;
+      const decoded: any = jwt.decode(token);
+      if (decoded) {
+        if (decoded.role !== "member") {
+          // admin && superadmin will need organization_id in quickbook auth
+          localStorage.setItem("organizationId", decoded.organization_id);
+        }
         dispatch(setUser({ info: decoded, token: token }));
-      } catch (error) {
-        console.log("error: ", error);
-        dispatch(setIsWrongCred(true));
-      }
+      } else dispatch(setIsWrongCred(true));
     } else if (response && response.status === 400) {
       dispatch(setIsWrongCred(true));
     }

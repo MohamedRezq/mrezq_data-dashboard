@@ -18,6 +18,3 @@ export const Integrations = {
   },
 };
 
-export const JWT = {
-  jwtsecretkey: process.env.NEXT_PUBLIC_JWT_SECRET_KEY,
-};
