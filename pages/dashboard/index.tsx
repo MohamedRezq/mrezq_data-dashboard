@@ -8,7 +8,7 @@ import DashboardTemplate from "../../components/templates/DashboardTemplate";
 import { quickbooksSyncData } from "@/actions/quickbooks";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { dateFormatter } from "@/helpers/dateFormatter";
+import { dateFormatter } from "@/services/dateFormatter";
 import { setPageLoading } from "@/redux/features/loading/loadingSlice";
 //-------------------------------------------------------------------------//
 //-------------------------------------------------------------------------//

@@ -1,15 +1,17 @@
 import FormLogin from "@/components/molecules/FormLogin/FormLogin";
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../public/assets/img/AlphaS wordmark.svg";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { PageLoading } from "@/components/atoms/Loader";
+import AuthProvider from "@/context/AuthProvider";
 
 const LoginPage = () => {
   const { isLoading } = useSelector((state: RootState) => state.loading);
+
   return (
-    <>
+    <AuthProvider>
       {isLoading ? (
         <PageLoading />
       ) : (
@@ -22,7 +24,7 @@ const LoginPage = () => {
           </div>
         </main>
       )}
-    </>
+    </AuthProvider>
   );
 };
 

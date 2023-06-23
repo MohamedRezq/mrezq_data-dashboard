@@ -1,34 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { useEffect, ReactElement, useState } from "react";
-import SelectSaasPage from "@/pages/welcome/select-saas";
-import LoginPage from "@/pages/login";
-import { usePathname } from "next/navigation";
+import { useEffect, ReactElement } from "react";
 import { useRouter } from "next/router";
-import { setPageLoading } from "@/redux/features/loading/loadingSlice";
 
 type AuthProviderProps = {
   children: ReactElement<any, any>;
+  redirectUrl?: string;
 };
-const AuthProvider = ({ children }: AuthProviderProps) => {
+
+const AuthProvider = ({ children, redirectUrl }: AuthProviderProps) => {
   const user = useSelector((state: RootState) => state.user);
   const router = useRouter();
-  const dispatch = useDispatch();
+  console.log("router: ", router.pathname);
   useEffect(() => {
-    dispatch(setPageLoading(true));
-    //if (user.token && !user.active) router.push("/welcome/select-saas");
     if (!user.token) router.push("/login");
-    if (user.token && user.role === "member") router.push("/dashboard");
-    if (user.token && user.role !== "member") {
-      const inactiveApplications = user.info.applications.filter(
-        (application: any) => application.integration_status !== "active"
-      );
-      if (inactiveApplications.length > 0)
-        router.push("/welcome/customize-access");
-      else router.push("/dashboard");
-    }
-    // if (user.token && pathname === "/login") router.push("/dashboard");
-    dispatch(setPageLoading(false));
+    if (user.token && redirectUrl) router.push(redirectUrl);
+    if (user.token && router.pathname === "/login") router.push("/dashboard");
   }, [user]);
 
   return <>{children}</>;

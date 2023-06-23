@@ -19,7 +19,8 @@ export const quickbooksAuth = async (url: string | null) => {
     window.close();
     return;
   } catch (error: any | null) {
-    if (error.response.status === 400) console.log(error.response.data.message);
+    if (error?.response?.status === 400)
+      console.log(error.response.data.message);
   }
 };
 //--------------------------------------------------------------//

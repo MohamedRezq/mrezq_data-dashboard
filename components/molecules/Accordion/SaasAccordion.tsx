@@ -8,8 +8,7 @@ import "react-accessible-accordion/dist/fancy-example.css";
 import { AiOutlineCheck } from "react-icons/ai";
 
 // Configurations
-import { App_Config, Integrations } from "@/app_config";
-
+import { Integrations } from "@/app_config";
 import {
   Accordion,
   AccordionItem,
@@ -17,15 +16,6 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-
-import { SaasCardProps } from "@/types/SaasCardProps.interface";
-import axios from "axios";
-import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
-import { updateConnectedSaas } from "@/redux/features/saas/saasSlice";
-import { request } from "https";
-import { quickbooksAuth } from "@/actions/quickbooks";
-import { setPageLoading } from "@/redux/features/loading/loadingSlice";
 import AccordionTickItem from "@/components/atoms/AccordionTickItem/AccordionTickItem";
 //----------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------//
@@ -36,7 +26,7 @@ export default function SaasAccordion(props: any) {
   //const [connected, setConnected] = useState(false);
   //----------------------------------------------------------------------------------//
   const getLoggedUserData = (e: Event) => {
-    console.log("TODO:Getting logged user data");
+    //TODO:Getting logged user data
     e.currentTarget?.removeEventListener("focus", getLoggedUserData);
   };
   //----------------------------------------------------------------------------------//
@@ -46,7 +36,7 @@ export default function SaasAccordion(props: any) {
     win.open(
       Integrations.Quickbooks.AUTH_URL,
       "_blank",
-      "location=yes,height=90vh,width=520,scrollbars=yes,status=yes"
+      "location=yes,height=520,width=520,scrollbars=yes,status=yes"
     );
     //dispatch(setPageLoading(true));
   };
