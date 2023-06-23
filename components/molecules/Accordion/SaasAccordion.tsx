@@ -2,10 +2,8 @@ import CheckBox from "@/components/atoms/Input/CheckBox";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { HiOutlineExternalLink } from "react-icons/hi";
-import { TiTick } from "react-icons/ti";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import "react-accessible-accordion/dist/fancy-example.css";
-import { AiOutlineCheck } from "react-icons/ai";
 
 // Configurations
 import { Integrations } from "@/app_config";

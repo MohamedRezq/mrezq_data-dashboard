@@ -7,7 +7,7 @@ export const quickbooksAuth = async (url: string | null) => {
       `${App_Config.API_BASE_URL}/api/quickbooks/exchange-code`,
       {
         url: url,
-        organizationId: localStorage.getItem("organizationId"),
+        organizationId: 1,
         applicationId: 1, // 1-->quickbooks , 2-->zoho
       },
       {
