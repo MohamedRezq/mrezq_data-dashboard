@@ -18,7 +18,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     dispatch(setPageLoading(true));
     if (!user.token) router.push("/login");
     if (user.token) {
-      if (user.role === "member") {
+      if (user.info.role === "member") {
         router.push("/dashboard");
       } else {
         if (user.info.applications.length === 0)
