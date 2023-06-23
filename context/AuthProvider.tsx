@@ -30,9 +30,6 @@ const AuthProvider = ({ children, redirectUrl }: AuthProviderProps) => {
         }
       }
     }
-
-    // if (user.token && pathname === "/login") router.push("/dashboard");
-    dispatch(setPageLoading(false));
   }, [user]);
 
   return <>{children}</>;
