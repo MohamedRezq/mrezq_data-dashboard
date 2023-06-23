@@ -35,7 +35,7 @@ const FormLogin: React.FC<{}> = () => {
       if (decoded) {
         if (decoded.role !== "member") {
           // admin && superadmin will need organization_id in quickbook auth
-          localStorage.setItem("organizationId", decoded.organization_id);
+          localStorage.setItem("organizationId", decoded.organizationId);
         }
         dispatch(setUser({ info: decoded, token: token }));
       } else dispatch(setIsWrongCred(true));
