@@ -22,7 +22,9 @@ const AuthProvider = ({ children, redirectUrl }: AuthProviderProps) => {
           router.push("/welcome/select-saas");
         else if (user.info.applications.length > 0) {
           const inactiveApplications = user.info.applications.filter(
-            (application: any) => application.integration_status !== "active"
+            (application: any) =>
+              application.integration_status !== "active" &&
+              application.integration_status !== "disabled"
           );
           if (inactiveApplications.length > 0)
             router.push("/welcome/customize-access");
