@@ -6,7 +6,11 @@ import { TiTick } from "react-icons/ti";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import "react-accessible-accordion/dist/fancy-example.css";
 import { AiOutlineCheck } from "react-icons/ai";
-
+import { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
+import { getLoggedUser } from "@/actions/user";
+import { setUser } from "@/redux/features/user/userSlice";
+import jwt from "jsonwebtoken";
 // Configurations
 import { Integrations } from "@/app_config";
 import {
@@ -17,16 +21,32 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import AccordionTickItem from "@/components/atoms/AccordionTickItem/AccordionTickItem";
+import { useDispatch } from "react-redux";
 //----------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------//
 export default function SaasAccordion(props: any) {
   const [termsAgreement, setTermsAgreement] = useState(false);
   //----------------------------------------------------------------------------------//
+  const dispatch=useDispatch()
+  //----------------------------------------------------------------------------------//
+  const user = useSelector((state: RootState) => state.user);
+  //----------------------------------------------------------------------------------//
   //const [connected, setConnected] = useState(false);
   //----------------------------------------------------------------------------------//
-  const getLoggedUserData = (e: Event) => {
-    //TODO:Getting logged user data
+  const getLoggedUserData = async (e: Event) => {
+    const response = await getLoggedUser(user.token);
+    if (response && response.status === 200) {
+      const token = response.data.token;
+      const decoded: any = jwt.decode(token);
+      if (decoded) {
+        localStorage.removeItem("organizationId");
+        dispatch(setUser({ info: decoded, token: token }));
+      } else dispatch(setUser({ info: {}, token: null }));
+    } else if (response && response.status === 400) {
+      dispatch(setUser({ info: {}, token: null }));
+    }
+
     e.currentTarget?.removeEventListener("focus", getLoggedUserData);
   };
   //----------------------------------------------------------------------------------//
