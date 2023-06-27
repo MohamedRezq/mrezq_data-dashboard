@@ -5,39 +5,48 @@ import Image from "next/image";
 import { HiBell } from "react-icons/hi";
 import Dropdown from "rc-dropdown";
 import Menu, { Item as MenuItem, Divider } from "rc-menu";
+import { useDispatch } from "react-redux";
+import { removeUser } from "@/redux/features/user/userSlice";
+import { useRouter } from "next/router";
 
 // Define a type for our props
 interface DashboardHeaderProps {
   date: string;
 }
 
-const LoginMenu = (
-  <Menu className="px-4" onSelect={() => {}}>
-    {["Profile", "Sign out"].map((item, i) => (
-      <MenuItem
-        key={`${item}-${i}`}
-        className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold"
-      >
-        {item}
-      </MenuItem>
-    ))}
-  </Menu>
-);
-
-const NotificationMenu = (
-  <Menu className="px-4" onSelect={() => {}}>
-    {["Notification 1", "Notification 2"].map((item, i) => (
-      <MenuItem
-        key={`${item}-${i}`}
-        className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold"
-      >
-        {item}
-      </MenuItem>
-    ))}
-  </Menu>
-);
-
 const DashboardHeader = (props: DashboardHeaderProps) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const handleUserLogout = () => {
+    dispatch(removeUser());
+    router.push("/");
+  };
+  const LoginMenu = (
+    <Menu className="px-4" onSelect={() => {}}>
+      <MenuItem className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold">
+        Profile
+      </MenuItem>
+      <MenuItem
+        onClick={handleUserLogout}
+        className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold"
+      >
+        Sign out
+      </MenuItem>
+    </Menu>
+  );
+
+  const NotificationMenu = (
+    <Menu className="px-4" onSelect={() => {}}>
+      {["Notification 1", "Notification 2"].map((item, i) => (
+        <MenuItem
+          key={`${item}-${i}`}
+          className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold"
+        >
+          {item}
+        </MenuItem>
+      ))}
+    </Menu>
+  );
   return (
     <div className="flex flex-col-reverse gap-y-3 items-center md:flex-row justify-between text-mineshaft">
       <div className="text-[30px] font-medium opacity-70 self-start md:self-auto">

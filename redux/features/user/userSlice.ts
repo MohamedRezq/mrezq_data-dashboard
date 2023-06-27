@@ -42,6 +42,10 @@ export const userSlice = createSlice({
       state.info = action.payload.info;
       state.token = action.payload.token;
     },
+    removeUser: (state: RootState) => {
+      state.info = initialState.info;
+      state.token = "";
+    },
     setIsWrongCred: (state: RootState, action: PayloadAction<Boolean>) => {
       state.isWrongCred = action.payload;
     },
@@ -49,6 +53,6 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, setIsWrongCred } = userSlice.actions;
+export const { setUser, setIsWrongCred, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;

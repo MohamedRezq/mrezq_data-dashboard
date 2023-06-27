@@ -21,9 +21,9 @@ const FormLogin: React.FC<{}> = () => {
   const isWrongCred = useSelector((state: RootState) => state.user.isWrongCred);
   //--------------------------------------------------------------//
   const handleLogin = async (e: any) => {
+    dispatch(setPageLoading(true));
     e.preventDefault();
     dispatch(setIsWrongCred(false));
-    dispatch(setPageLoading(true));
     const user = {
       email,
       password,
