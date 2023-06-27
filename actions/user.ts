@@ -18,3 +18,21 @@ export const userLogin = async (user: any) => {
     return error.response;
   }
 };
+//--------------------------------------------------------------//
+export const getLoggedUser = async (token: string) => {
+  try {
+    const response = await httpServices.post(
+      `${App_Config.API_BASE_URL}/api/users/get-user`,
+      { token },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response;
+  } catch (error: any | null) {
+    console.log(error);
+    return error.response;
+  }
+};
