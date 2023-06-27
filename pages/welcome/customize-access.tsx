@@ -9,15 +9,27 @@ import Link from "next/link";
 import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
 import { SaasCardProps } from "@/types/SaasCardProps.interface";
 import { quickbooksAuth } from "@/actions/quickbooks";
+import { zohopeopleAuth } from "@/actions/zohopeople";
 import ActiveBtn from "@/components/atoms/Button/ActiveBtn";
-
+//--------------------------------------------------------------//
 const CustomizeAccessPage = () => {
+  //--------------------------------------------------------------//
   const selectedSaas = useSelector(
     (state: RootState) => state.saas.selectedList
   );
+  //--------------------------------------------------------------//
   React.useEffect(() => {
     // condition to check if this window is opened by auth process
-    if (window.location.href.includes("code")) {
+    if (
+      window.location.href.includes("zoho.com") &&
+      window.location.href.includes("code")
+    ) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get("code");
+      zohopeopleAuth(code);
+    }
+    // condition to check if this window is opened by auth process
+    else if (window.location.href.includes("code")) {
       quickbooksAuth(window.location.href);
     }
   }, []);

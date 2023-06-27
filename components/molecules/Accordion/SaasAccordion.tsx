@@ -43,15 +43,24 @@ export default function SaasAccordion(props: any) {
     e.currentTarget?.removeEventListener("focus", getLoggedUserData);
   };
   //----------------------------------------------------------------------------------//
-  const handleConnect = () => {
-    const win = window;
-    win.addEventListener("focus", getLoggedUserData);
-    win.open(
-      Integrations.Quickbooks.AUTH_URL,
-      "_blank",
-      "location=yes,height=520,width=520,scrollbars=yes,status=yes"
-    );
-    //dispatch(setPageLoading(true));
+  const handleConnect = (app_id: string) => {
+    if (app_id === "2") {
+      const win = window;
+      win.addEventListener("focus", getLoggedUserData);
+      win.open(
+        Integrations.Quickbooks.AUTH_URL,
+        "_blank",
+        "location=yes,height=520,width=520,scrollbars=yes,status=yes"
+      );
+    } else if (app_id === "4") {
+      const win = window;
+      win.addEventListener("focus", getLoggedUserData);
+      win.open(
+        Integrations.Zohopeople.AUTH_URL,
+        "_blank",
+        "location=yes,height=520,width=520,scrollbars=yes,status=yes"
+      );
+    }
   };
   //----------------------------------------------------------------------------------//
   //----------------------------------------------------------------------------------//
@@ -124,7 +133,7 @@ export default function SaasAccordion(props: any) {
                           : "bg-[#B2B2B2]"
                       }  rounded-xl py-3 pr-3 pl-[14px] mt-4 text-white text-[10px] font-bold`}
                       disabled={!termsAgreement}
-                      onClick={handleConnect}
+                      onClick={() => handleConnect(props.app_id)}
                     >
                       Connect
                     </button>

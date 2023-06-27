@@ -22,5 +22,13 @@
     "active": false,
     "checked": false,
     "app_id": "3"
+  },
+  {
+    "logo": "/assets/img/zoho-books.png",
+    "title": "Zoho People",
+    "text": "Lorem ipsum connect something like this",
+    "active": false,
+    "checked": false,
+    "app_id": "4"
   }
 ]
