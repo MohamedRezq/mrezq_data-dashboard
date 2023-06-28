@@ -1,31 +1,31 @@
 [
   {
-    "logo": "/assets/img/zoho-books.png",
-    "title": "Zoho Books",
+    "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
+    "title": "Quick Books",
     "text": "Lorem ipsum connect something like this",
     "active": false,
     "checked": false,
     "app_id": "1"
   },
   {
-    "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
-    "title": "Quick Books",
+    "logo": "/assets/img/zoho-books.png",
+    "title": "Zoho Books",
     "text": "Lorem ipsum connect something like this",
     "active": false,
     "checked": false,
     "app_id": "2"
   },
   {
-    "logo": "/assets/img/FreshBooks_logo_(2020).svg",
-    "title": "Fresh Books",
+    "logo": "/assets/img/zoho-books.png",
+    "title": "Zoho People",
     "text": "Lorem ipsum connect something like this",
     "active": false,
     "checked": false,
     "app_id": "3"
   },
   {
-    "logo": "/assets/img/zoho-books.png",
-    "title": "Zoho People",
+    "logo": "/assets/img/FreshBooks_logo_(2020).svg",
+    "title": "Fresh Books",
     "text": "Lorem ipsum connect something like this",
     "active": false,
     "checked": false,

@@ -47,7 +47,8 @@ export default function SaasAccordion(props: any) {
   };
   //----------------------------------------------------------------------------------//
   const handleConnect = (app_id: string) => {
-    if (app_id === "2") {
+    if (app_id === "1") {
+      localStorage.setItem("applicationId","1")
       const win = window;
       win.addEventListener("focus", getLoggedUserData);
       win.open(
@@ -55,7 +56,17 @@ export default function SaasAccordion(props: any) {
         "_blank",
         "location=yes,height=520,width=520,scrollbars=yes,status=yes"
       );
-    } else if (app_id === "4") {
+    } else if (app_id === "2") {
+      localStorage.setItem("applicationId", "2");
+      const win = window;
+      win.addEventListener("focus", getLoggedUserData);
+      win.open(
+        Integrations.Zohobooks.AUTH_URL,
+        "_blank",
+        "location=yes,height=520,width=520,scrollbars=yes,status=yes"
+      );
+    } else if (app_id === "3") {
+      localStorage.setItem("applicationId", "3");
       const win = window;
       win.addEventListener("focus", getLoggedUserData);
       win.open(

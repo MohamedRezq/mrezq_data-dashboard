@@ -10,6 +10,7 @@ import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
 import { SaasCardProps } from "@/types/SaasCardProps.interface";
 import { quickbooksAuth } from "@/actions/quickbooks";
 import { zohopeopleAuth } from "@/actions/zohopeople";
+import { zohobooksAuth } from "@/actions/zohobooks";
 import ActiveBtn from "@/components/atoms/Button/ActiveBtn";
 //--------------------------------------------------------------//
 const CustomizeAccessPage = () => {
@@ -19,18 +20,20 @@ const CustomizeAccessPage = () => {
   );
   //--------------------------------------------------------------//
   React.useEffect(() => {
+    const applicationId = localStorage.getItem("applicationId");
     // condition to check if this window is opened by auth process
-    if (
-      window.location.href.includes("zoho.com") &&
-      window.location.href.includes("code")
-    ) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const code = urlParams.get("code");
-      zohopeopleAuth(code);
-    }
-    // condition to check if this window is opened by auth process
-    else if (window.location.href.includes("code")) {
-      quickbooksAuth(window.location.href);
+    if (window.location.href.includes("code")) {
+      if (applicationId === "3") {
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get("code");
+        zohopeopleAuth(code);
+      } else if (applicationId === "2") {
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get("code");
+        zohobooksAuth(code);
+      } else if (applicationId === "1") {
+        quickbooksAuth(window.location.href);
+      }
     }
   }, []);
 
