@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import "react-accessible-accordion/dist/fancy-example.css";
+import jwt from "jsonwebtoken";
+import { setUser } from "@/redux/features/user/userSlice";
 // Configurations
 import { Integrations } from "@/app_config";
 import {
@@ -14,7 +16,9 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import AccordionTickItem from "@/components/atoms/AccordionTickItem/AccordionTickItem";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { getLoggedUser } from "@/actions/user";
 //----------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------//
@@ -33,7 +37,6 @@ export default function SaasAccordion(props: any) {
       const token = response.data.token;
       const decoded: any = jwt.decode(token);
       if (decoded) {
-        localStorage.removeItem("organizationId");
         dispatch(setUser({ info: decoded, token: token }));
       } else dispatch(setUser({ info: {}, token: null }));
     } else if (response && response.status === 400) {

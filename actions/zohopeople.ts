@@ -8,7 +8,7 @@ export const zohopeopleAuth = async (code: string | null) => {
       {
         code: code,
         organizationId: localStorage.getItem("organizationId"),
-        applicationId: 4, // 1-->quickbooks , 2-->zohobooks, 3-->freshbooks, 4-->zohopeople
+        applicationId: 3, // 1-->quickbooks , 2-->zohobooks, 3-->zohopeople, 4-->freshbooks,
       },
       {
         headers: {
@@ -19,8 +19,9 @@ export const zohopeopleAuth = async (code: string | null) => {
     window.close();
     return;
   } catch (error: any | null) {
-    if (error?.response?.status === 400)
+    if (error?.response?.status !== 500)
       console.log(error.response.data.message);
+    return error.response.data.message;
   }
 };
 //--------------------------------------------------------------//
