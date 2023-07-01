@@ -15,7 +15,7 @@ export const App_Config = {
 export const Scopes = {
   ZP_SCOPE: "scope=ZOHOPEOPLE.employee.ALL",
   ZB_SCOPE:
-    "scope=ZohoBooks.fullaccess.all,ZohoBooks.vendorpayments.READ,ZohoBooks.invoices.READ,ZohoBooks.customerpayments.READ,ZohoBooks.purchaseorders.READ",
+    "scope=ZohoBooks.fullaccess.all",
 };
 
 // Integrations

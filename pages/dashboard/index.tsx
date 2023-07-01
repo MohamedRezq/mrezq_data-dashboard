@@ -22,6 +22,7 @@ const Home = () => {
   const dispatch = useDispatch();
   //-------------------------------------------------------------------------//
   const [dashboardData, setDashboardData] = useState(quickbooksDefault());
+  //-------------------------------------------------------------------------//
   const [fetchError, setFetchError] = useState(false);
   //-------------------------------------------------------------------------//
   const periods = periodsData;
@@ -32,11 +33,22 @@ const Home = () => {
   //-------------------------------------------------------------------------//
   useEffect(() => {
     dispatch(setPageLoading(true));
-    quickbooksSyncData(user.info.organizationId).then((response) => {
-      if (response && response.status === 200) setDashboardData(response.data);
-      else setFetchError(true);
+    user.info.applications.map((application: any) => {
+      if (application.application_id === 1) {
+        quickbooksSyncData(user.info.organizationId).then((response) => {
+          if (response && response.status === 200)
+            setDashboardData(response.data);
+          else setFetchError(true);
+        });
+      }
+      if (application.application_id === 2) {
+        zohobooksSyncData(user.info.organizationId).then((response) => {
+          if (response && response.status === 200)
+            setDashboardData(response.data);
+          else setFetchError(true);
+        });
+      }
     });
-    zohobooksSyncData(user.info.organizationId)
     dispatch(setPageLoading(false));
   }, []);
 

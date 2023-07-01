@@ -28,17 +28,17 @@ export const zohobooksAuth = async (code: string | null) => {
 //--------------------------------------------------------------//
 export const zohobooksSyncData = async (organizationId: number) => {
   try {
-    // await httpServices.post(
-    //   `${App_Config.API_BASE_URL}/api/zohobooks/validate-tokens`,
-    //   {
-    //     organizationId: organizationId,
-    //   },
-    //   {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
+    await httpServices.post(
+      `${App_Config.API_BASE_URL}/api/zohobooks/validate-tokens`,
+      {
+        organizationId: organizationId,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const response = await httpServices.post(
       `${App_Config.API_BASE_URL}/api/zohobooks/sync-data`,
       {
