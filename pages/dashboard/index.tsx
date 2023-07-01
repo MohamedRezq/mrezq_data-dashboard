@@ -6,6 +6,7 @@ import periodsData from "../../public/assets/json/months.json";
 import { quickbooksDefault } from "../../public/assets/json/quickbooksDefault";
 import DashboardTemplate from "../../components/templates/DashboardTemplate";
 import { quickbooksSyncData } from "@/actions/quickbooks";
+import { zohobooksSyncData } from "@/actions/zohobooks";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { dateFormatter } from "@/services/dateFormatter";
@@ -35,6 +36,7 @@ const Home = () => {
       if (response && response.status === 200) setDashboardData(response.data);
       else setFetchError(true);
     });
+    zohobooksSyncData(user.info.organizationId)
     dispatch(setPageLoading(false));
   }, []);
 
