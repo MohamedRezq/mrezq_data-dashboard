@@ -7,6 +7,7 @@ import { quickbooksDefault } from "../../public/assets/json/quickbooksDefault";
 import DashboardTemplate from "../../components/templates/DashboardTemplate";
 import { quickbooksSyncData } from "@/actions/quickbooks";
 import { zohobooksSyncData } from "@/actions/zohobooks";
+import { zohopeopleSyncData } from "@/actions/zohopeople";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { dateFormatter } from "@/services/dateFormatter";
@@ -43,6 +44,13 @@ const Home = () => {
       }
       if (application.application_id === 2) {
         zohobooksSyncData(user.info.organizationId).then((response) => {
+          if (response && response.status === 200)
+            setDashboardData(response.data);
+          else setFetchError(true);
+        });
+      }
+      if (application.application_id === 3) {
+        zohopeopleSyncData(user.info.organizationId).then((response) => {
           if (response && response.status === 200)
             setDashboardData(response.data);
           else setFetchError(true);
