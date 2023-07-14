@@ -1,11 +1,17 @@
-import FormLogin from "@/components/molecules/FormLogin/FormLogin";
-import React, { useEffect } from "react";
-import logo from "../../public/assets/img/AlphaS wordmark.svg";
+import React from "react";
 import Image from "next/image";
+//-----> Assets <----------------------------------------------//
+import logo from "@/public/assets/img/AlphaS wordmark.svg";
+//-----> Redux <----------------------------------------------//
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import { PageLoading } from "@/components/atoms/Loader";
-import AuthProvider from "@/context/AuthProvider";
+import { RootState } from "@/src/store";
+//-----> Components <---------------------------------------------//
+import AuthProvider from "@/src/utils/AuthProvider";
+import { PageLoading } from "@/src/components/atoms";
+import { FormLogin } from "@/src/components/molecules";
+//----------------------------------------------------------------------------------//
+//-----> END OF IMPORTS <-------------------------------------//
+//----------------------------------------------------------------------------------//
 
 const LoginPage = () => {
   const { isLoading } = useSelector((state: RootState) => state.loading);

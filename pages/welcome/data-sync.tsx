@@ -1,38 +1,68 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import logo from "../../public/assets/img/AlphaS wordmark.svg";
-import Bullets from "@/components/atoms/Paging/Bullets";
-import type { RootState } from "@/redux/store";
-import { useSelector, useDispatch } from "react-redux";
-import SaasSyncCard from "@/components/molecules/SaasSyncCard.tsx/SaasSyncCard";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
+//-----> Components <-----------------------------------------//
+import { OnboardingTemplate } from "@/src/components/templates";
+import { Bullets } from "@/src/components/atoms";
+import { SaasSyncCard } from "@/src/components/molecules";
+//-----> Redux <----------------------------------------------//
+import type { RootState } from "@/src/store";
+import { useSelector } from "react-redux";
+//-----> Assets <---------------------------------------------//
+import logo from "@/public/assets/img/AlphaS wordmark.svg";
+import { syncUserData } from "@/src/actions";
+//------------------------------------------------------------//
+//-----> END OF IMPORTS <-------------------------------------//
+//------------------------------------------------------------//
+
+type SaasCardProps = {
+  logo: string;
+  title: string;
+  text?: string;
+  active?: boolean;
+  connected?: boolean;
+  app_id?: string;
+};
+
+type UserIntegratedAppType = {
+  application_id: string;
+  organization_id: string;
+  integration_status: string;
+};
 
 const DataSyncPage = () => {
   const selectedSaas = useSelector(
     (state: RootState) => state.saas.selectedList
   );
+  const user = useSelector((state: RootState) => state.user);
   const [loaderPercentage, setLoaderPercentage] = useState(0);
   const [nextActive, setNextActive] = useState(false);
   const router = useRouter();
-  useEffect(() => {
+  const userIntegratedAppsIds = user.info.applications
+    .filter((app: UserIntegratedAppType) => app.integration_status === "active")
+    .map((app: UserIntegratedAppType) => app.application_id);
 
-    const interval = setInterval(() => {
+  useEffect(() => {
+    const res = syncUserData(userIntegratedAppsIds);
+    console.log("res: ", res);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
       if (loaderPercentage === 100) {
         setNextActive(true);
-        return;
       }
       setLoaderPercentage(loaderPercentage + 1);
-    }, 150);
+    }, 50);
     return () => clearInterval(interval);
   }, [loaderPercentage]);
   return (
-    <WelcomeTemplate>
+    <OnboardingTemplate>
       <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10">
         <div className="flex items-center justify-center">
           <div className="flex flex-col justify-center items-center gap-3 w-full">
-            {selectedSaas.map((item, i) => (
+            {selectedSaas.map((item: SaasCardProps, i: number) => (
               <SaasSyncCard
                 logo={item.logo}
                 key={`${item.title}-${i}`}
@@ -80,7 +110,7 @@ const DataSyncPage = () => {
         </div>
         <Bullets count={3} active={3} />
       </div>
-    </WelcomeTemplate>
+    </OnboardingTemplate>
   );
 };
 

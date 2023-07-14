@@ -1,13 +1,13 @@
 import type { AppProps } from "next/app";
-//-----> redux <--------------------------------------------------//
-import { persistor, store } from "../redux/store";
+//-----> Redux <--------------------------------------------------//
+import { store, persistor } from "@/src/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-//-----> styles <-------------------------------------------------//
-import "@/globals.css";
-import "react-accessible-accordion/dist/fancy-example.css";
-import "rc-dropdown/assets/index.css";
+//-----> Styles <-------------------------------------------------//
+import "@/src/globals.css";
+//-----------------------------------------------------------------//
 //- END OF IMPORTS -----------------------------------------------//
+//----------------------------------------------------------------//
 
 export default function App({
   Component,

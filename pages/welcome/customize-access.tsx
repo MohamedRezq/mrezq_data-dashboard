@@ -1,44 +1,96 @@
 import Image from "next/image";
 import React from "react";
-import logo from "../../public/assets/img/AlphaS wordmark.svg";
-import Bullets from "@/components/atoms/Paging/Bullets";
-import type { RootState } from "@/redux/store";
-import { useSelector } from "react-redux";
-import SaasAccordion from "@/components/molecules/Accordion/SaasAccordion";
 import Link from "next/link";
-import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
-import { SaasCardProps } from "@/types/SaasCardProps.interface";
-import { quickbooksAuth } from "@/actions/quickbooks";
-import { zohopeopleAuth } from "@/actions/zohopeople";
-import { zohobooksAuth } from "@/actions/zohobooks";
-import ActiveBtn from "@/components/atoms/Button/ActiveBtn";
+//-----> Components <-----------------------------------------//
+import { Bullets } from "@/src/components/atoms";
+import { OnboardingTemplate } from "@/src/components/templates";
+import { SaasAccordion } from "@/src/components/molecules";
+import { ActiveBtn } from "@/src/components/atoms/Button";
+//-----> Redux <----------------------------------------------//
+import type { RootState } from "@/src/store";
+import { useDispatch, useSelector } from "react-redux";
+//-----> Assets <---------------------------------------------//
+import logo from "@/public/assets/img/AlphaS wordmark.svg";
+//-----> Actions <---------------------------------------------//
+import {
+  jiraAuth,
+  oktaAuth,
+  quickbooksAuth,
+  zohobooksAuth,
+  zohopeopleAuth,
+} from "@/src/actions";
+import { setPageLoading } from "@/src/store/slices/loading";
+//------------------------------------------------------------//
+//-----> END OF IMPORTS <-------------------------------------//
+//------------------------------------------------------------//
+
+type SaasCardProps = {
+  logo: string;
+  title: string;
+  text?: string;
+  active?: boolean;
+  connected?: boolean;
+  app_id?: string;
+};
+
 //--------------------------------------------------------------//
 const CustomizeAccessPage = () => {
+  //--------------------------------------------------------------//
+  const dispatch = useDispatch();
   //--------------------------------------------------------------//
   const selectedSaas = useSelector(
     (state: RootState) => state.saas.selectedList
   );
   //--------------------------------------------------------------//
   React.useEffect(() => {
+    dispatch(setPageLoading(false));
     const applicationId = localStorage.getItem("applicationId");
     // condition to check if this window is opened by auth process
     if (window.location.href.includes("code")) {
-      if (applicationId === "3") {
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get("code");
-        zohopeopleAuth(code);
-      } else if (applicationId === "2") {
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get("code");
-        zohobooksAuth(code);
-      } else if (applicationId === "1") {
-        quickbooksAuth(window.location.href);
+      dispatch(setPageLoading(true));
+      switch (applicationId) {
+        case "1": {
+          quickbooksAuth(window.location.href);
+          break;
+        }
+        case "2": {
+          const urlParams = new URLSearchParams(window.location.search);
+          const code = urlParams.get("code");
+          zohobooksAuth(code);
+          break;
+        }
+        case "3": {
+          const urlParams = new URLSearchParams(window.location.search);
+          const code = urlParams.get("code");
+          zohopeopleAuth(code);
+          break;
+        }
+        case "4": {
+          // const urlParams = new URLSearchParams(window.location.search);
+          // const code = urlParams.get("code");
+          // zohopeopleAuth(code);
+          break;
+        }
+        case "5": {
+          const urlParams = new URLSearchParams(window.location.search);
+          const code = urlParams.get("code");
+          jiraAuth(code);
+          break;
+        }
+        case "6": {
+          const urlParams = new URLSearchParams(window.location.search);
+          const code = urlParams.get("code");
+          oktaAuth(code);
+          break;
+        }
+        default:
+          break;
       }
     }
   }, []);
 
   return (
-    <WelcomeTemplate>
+    <OnboardingTemplate>
       <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center justify-center gap-3 w-full">
@@ -72,7 +124,7 @@ const CustomizeAccessPage = () => {
         </div>
         <Bullets count={3} active={2} />
       </div>
-    </WelcomeTemplate>
+    </OnboardingTemplate>
   );
 };
 

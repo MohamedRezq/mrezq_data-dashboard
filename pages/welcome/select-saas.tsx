@@ -1,32 +1,49 @@
-import SearchInput from "@/components/atoms/Input/SearchInput";
-import SaasCard from "@/components/molecules/SaasCard/SaasCard";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import logo from "../../public/assets/img/AlphaS wordmark.svg";
-import Bullets from "@/components/atoms/Paging/Bullets";
-import type { RootState } from "@/redux/store";
-import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
-import { clearSelectedList } from "@/redux/features/saas/saasSlice";
-import { SaasCardProps } from "@/types/SaasCardProps.interface";
-import { setPageLoading } from "@/redux/features/loading/loadingSlice";
+//-----> Components <-----------------------------------------//
+import { OnboardingTemplate } from "@/src/components/templates";
+import { Bullets, SearchInput } from "@/src/components/atoms";
+import { SaasCard } from "@/src/components/molecules";
+//-----> Redux <----------------------------------------------//
+import type { RootState } from "@/src/store";
+import { useDispatch, useSelector } from "react-redux";
+import { clearSelectedList } from "@/src/store/slices/saas";
+import { setPageLoading } from "@/src/store/slices/loading";
+//-----> Assets <---------------------------------------------//
+import logo from "@/public/assets/img/AlphaS wordmark.svg";
+//------------------------------------------------------------//
+//-----> END OF IMPORTS <-------------------------------------//
+//------------------------------------------------------------//
+
+type SaasCardProps = {
+  logo: string;
+  title: string;
+  text?: string;
+  active?: boolean;
+  connected?: boolean;
+  app_id: string;
+};
 
 const SelectSaasPage = () => {
+  //-------------------------------------------------------------------------//
   const dispatch = useDispatch();
+  const saasIntegrationList = useSelector(
+    (state: RootState) => state.saas.saasList
+  );
+  //-------------------------------------------------------------------------//
   useEffect(() => {
     dispatch(clearSelectedList());
     dispatch(setPageLoading(false));
   }, []);
-  const saasList = useSelector((state: RootState) => state.saas.saasList);
-
+  //-------------------------------------------------------------------------//
   return (
-    <WelcomeTemplate>
+    <OnboardingTemplate>
       <SearchInput />
       <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10">
         <div className="flex items-center justify-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {saasList.map((item: SaasCardProps, i: number) => (
+            {saasIntegrationList?.map((item: SaasCardProps, i: number) => (
               <SaasCard
                 logo={item.logo}
                 key={`${item.title}-${i}`}
@@ -61,7 +78,7 @@ const SelectSaasPage = () => {
         </div>
         <Bullets count={3} active={1} />
       </div>
-    </WelcomeTemplate>
+    </OnboardingTemplate>
   );
 };
 

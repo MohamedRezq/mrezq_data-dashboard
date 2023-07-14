@@ -1,12 +1,17 @@
 import Image from "next/image";
 import React from "react";
-import logo from "../../public/assets/img/AlphaS wordmark.svg";
 import Link from "next/link";
-import WelcomeTemplate from "@/components/templates/WelcomeTemplate";
+//-----> Components <-----------------------------------------//
+import { OnboardingTemplate } from "@/src/components/templates";
+//-----> Assets <---------------------------------------------//
+import logo from "@/public/assets/img/AlphaS wordmark.svg";
+//------------------------------------------------------------//
+//-----> END OF IMPORTS <-------------------------------------//
+//------------------------------------------------------------//
 
 const AllSetPage = () => {
   return (
-    <WelcomeTemplate>
+    <OnboardingTemplate>
       <div className="max-h-80 w-full px-10 sm:max-w-lg flex justify-center items-center gap-y-5 flex-col">
         <div>
           <img
@@ -35,7 +40,7 @@ const AllSetPage = () => {
           <Image src={logo} alt="Alpha" height={20} />
         </div>
       </div>
-    </WelcomeTemplate>
+    </OnboardingTemplate>
   );
 };
 

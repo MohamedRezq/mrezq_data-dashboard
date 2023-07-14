@@ -1,16 +1,7 @@
-import Link from "next/link";
-import React, { useEffect } from "react";
-//import {BsArrowRight} from 'react-icons/bs';
-import { useRouter } from "next/navigation";
-import AuthProvider from "@/context/AuthProvider";
+import React from "react";
+import AuthProvider from "@/src/utils/AuthProvider";
 
-const HelloPage = () => {
-  // const router = useRouter();
-
-  // useEffect(() => {
-  //   router.push("/login");
-  // }, []);
-
+const HomePage = () => {
   return (
     <AuthProvider redirectUrl="/dashboard">
       <></>
@@ -18,4 +9,4 @@ const HelloPage = () => {
   );
 };
 
-export default HelloPage;
+export default HomePage;
