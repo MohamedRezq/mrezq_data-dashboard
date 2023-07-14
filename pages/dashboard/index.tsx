@@ -6,16 +6,6 @@ import { getUserData, syncUserData } from "@/src/actions/user";
 import { dateFormatter } from "@/src/utils/dateFormatter";
 import { quickbooksDefault } from "@/public/assets/json/quickbooksDefault";
 //-----> Redux <----------------------------------------------//
-import { useState, useEffect } from "react";
-//---------------------Components---------------------------------------------//
-import StatsCard from "@/components/molecules/StatsCard/StatsCard";
-import ChartCard from "@/components/molecules/ChartCard/ChartCard";
-import periodsData from "../../public/assets/json/months.json";
-import { quickbooksDefault } from "../../public/assets/json/quickbooksDefault";
-import DashboardTemplate from "../../components/templates/DashboardTemplate";
-import { quickbooksSyncData } from "@/actions/quickbooks";
-import { zohobooksSyncData } from "@/actions/zohobooks";
-import { zohopeopleSyncData } from "@/actions/zohopeople";
 import { useDispatch, useSelector } from "react-redux";
 import { setPageLoading } from "@/src/store/slices/loading";
 import { RootState } from "@/src/store";
@@ -95,28 +85,6 @@ const Home = () => {
           }
         }
       });
-    user.info.applications.map((application: any) => {
-      if (application.application_id === 1) {
-        quickbooksSyncData(user.info.organizationId).then((response) => {
-          if (response && response.status === 200)
-            setDashboardData(response.data);
-          else setFetchError(true);
-        });
-      }
-      if (application.application_id === 2) {
-        zohobooksSyncData(user.info.organizationId).then((response) => {
-          if (response && response.status === 200)
-            setDashboardData(response.data);
-          else setFetchError(true);
-        });
-      }
-      if (application.application_id === 3) {
-        zohopeopleSyncData(user.info.organizationId).then((response) => {
-          if (response && response.status === 200)
-            setDashboardData(response.data);
-          else setFetchError(true);
-        });
-      }
     });
     // .then((response) => {
     //   if (response && response.status === 200) setDashboardData(response.data);
