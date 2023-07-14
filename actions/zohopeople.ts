@@ -25,10 +25,11 @@ export const zohopeopleAuth = async (code: string | null) => {
   }
 };
 //--------------------------------------------------------------//
-export const quickbooksSyncData = async (organizationId: number) => {
+//--------------------------------------------------------------//
+export const zohopeopleSyncData = async (organizationId: number) => {
   try {
     await httpServices.post(
-      `${App_Config.API_BASE_URL}/api/quickbooks/validate-tokens`,
+      `${App_Config.API_BASE_URL}/api/zohopeople/validate-tokens`,
       {
         organizationId: organizationId,
       },
@@ -39,7 +40,7 @@ export const quickbooksSyncData = async (organizationId: number) => {
       }
     );
     const response = await httpServices.post(
-      `${App_Config.API_BASE_URL}/api/quickbooks/sync-data`,
+      `${App_Config.API_BASE_URL}/api/zohopeople/sync-data`,
       {
         organizationId: organizationId,
       },
@@ -49,6 +50,7 @@ export const quickbooksSyncData = async (organizationId: number) => {
         },
       }
     );
+    console.log(response)
     return response;
   } catch (error: any | null) {
     return error.response;

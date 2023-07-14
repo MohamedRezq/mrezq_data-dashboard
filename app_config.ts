@@ -13,9 +13,8 @@ export const App_Config = {
 
 //Scopes
 export const Scopes = {
-  ZP_SCOPE: "scope=ZOHOPEOPLE.employee.ALL",
-  ZB_SCOPE:
-    "scope=ZohoBooks.fullaccess.all",
+  ZP_SCOPE: "scope=ZOHOPEOPLE.forms.all",
+  ZB_SCOPE: "scope=ZohoBooks.fullaccess.all",
 };
 
 // Integrations
@@ -30,4 +29,3 @@ export const Integrations = {
     AUTH_URL: `${process.env.NEXT_PUBLIC_ZOHO_OAUTH_URL}${Scopes.ZB_SCOPE}&client_id=${process.env.NEXT_PUBLIC_ZOHO_CLIENT_ID}&response_type=code&access_type=offline&prompt=consent&redirect_uri=${App_Config.APP_BASE_URL}${process.env.NEXT_PUBLIC_ZOHO_REDIRECT_URL}`,
   },
 };
-
