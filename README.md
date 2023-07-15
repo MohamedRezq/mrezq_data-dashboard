@@ -1,42 +1,27 @@
-
 # Data Dashboard Built with Next.js, TypeScript, Sass, and Tailwind CSS
 
 This project is a data dashboard designed to provide a user-friendly interface for managing data and analytics. I built it to showcase my expertise in Next.js, Redux, TypeScript, Sass, and Tailwind CSS, as well as other packages listed in the package.json file.
 
-
 ## Demo
+
 [https://alpha-dashboard.vercel.app/dashboard](https://alpha-dashboard.vercel.app/dashboard)
 ![](https://github.com/MohamedRezq/alpha-dashboard/blob/master/alpha.PNG)## Color Reference
 
-| Color             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| hippiegreen | ![#509051](https://via.placeholder.com/10/509051?text=+) #509051 |
-| dovegray | ![#6F6F6F](https://via.placeholder.com/10/6F6F6F?text=+) #6F6F6F |
-| emperor | ![#545454](https://via.placeholder.com/10/545454?text=+) #545454 |
-| cuttysark | ![#578182](https://via.placeholder.com/10/578182?text=+) #578182 |
-| seagreen | ![#2C9F41](https://via.placeholder.com/10/2C9F41?text=+) #2C9F41 |
-| mercury | ![#E3E3E3](https://via.placeholder.com/10/E3E3E3?text=+) #E3E3E3 |
-
-
 ## Acknowledgements
 
-   - Thanks to [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com/) for making it easy to develop a modern and responsive web application.
-  - Thanks to [React Redux](https://redux.js.org/), [React Icons](https://react-icons.github.io/react-icons/search), [Axios](https://www.axios.com/), [JSON Web Token](https://jwt.io/), and [React Loader Spinner](https://www.npmjs.com/package/react-loader-spinner) for providing essential tools that helped me build this project.
-  - I appreciate the hard work and dedication of the developers who created these tools and made them available to the community.
-
+- Thanks to [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com/) for making it easy to develop a modern and responsive web application.
+- Thanks to [React Redux](https://redux.js.org/), [React Icons](https://react-icons.github.io/react-icons/search), [Axios](https://www.axios.com/), [JSON Web Token](https://jwt.io/), and [React Loader Spinner](https://www.npmjs.com/package/react-loader-spinner) for providing essential tools that helped me build this project.
+- I appreciate the hard work and dedication of the developers who created these tools and made them available to the community.
 
 ## Author
 
 [Mohamed Rezq](https://github.com/MohamedRezq)
 
-
 ## Badges
-
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
-
 
 ## Installation & Running
 
@@ -60,7 +45,6 @@ See `contributing.md` for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
-
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env.local file
@@ -71,6 +55,7 @@ http://localhost:3000
 http://localhost:3000
 `NEXT_PUBLIC_API_BASE_URL_LOCAL`
 http://localhost:4000
+
 ## FAQ
 
 #### What are the system requirements for running this project?
@@ -89,41 +74,44 @@ This project is licensed under the MIT License, which is a permissive open-sourc
 
 If you have any questions or feedback about this project, you can contact the project maintainer at [mrezq.dev@gmail.com](mrezq.dev@gmail.com). Alternatively, you can reach out to us on [LinkedIn](https://www.linkedin.com/in/mohamed-rezq-2021/) ↗ for more information and updates about the project. We appreciate your interest and look forward to hearing from you!
 
-
 ## Feedback
 
-If you have any feedback, please reach out to us at [mrezq.dev@gmail.com](mrezq.dev@gmail.com)
-
+If you have any feedback, please reach out to us at [mrezq.dev@gmail.com](mailto:mrezq.dev@gmail.com)
 
 ## 🚀 About Me
+
 Talented and experienced Full Stack Web Developer with 3 years of freelance basis experience in MERN stack.
 
-
 ## 🛠 Skills
->> Programming Languages:
- - ✅ JavaScript
- - ✅ TypeScript
 
->> Front-end Skills: 
- - ✅ React.js
- - ✅ Next.js
- - ✅ Gatsby
- - ✅ Redux-Toolkit
- - ✅ GraphQL
- - ✅ HTML5 | CSS3 | Sass | jQuery
- - ✅ Bootstrap | Tailwind | Material-UI
- 
->> Back-end Skills:
- - ✅ Node.js | Express.js | MVC Architecture
- - ✅ Restful API Development and Testing
- - ✅ SQL | MySQL | PostgreSQL
- - ✅ NoSQL | MongoDB
- - ✅ AWS (EC2 | S3)
- - ✅ Postman
- - ✅ GraphQL Apollo Server
+> > Programming Languages:
 
->> E-Commerce Skills: 
- - ✅ Stripe
- - ✅ Shopify
- - ✅ BigCommerce
- - ✅ CMS (Prismic | Contentful | Sanity)
+- ✅ JavaScript
+- ✅ TypeScript
+
+> > Front-end Skills:
+
+- ✅ React.js
+- ✅ Next.js
+- ✅ Gatsby
+- ✅ Redux-Toolkit
+- ✅ GraphQL
+- ✅ HTML5 | CSS3 | Sass | jQuery
+- ✅ Bootstrap | Tailwind | Material-UI
+
+> > Back-end Skills:
+
+- ✅ Node.js | Express.js | MVC Architecture
+- ✅ Restful API Development and Testing
+- ✅ SQL | MySQL | PostgreSQL
+- ✅ NoSQL | MongoDB
+- ✅ AWS (EC2 | S3)
+- ✅ Postman
+- ✅ GraphQL Apollo Server
+
+> > E-Commerce Skills:
+
+- ✅ Stripe
+- ✅ Shopify
+- ✅ BigCommerce
+- ✅ CMS (Prismic | Contentful | Sanity)
