@@ -5,7 +5,7 @@ This project is a data dashboard designed to provide a user-friendly interface f
 ## Demo
 
 [https://alpha-dashboard.vercel.app/dashboard](https://alpha-dashboard.vercel.app/dashboard)
-![](https://github.com/MohamedRezq/alpha-dashboard/blob/master/alpha.PNG)## Color Reference
+![](https://github.com/MohamedRezq/alpha-dashboard/blob/master/alpha.PNG)
 
 ## Acknowledgements
 
