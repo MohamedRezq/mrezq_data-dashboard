@@ -49,19 +49,21 @@ const OktaLoginPage = () => {
           </li>
           <li className="mb-4">Log in to your Okta admin dashboard.</li>
           <li className="mb-4">
-            Navigate to the "
-            <span className="font-bold underline">Applications</span>" menu.
+            Navigate to the &quot;
+            <span className="font-bold underline">Applications</span>&quot;
+            menu.
           </li>
           <li className="mb-4">
-            Click on the "
-            <span className="font-bold underline">Add Application</span>" button
-            and select "
+            Click on the &quot;
+            <span className="font-bold underline">Add Application</span>&quot;
+            button and select &quot;
             <span className="font-bold underline">Create New App</span>
-            ".
+            &quot;.
           </li>
           <li className="mb-4">
-            Choose "<span className="font-bold underline">Single-Page App</span>
-            " as the application type.
+            Choose &quot;
+            <span className="font-bold underline">Single-Page App</span>&quot;
+            as the application type.
           </li>
           <li className="mb-4">
             Give your app name:{" "}
@@ -70,28 +72,29 @@ const OktaLoginPage = () => {
             </span>
           </li>
           <li className="mb-4">
-            Under "
-            <span className="font-bold underline">Grant type allowed</span>",
-            select "
-            <span className="font-bold underline">Authorization Code</span>" and
-            "<span className="font-bold underline">Refresh Token</span>".
+            Under &quot;
+            <span className="font-bold underline">Grant type allowed</span>
+            &quot;, select &quot;
+            <span className="font-bold underline">Authorization Code</span>
+            &quot; and &quot;
+            <span className="font-bold underline">Refresh Token</span>&quot;.
           </li>
           <li className="mb-4">
-            In the "
-            <span className="font-bold underline">Login redirect URIs</span>"
-            field, enter{" "}
+            In the &quot;
+            <span className="font-bold underline">Login redirect URIs</span>
+            &quot; field, enter{" "}
             <div className=" bg-stone-400 w-fit mx-3 mt-1 text-white px-2 font-mono rounded-md py-1">
               http://localhost:3000/welcome/customize-access
             </div>
           </li>
           <li className="mb-4">
-            Click "<span className="font-bold underline">Save</span>" to create
-            the new application.
+            Click &quot;<span className="font-bold underline">Save</span>&quot;
+            to create the new application.
           </li>
           <li className="mb-4">
-            Under "
-            <span className="font-bold underline">Client Credentials</span>"
-            section, Copy and Paste the values below:
+            Under &quot;
+            <span className="font-bold underline">Client Credentials</span>
+            &quot; section, Copy and Paste the values below:
             <input
               type="text"
               name="okta_client_id"
