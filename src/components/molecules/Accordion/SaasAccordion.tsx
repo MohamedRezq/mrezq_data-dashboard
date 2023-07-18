@@ -38,7 +38,6 @@ export default function SaasAccordion(props: any) {
     ["3", Integrations.Zohopeople.AUTH_URL],
     // ["4", Integrations.Freshbook.AUTH_URL],
     ["5", Integrations.Jira.AUTH_URL],
-    ["6", Integrations.Okta.AUTH_URL],
   ]);
   //----------------------------------------------------------------------------------//
   const getLoggedUserData = async (e: Event) => {
@@ -60,14 +59,25 @@ export default function SaasAccordion(props: any) {
   };
   //----------------------------------------------------------------------------------//
   const handleConnect = (app_id: string) => {
-    localStorage.setItem("applicationId", String(app_id));
-    const win = window;
-    win.addEventListener("focus", getLoggedUserData);
-    win.open(
-      apps_id_url.get(app_id),
-      "_blank",
-      "location=yes,height=520,width=520,scrollbars=yes,status=yes"
-    );
+    if (app_id === "6") {
+      localStorage.setItem("applicationId", String(app_id));
+      const win = window;
+      win.addEventListener("focus", getLoggedUserData);
+      win.open(
+        `https://${user.info.data.oktaDomain}/oauth2/v1/authorize?client_id=${user.info.data.oktaClientId}&response_type=code&scope=openid&redirect_uri=http://localhost:3000/welcome/customize-access&state=state-alpha8600b31f-52d1-4dca-987c-386e3d8967e9`,
+        "_blank",
+        "location=yes,height=520,width=520,scrollbars=yes,status=yes"
+      );
+    } else {
+      localStorage.setItem("applicationId", String(app_id));
+      const win = window;
+      win.addEventListener("focus", getLoggedUserData);
+      win.open(
+        apps_id_url.get(app_id),
+        "_blank",
+        "location=yes,height=520,width=520,scrollbars=yes,status=yes"
+      );
+    }
   };
   //----------------------------------------------------------------------------------//
   //----------------------------------------------------------------------------------//

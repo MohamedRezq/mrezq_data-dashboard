@@ -32,22 +32,26 @@ type UserIntegratedAppType = {
 };
 
 const DataSyncPage = () => {
+  //----------------------------------------------------------------------------------//
   const selectedSaas = useSelector(
     (state: RootState) => state.saas.selectedList
   );
   const user = useSelector((state: RootState) => state.user);
+  //----------------------------------------------------------------------------------//
   const [loaderPercentage, setLoaderPercentage] = useState(0);
   const [nextActive, setNextActive] = useState(false);
+  //----------------------------------------------------------------------------------//
   const router = useRouter();
+  //----------------------------------------------------------------------------------//
   const userIntegratedAppsIds = user.info.applications
     .filter((app: UserIntegratedAppType) => app.integration_status === "active")
     .map((app: UserIntegratedAppType) => app.application_id);
-
+  //----------------------------------------------------------------------------------//
   useEffect(() => {
     const res = syncUserData(userIntegratedAppsIds);
     console.log("res: ", res);
   }, []);
-
+  //----------------------------------------------------------------------------------//
   useEffect(() => {
     const interval = setInterval(async () => {
       if (loaderPercentage === 100) {
@@ -57,6 +61,9 @@ const DataSyncPage = () => {
     }, 50);
     return () => clearInterval(interval);
   }, [loaderPercentage]);
+  //----------------------------------------------------------------------------------//
+  //----------------------------------------------------------------------------------//
+  //----------------------------------------------------------------------------------//
   return (
     <OnboardingTemplate>
       <div className="w-[90%] md:h-1/2 mt-16 overflow-y-auto px-10">

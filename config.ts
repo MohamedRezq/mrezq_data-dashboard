@@ -36,6 +36,6 @@ export const Integrations = {
     AUTH_URL: `${process.env.NEXT_PUBLIC_JIRA_OAUTH_URL}&client_id=${process.env.NEXT_PUBLIC_JIRA_CLIENT_ID}&scope=${process.env.NEXT_PUBLIC_JIRA_SCOPE}&redirect_uri=${process.env.NEXT_PUBLIC_JIRA_REDIRECT_URL}&state=${process.env.NEXT_PUBLIC_JIRA_STATE}&response_type=code&prompt=consent`,
   },
   Okta: {
-    AUTH_URL: `${process.env.NEXT_PUBLIC_OKTA_OAUTH_URL}client_id=${process.env.NEXT_PUBLIC_OKTA_CLIENT_ID}&response_type=code&scope=${process.env.NEXT_PUBLIC_OKTA_SCOPE}&redirect_uri=${process.env.NEXT_PUBLIC_JIRA_REDIRECT_URL}&state=${process.env.NEXT_PUBLIC_OKTA_STATE}`,
+    AUTH_URL: `/welcome/customize-access/login-helper/okta`,
   },
 };

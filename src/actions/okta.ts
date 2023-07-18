@@ -8,7 +8,11 @@ export const oktaAuth = async (code: string | null) => {
       {
         code: code,
         organizationId: localStorage.getItem("organizationId"),
-        applicationId: 5, // 1-->quickbooks , 2-->zohobooks, 3-->zohopeople, 4-->freshbooks, 5-->jira, 6--> okta
+        applicationId: 6, // 1-->quickbooks , 2-->zohobooks, 3-->zohopeople, 4-->freshbooks, 5-->jira, 6--> okta
+        userId: localStorage.getItem("userId"),
+        oktaDomain: localStorage.getItem("oktaDomain"),
+        oktaClientId: localStorage.getItem("oktaClientId"),
+        oktaClientSecret: localStorage.getItem("oktaClientSecret"),
       },
       {
         headers: {
@@ -17,6 +21,9 @@ export const oktaAuth = async (code: string | null) => {
       }
     );
     window.close();
+    localStorage.removeItem("oktaDomain");
+    localStorage.removeItem("oktaClientId");
+    localStorage.removeItem("oktaClientSecret");
     return;
   } catch (error: any | null) {
     if (error?.response?.status !== 500)

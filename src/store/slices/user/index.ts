@@ -14,6 +14,7 @@ type UserStateProps = {
     role: string;
     active: boolean;
     img: string;
+    data: {} | null;
     applications: any[];
   };
   token: string;
@@ -29,6 +30,7 @@ const initialState: UserStateProps = {
     role: "",
     active: false,
     img: "",
+    data:null,
     applications: [],
   },
   token: "",

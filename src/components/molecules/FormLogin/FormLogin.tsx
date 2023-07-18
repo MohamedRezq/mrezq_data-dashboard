@@ -42,7 +42,9 @@ const FormLogin = () => {
         if (decoded.role !== "member") {
           // admin && superadmin will need organization_id in quickbook auth
           localStorage.setItem("organizationId", decoded.organizationId);
+          localStorage.setItem("userId", decoded.id);
         }
+        localStorage.setItem("userId",decoded.id)
         dispatch(setUser({ info: decoded, token: token }));
       } else dispatch(setIsWrongCred(true));
     } else if (response && response.status === 400) {
