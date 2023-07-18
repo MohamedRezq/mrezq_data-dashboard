@@ -18,7 +18,7 @@ type SaasCardProps = {
   app_id?: string;
 };
 
-const SaasSyncCard = (props: SaasCardProps) => {
+const SaasSyncCard = (props: any) => {
   const [removed, setRemoved] = useState(false);
   const dispatch = useDispatch();
   const removeSaas = async () => {
