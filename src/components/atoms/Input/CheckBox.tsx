@@ -11,7 +11,7 @@ const CheckBox = (props: CheckBoxProps) => {
       {props.label}
       <input
         type="checkbox"
-        onClick={(e) => props.setCheckBox(e.target?.checked)}
+        onClick={(e: any) => props.setCheckBox(e.target?.checked)}
       />
       <span className="checkmark"></span>
     </label>
