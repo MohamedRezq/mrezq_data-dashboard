@@ -1,55 +1,88 @@
 import React from "react";
+import Drawer from "react-modern-drawer";
 //-----> Components <-----------------------------------------//
 import { IoSettingsSharp } from "react-icons/io5";
 import { SidebarItem } from "../../molecules";
+//-----> Redux <----------------------------------------------//
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveTab } from "@/src/store/slices/sidebar";
+import { RootState } from "@/src/store";
+import { setDisplayMiniSidebar } from "@/src/store/slices/dashboard";
 //----------------------------------------------------------------------------------//
 //-----> END OF IMPORTS <-------------------------------------//
 //----------------------------------------------------------------------------------//
 
 const Sidebar = () => {
+  //----------------------------------------------------------------------------------//
   const tabs = [
     {
       icon: "/assets/img/icons/house-chimney-blank.svg",
       title: "Home",
-      active: true,
       link: "/dashboard",
     },
     {
       icon: "/assets/img/icons/application.svg",
       title: "Applications",
-      active: false,
+      link: "/dashboard/integrations",
+    },
+    {
+      icon: "/assets/img/icons/category.svg",
+      title: "Department",
+      link: "/dashboard/department",
+    },
+    {
+      icon: "/assets/img/icons/sync.svg",
+      title: "Integration",
       link: "/dashboard/integrations",
     },
     {
       icon: "/assets/img/icons/lightbulb-dollar.svg",
       title: "Opportunities",
-      active: false,
       link: "/dashboard",
     },
     {
       icon: "/assets/img/icons/renewable.svg",
       title: "Renewal hub",
-      active: false,
       link: "/dashboard",
     },
   ];
+  const displayMiniSidebar = useSelector(
+    (state: RootState) => state.dashboard.displayMiniSidebar
+  );
+  //----------------------------------------------------------------------------------//
+  const { activeTab } = useSelector((state: RootState) => state.sidebar);
+  const dispatch = useDispatch();
+  //----------------------------------------------------------------------------------//
   return (
-    <div className="hidden lg:flex mr-5 w-full flex-col px-5 py-10 justify-between rounded-2xl bg-hippiegreen text-white h-full">
+    <div
+      className={`w-full ${
+        displayMiniSidebar && "none"
+      } lg:w-[240px] h-full dark:bg-darkMineShaft lg:h-[95vh] lg:flex mr-5 flex-col px-5 py-10 justify-between lg:rounded-2xl bg-hippiegreen text-white`}
+    >
       <div>
-        <div className="mb-16 font-quicksandLogo text-[30px] font-bold text-center">
+        <div
+          onClick={() => {
+            dispatch(setDisplayMiniSidebar(true));
+            console.log("now displayMini:", displayMiniSidebar);
+          }}
+          className="mb-16 cursor-pointer font-quicksandLogo text-[30px] font-bold text-center"
+        >
           alpha
         </div>
-        <div>
-          {tabs.map((tab, i) => (
+
+        {tabs.map((tab, i) => (
+          <div
+            key={`${tab.title}-${i}`}
+            onClick={() => dispatch(setActiveTab(tab.title))}
+          >
             <SidebarItem
-              key={`${tab.title}-${i}`}
               title={tab.title}
-              active={tab.active}
+              active={tab.title == activeTab ? true : false}
               icon={tab.icon}
               link={tab.link}
             />
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
       <div className="flex flex-col">
         <SidebarItem

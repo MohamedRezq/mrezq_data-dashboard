@@ -16,8 +16,10 @@ import { CurriedGetDefaultMiddleware } from "@reduxjs/toolkit/dist/getDefaultMid
 import {
   saasSlice,
   userSlice,
-  dashboardPeriodSlice,
   loadingSlice,
+  sidebarSlice,
+  dashboardSlice,
+  popupSlice,
 } from "./slices";
 //--------------------------------------------------------//
 //-----> END OF IMPORTS <---------------------------------//
@@ -33,7 +35,9 @@ const rootReducer = combineReducers({
   saas: saasSlice,
   user: userSlice,
   loading: loadingSlice,
-  dashboardPeriod: dashboardPeriodSlice,
+  dashboard: dashboardSlice,
+  sidebar: sidebarSlice,
+  popup: popupSlice,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

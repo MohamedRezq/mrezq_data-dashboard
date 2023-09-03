@@ -1,169 +1,112 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 //-----> Actions <----------------------------------------------//
-import { getUserData, syncUserData } from "@/src/actions/user";
 //-----> Utils <----------------------------------------------//
 import { dateFormatter } from "@/src/utils/dateFormatter";
-import { quickbooksDefault } from "@/public/assets/json/quickbooksDefault";
+import httpServices from "@/src/utils/httpServices";
 //-----> Redux <----------------------------------------------//
 import { useDispatch, useSelector } from "react-redux";
-import { setPageLoading } from "@/src/store/slices/loading";
 import { RootState } from "@/src/store";
-import { setDashboardPeriod } from "@/src/store/slices/dashboardPeriod";
 //-----> Components <----------------------------------------------//
 import { DashboardTemplate } from "@/src/components/templates";
-import { ChartCard, StatsCard } from "@/src/components/molecules";
+import {
+  HomeChart_3,
+  HomeChart_1,
+  HomeChart_2,
+  StatsCard,
+} from "@/src/components/molecules";
 import Dropdown from "rc-dropdown";
-import Menu, { Item as MenuItem } from "rc-menu";
-import { FiRefreshCcw } from "react-icons/fi";
 //-----> Assets <----------------------------------------------//
 import monthIcon from "@/public/assets/img/icons/month.svg";
 import dropDown from "@/public/assets/img/icons/arrow-down-sign-to-navigate.svg";
 import { PageLoading } from "@/src/components/atoms";
+import { setHomeInterval, setHomeStats } from "@/src/store/slices/dashboard";
+import { App_Config } from "@/config";
+import CustomDropMenu from "@/src/components/atoms/Menu/CustomDropMenu";
+import { syncUserData } from "@/src/actions";
+import { roundNumbers } from "@/src/utils/roundNumbers";
 //----------------------------------------------------------------------------------//
 //-----> END OF IMPORTS <-------------------------------------//
 //----------------------------------------------------------------------------------//
 
-type UserIntegratedAppType = {
-  application_id: string;
-  organization_id: string;
-  integration_status: string;
-};
-
 const Home = () => {
-  //-------------------------------------------------------------------------//
-  const periodsData = [
-    "Last Month",
-    "Last 3 Months",
-    "Last 6 Months",
-    "Last Year",
-    "Last 5 Years",
-  ];
   //-------------------------------------------------------------------------//
   const user = useSelector((state: RootState) => state.user);
   const loading = useSelector((state: RootState) => state.loading.isLoading);
+  const statsData = useSelector(
+    (state: RootState) => state.dashboard.home.homeStats
+  );
+  const homeInterval = useSelector(
+    (state: RootState) => state.dashboard.home.mainInterval
+  );
   //-------------------------------------------------------------------------//
   const date = dateFormatter();
   //-------------------------------------------------------------------------//
+  const [fetchError, setFetchError] = useState(false);
+  //-------------------------------------------------------------------------//
   const dispatch = useDispatch();
   //-------------------------------------------------------------------------//
-  const [financialDashboardData, setFinancialDashboardData] = useState(
-    quickbooksDefault()
-  );
-  const [selectedMonth, setSelectedMonth] = useState("Last Month");
-  const [fetchError, setFetchError] = useState(false);
-  const [syncTime, setSyncTime] = useState(null);
   //-------------------------------------------------------------------------//
-  const periods = periodsData;
-  //-------------------------------------------------------------------------//
-  const currentDashboardPeriod = useSelector(
-    (state: RootState) => state.dashboardPeriod.currentPeriod
-  );
-  //-------------------------------------------------------------------------//
-  useEffect(() => {}, [loading]);
-
-  useEffect(() => {
-    dispatch(setPageLoading(true));
-    const userIntegratedAppsIds = user.info.applications
-      .filter(
-        (app: UserIntegratedAppType) => app.integration_status === "active"
-      )
-      .map((app: UserIntegratedAppType) => app.application_id);
-    getUserData(userIntegratedAppsIds).then((res: any) => {
-      setSyncTime(res.syncTime);
-      res.appData.forEach((appData: any, appId: number) => {
-        if (appData) {
-          switch (appId) {
-            case 1:
-              setFinancialDashboardData(appData);
-              break;
-            case 2:
-              setFinancialDashboardData(appData);
-              break;
-            default:
-              break;
-          }
+  const fetchData = async () => {
+    try {
+      const res = await httpServices.post(
+        `${App_Config.API_BASE_URL}/api/dashboard/home/get-home-stats`,
+        {
+          organizationId: localStorage.getItem("organizationId"),
+          fromDate: new Date(
+            new Date().getFullYear() - 1,
+            new Date().getMonth(),
+            new Date().getDate()
+          ).toISOString(),
+          toDate: new Date().toISOString(),
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
-    });
-    // .then((response) => {
-    //   if (response && response.status === 200) setDashboardData(response.data);
-    //   else setFetchError(true);
-    // });
-    dispatch(setPageLoading(false));
-  }, []);
-  //-------------------------------------------------------------------------//
-
-  const handleSyncUserData = async () => {
-    dispatch(setPageLoading(true));
-    const userIntegratedAppsIds = user.info.applications
-      .filter(
-        (app: UserIntegratedAppType, i: number) =>
-          app.integration_status === "active"
-      )
-      .map((app: UserIntegratedAppType) => app.application_id);
-    syncUserData(userIntegratedAppsIds).then((res: any) => {
-      setSyncTime(res.syncTime);
-      res.appData.forEach((appData: any, appId: number) => {
-        if (appData) {
-          switch (appId) {
-            case 1:
-              setFinancialDashboardData(appData);
-              break;
-            case 2:
-              setFinancialDashboardData(appData);
-              break;
-            default:
-              break;
-          }
-        }
-      });
-    });
-    dispatch(setPageLoading(false));
-    // .then((response) => {
-    //   if (response && response.status === 200) setDashboardData(response.data);
-    //   else setFetchError(true);
-    // });
+      );
+      return res.data;
+    } catch (error: any | null) {
+      // console.log(error);
+      setFetchError(true);
+      return undefined;
+    }
   };
+  //-------------------------------------------------------------------------//
+  useEffect(() => {
+    fetchData().then((apiData) => {
+      if (apiData !== undefined) dispatch(setHomeStats(apiData));
+    });
+  }, []);
 
-  const menu = (
-    <Menu
-      className=" p-5"
-      onSelect={(e) => {
-        setSelectedMonth(e.key);
-        dispatch(
-          setDashboardPeriod(
-            periodsData.findIndex((period) => period === e.key)
-          )
-        );
-      }}
-    >
-      {periodsData.map((item, i) => (
-        <MenuItem
-          key={`${item}`}
-          className=" text-xs font-semibold hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer"
-        >
-          {item}
-        </MenuItem>
-      ))}
-    </Menu>
-  );
-
-  // 0 --> Last Month
-  // 1 --> Last 3 Months
-  // 2 --> Last 6 Months
-  // 3 --> Last Year
-  // 4 --> Last 5 Years
+  //-------------------------------------------------------------------------//
+  //-------------------------------------------------------------------------//
   return (
-    <DashboardTemplate date={date} periods={periods}>
-      <>
-        <div className="flex items-center justify-between w-full">
-          <div className="flex w-44 justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft pr-6">
+    <DashboardTemplate
+      headerTitle={`Good ${
+        new Date().getHours() >= 12 ? "Evening" : "Morning"
+      }, ${user.info.firstName}!`}
+      date={date}
+    >
+      <div className="flex flex-col gap-y-5 w-full">
+        <div className="flex justify-between">
+          <div className="flex w-44 justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6">
             <Image src={monthIcon} alt="calendar" />
-            <div className="text-center font-medium text-sm w-40">
-              {selectedMonth}
+            <div className="text-center font-medium text-sm w-40 text-mineshaft">
+              {homeInterval}
             </div>
-            <Dropdown trigger={["click"]} overlay={menu} animation="slide-up">
+            <Dropdown
+              trigger={["click"]}
+              overlay={
+                <CustomDropMenu
+                  selectedOption={homeInterval}
+                  options={["Month", "Quarter", "Year"]}
+                  setterFunction={setHomeInterval}
+                />
+              }
+              animation="slide-up"
+            >
               <Image
                 src={dropDown}
                 alt="Menu"
@@ -171,18 +114,19 @@ const Home = () => {
               />
             </Dropdown>
           </div>
-          <div className="flex gap-x-2 items-end">
-            <div className="text-xs text-gray-500">
-              Last Synced: {`${dateFormatter(syncTime)}`}
-            </div>
-            <div
-              onClick={handleSyncUserData}
-              className="flex items-center justify-center bg-hippiegreen cursor-pointer text-white hover:bg-seagreen shadow-sm shadow-gray-500 p-2 rounded-lg"
-            >
-              <FiRefreshCcw size={10} />
-            </div>
+          <div
+            onClick={() => {
+              const appIds = user?.info?.applications?.map(
+                (app: any) => app.application_id
+              );
+              syncUserData(appIds);
+            }}
+            className=" cursor-pointer hover:underline"
+          >
+            Sync
           </div>
         </div>
+
         {fetchError && (
           <div className="w-full my-3 flex text-center items-center justify-center text-xs text-red-500">
             Error connecting to Alpha Saas. Please reload the page !
@@ -192,50 +136,31 @@ const Home = () => {
           <PageLoading />
         ) : (
           <>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-              {financialDashboardData[currentDashboardPeriod].statsCards.map(
-                (item: any, i: number) => (
-                  <StatsCard
-                    key={`${item.title}-${item.value}-${i}`}
-                    title={item.title}
-                    value={
-                      i === 2
-                        ? item.value >= 1000
-                          ? `$${Math.round(item.value / 1000)}k`
-                          : `$${item.value}`
-                        : item.value
-                    }
-                    valueType={item.valueType}
-                    subValues={item.subValues}
-                  />
-                )
-              )}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              {statsData.map((item: any, i: number) => (
+                <StatsCard
+                  key={`${item.title}-${item.value}-${i}`}
+                  title={item.title}
+                  value={
+                    i === 2
+                      ? item.value >= 1000
+                        ? `$${roundNumbers(item?.value)}`
+                        : `$${item.value}`
+                      : item.value
+                  }
+                  valueType={item.valueType}
+                  subValues={item.subValues}
+                />
+              ))}
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-3">
-              {financialDashboardData[currentDashboardPeriod].chartsData.map(
-                (item: any, i: number) => (
-                  <div
-                    key={`${item.title}-${item.value}-${i}`}
-                    className={`${
-                      i % 2 === 0 ? "col-span-2" : "col-span-1"
-                    } mb-10 w-full`}
-                  >
-                    <ChartCard
-                      title={item.title}
-                      subTitle={item.subTitle}
-                      value={item.value}
-                      subValues={item.subValues}
-                      chartType={item.chartType}
-                      chartSeries={item.chartSeries}
-                      xData={item.xData}
-                    />
-                  </div>
-                )
-              )}
+            <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-3">
+              <HomeChart_1 />
+              <HomeChart_2 />
+              <HomeChart_3 />
             </div>
           </>
         )}
-      </>
+      </div>
     </DashboardTemplate>
   );
 };

@@ -1,4 +1,5 @@
 import React, { PropsWithChildren, useEffect } from "react";
+import { useTheme } from "next-themes";
 //-----> Redux <----------------------------------------------//
 import type { RootState } from "@/src/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,12 +9,14 @@ import { PageLoading } from "../../atoms";
 //----------------------------------------------------------------------------------//
 
 const OnboardingTemplate = ({ children }: PropsWithChildren) => {
+  //----------------------------------------------------------------------------------//
+  const { theme, setTheme } = useTheme();
   //-------------------------------------------------------------------------//
   const isPageLoading = useSelector(
     (state: RootState) => state.loading.isLoading
   );
+  useEffect(() => setTheme("light"), []);
   useEffect(() => {}, [isPageLoading]);
-
   //-------------------------------------------------------------------------//
   //-------------------------------------------------------------------------//
   return (

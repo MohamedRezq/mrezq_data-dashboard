@@ -26,7 +26,7 @@ export const zohobooksAuth = async (code: string | null) => {
 };
 //--------------------------------------------------------------//
 //--------------------------------------------------------------//
-export const zohobooksSyncData = async () => {
+export const zohobooksSyncData = async (fromDate: string, toDate: string) => {
   try {
     await httpServices.post(
       `${App_Config.API_BASE_URL}/api/zohobooks/validate-tokens`,
@@ -43,6 +43,8 @@ export const zohobooksSyncData = async () => {
       `${App_Config.API_BASE_URL}/api/zohobooks/sync-data`,
       {
         organizationId: localStorage.getItem("organizationId"),
+        fromDate: new Date(fromDate).toISOString(),
+        toDate: new Date(toDate).toISOString(),
       },
       {
         headers: {
@@ -57,7 +59,7 @@ export const zohobooksSyncData = async () => {
   }
 };
 //--------------------------------------------------------------//
-export const zohobooksGetData = async () => {
+export const zohobooksGetData = async (fromDate: string, toDate: string) => {
   try {
     await httpServices.post(
       `${App_Config.API_BASE_URL}/api/zohobooks/validate-tokens`,
@@ -74,6 +76,8 @@ export const zohobooksGetData = async () => {
       `${App_Config.API_BASE_URL}/api/zohobooks/get-data`,
       {
         organizationId: localStorage.getItem("organizationId"),
+        fromDate: new Date(fromDate).toISOString(),
+        toDate: new Date(toDate).toISOString(),
       },
       {
         headers: {

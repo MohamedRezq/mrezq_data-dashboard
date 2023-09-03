@@ -4,6 +4,8 @@ import { updateSelectedList } from "@/src/store/slices/saas";
 import { useDispatch } from "react-redux";
 //-----> Components <---------------------------------------------//
 import Switch from "react-switch";
+import { setPopupOpen } from "@/src/store/slices/popup";
+import { PopupDiv } from "../../atoms";
 //----------------------------------------------------------------------------------//
 //-----> END OF IMPORTS <-------------------------------------//
 //----------------------------------------------------------------------------------//
@@ -14,15 +16,23 @@ type SaasCardProps = {
   text?: string;
   active?: boolean;
   connected?: boolean;
+  disableable?: boolean;
   app_id: string;
 };
 
 const SaasCard = (props: SaasCardProps) => {
+  //----------------------------------------------------------------------------------//
   const [checked, setChecked] = useState(props.active);
+  //----------------------------------------------------------------------------------//
   const dispatch = useDispatch();
-
+  //----------------------------------------------------------------------------------//
+  //----------------------------------------------------------------------------------//
   return (
-    <div className=" w-[200px] h-[118px] rounded-2xl bg-wildsand relative">
+    <div
+      className=" w-[200px] h-[118px] rounded-2xl bg-wildsand relative"
+      style={{ boxShadow: "0px 3px 5px #00000029" }}
+    >
+      <PopupDiv text="sdsd" title="dsd" />
       <div className="pl-4 pt-5 flex items-center">
         <div
           className={`w-7 rounded-md h-7 p-1 flex justify-center items-center ${
@@ -37,7 +47,7 @@ const SaasCard = (props: SaasCardProps) => {
         {props.text}
       </div>
       <div
-        className={`w-full absolute flex justify-end items-center pr-5 bottom-0 h-[30px] rounded-br-3xl rounded-bl-3xl ${
+        className={`w-full absolute flex justify-end items-center pr-5 bottom-0 h-[30px] rounded-br-2xl rounded-bl-2xl ${
           checked ? "bg-hippiegreen" : "bg-mercury"
         }`}
       >
@@ -51,6 +61,8 @@ const SaasCard = (props: SaasCardProps) => {
               })
             );
           }}
+          onClick={() => {}}
+          //disabled={!props.disableable}
           checked={checked === undefined ? false : checked}
           uncheckedIcon={false}
           checkedIcon={false}

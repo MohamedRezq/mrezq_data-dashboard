@@ -1,1 +1,11 @@
 export { default as ChartCard } from "./ChartCard";
+export { default as DepartmentChart_3 } from "./Department/DepartmentChart_3";
+export { default as DepartmentChart_2 } from "./Department/DepartmentChart_2";
+export { default as DepartmentChart_1 } from "./Department/DepartmentChart_1";
+export { default as DepartmentChart_4 } from "./Department/DepartmentChart_4";
+export { default as DepartmentChart_5 } from "./Department/DepartmentChart_5";
+export { default as DepartmentChart_6 } from "./Department/DepartmentChart_6";
+export { default as DepartmentCard } from "./Department/DepartmentCard";
+export { default as HomeChart_1 } from "./Home/HomeChart_1";
+export { default as HomeChart_2 } from "./Home/HomeChart_2";
+export { default as HomeChart_3 } from "./Home/HomeChart_3";

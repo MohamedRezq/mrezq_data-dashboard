@@ -54,12 +54,21 @@ export const getLoggedUser = async (token: string) => {
 };
 //--------------------------------------------------------------//
 export const syncUserData = async (userIntegratedAppsIds: number[]) => {
+  const fromDate = new Date(
+    new Date().getFullYear() - 1,
+    new Date().getMonth(),
+    new Date().getDate()
+  ); // One year ago
+  const toDate = new Date();
   const appResponse = new Map([]);
   let syncTime = null;
   for (let i = 0; i < userIntegratedAppsIds.length; i++) {
     switch (userIntegratedAppsIds[i]) {
       case 1: // Quickbooks
-        const quickbooks_res = await quickbooksSyncData();
+        const quickbooks_res = await quickbooksSyncData(
+          new Date(fromDate).toISOString(),
+          new Date(toDate).toISOString()
+        );
         if (quickbooks_res?.status === 200) {
           appResponse.set(
             userIntegratedAppsIds[i],
@@ -69,7 +78,10 @@ export const syncUserData = async (userIntegratedAppsIds: number[]) => {
         } else appResponse.set(userIntegratedAppsIds[i], null);
         break;
       case 2:
-        const zohobooks_res = await zohobooksSyncData();
+        const zohobooks_res = await zohobooksSyncData(
+          new Date(fromDate).toISOString(),
+          new Date(toDate).toISOString()
+        );
         if (zohobooks_res?.status === 200) {
           appResponse.set(
             userIntegratedAppsIds[i],
@@ -112,13 +124,17 @@ export const syncUserData = async (userIntegratedAppsIds: number[]) => {
   return { appData: appResponse, syncTime: syncTime };
 };
 //--------------------------------------------------------------//
-export const getUserData = async (userIntegratedAppsIds: number[]) => {
+export const getUserData = async (
+  userIntegratedAppsIds: number[],
+  fromDate: string,
+  toDate: string
+) => {
   const appResponse = new Map([]);
   let syncTime = null;
   for (let i = 0; i < userIntegratedAppsIds.length; i++) {
     switch (userIntegratedAppsIds[i]) {
       case 1: // Quickbooks
-        const quickbooks_res = await quickbooksGetData();
+        const quickbooks_res = await quickbooksGetData(fromDate, toDate);
         if (quickbooks_res?.status === 200) {
           appResponse.set(
             userIntegratedAppsIds[i],
@@ -128,7 +144,7 @@ export const getUserData = async (userIntegratedAppsIds: number[]) => {
         } else appResponse.set(userIntegratedAppsIds[i], null);
         break;
       case 2:
-        const zohobooks_res = await zohobooksGetData();
+        const zohobooks_res = await zohobooksGetData(fromDate, toDate);
         if (zohobooks_res?.status === 200) {
           appResponse.set(
             userIntegratedAppsIds[i],

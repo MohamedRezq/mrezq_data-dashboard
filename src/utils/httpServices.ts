@@ -1,5 +1,5 @@
 import axios from "axios";
-//--------------------------------------------------------------------------------//
+
 axios.interceptors.response.use(null, (error) => {
   const expectedError =
     error.response &&
@@ -10,6 +10,15 @@ axios.interceptors.response.use(null, (error) => {
     console.log(error.response.data.message);
   }
   return Promise.reject(error);
+});
+
+axios.interceptors.request.use((config) => {
+  config.headers["Access-Control-Allow-Origin"] = "*";
+  config.headers["Access-Control-Allow-Methods"] =
+    "GET, POST, PUT, DELETE, PATCH";
+  config.headers["Access-Control-Allow-Headers"] =
+    "Origin, X-Requested-With, Content-Type, Accept";
+  return config;
 });
 
 export default {

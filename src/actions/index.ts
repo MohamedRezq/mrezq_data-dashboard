@@ -10,6 +10,10 @@ export {
   zohobooksSyncData,
   zohobooksGetData,
 } from "./zohobooks";
-export { zohopeopleAuth } from "./zohopeople";
+export {
+  zohopeopleAuth,
+  zohopeopleSyncData,
+  zohopeopleGetData,
+} from "./zohopeople";
 export { jiraAuth, jiraGetData, jiraSyncData } from "./jira";
 export { oktaAuth, oktaGetData, oktaSyncData } from "./okta";

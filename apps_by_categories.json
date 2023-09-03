@@ -1,0 +1,54 @@
+[
+  {
+    "category": "Finance",
+    "apps": [
+      {
+        "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
+        "title": "Quick Books",
+        "text": "Accounting and finance software",
+        "active": true,
+        "app_id": "10"
+      },
+      {
+        "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
+        "title": "Zoho Books",
+        "text": "Accounting and finance software",
+        "active": false,
+        "app_id": "11"
+      },
+      {
+        "logo": "/assets/img/zoho-books.png",
+        "title": "Zoho People",
+        "text": "HR management and employee software",
+        "active": false,
+        "app_id": "3"
+      }
+    ]
+  },
+  {
+    "category": "Marketing",
+    "apps": [
+      {
+        "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
+        "title": "Quick Books",
+        "text": "Accounting and finance software",
+        "active": true,
+        "app_id": "10"
+      },
+      {
+        "logo": "/assets/img/Intuit_QuickBooks_logo.svg",
+        "title": "Zoho Books",
+        "text": "Accounting and finance software",
+        "active": false,
+        "app_id": "11"
+      },
+      {
+        "logo": "/assets/img/zoho-books.png",
+        "title": "Zoho People",
+        "text": "HR management and employee software",
+        "active": false,
+        "app_id": "3"
+      }
+    ]
+  }
+]

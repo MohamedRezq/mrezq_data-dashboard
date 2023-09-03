@@ -74,13 +74,11 @@ const CustomizeAccessPage = () => {
         case "5": {
           const urlParams = new URLSearchParams(window.location.search);
           const code = urlParams.get("code");
-          jiraAuth(code);
           break;
         }
         case "6": {
           const urlParams = new URLSearchParams(window.location.search);
           const code = urlParams.get("code");
-          oktaAuth(code);
           break;
         }
         default:

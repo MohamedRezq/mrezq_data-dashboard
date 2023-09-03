@@ -1,0 +1,143 @@
+{
+  "_links": {
+    "self": {
+      "href": "/rest/2/addons/is.origo.jira.tempo-plugin/pricing/server/live"
+    }
+  },
+  "items": [
+    {
+      "description": "Timesheets by Tempo - Jira Time Tracking for JIRA (Server) 10 Users: Commercial License",
+      "editionId": "newPricingPlanItem:is.origo.jira.tempo-plugin:user-tier:10:COMMERCIAL",
+      "editionDescription": "10 users",
+      "editionType": "user-tier",
+      "amount": 100.0,
+      "renewalAmount": 50.0,
+      "unitCount": 10,
+      "monthsValid": 12,
+      "licenseType": "COMMERCIAL",
+      "localCurrencyAmount": 100.0,
+      "localCurrencyRenewalAmount": 50.0,
+      "localCurrency": "USD"
+    },
+    {
+      "description": "Timesheets by Tempo - Jira Time Tracking for JIRA (Server) 25 Users: Commercial License",
+      "editionId": "newPricingPlanItem:is.origo.jira.tempo-plugin:user-tier:25:COMMERCIAL",
+      "editionDescription": "25 users",
+      "editionType": "user-tier",
+      "amount": 1150.0,
+      "renewalAmount": 575.0,
+      "unitCount": 25,
+      "monthsValid": 12,
+      "licenseType": "COMMERCIAL",
+      "localCurrencyAmount": 1150.0,
+      "localCurrencyRenewalAmount": 575.0,
+      "localCurrency": "USD"
+    },
+    {
+      "description": "Timesheets by Tempo - Jira Time Tracking for JIRA (Server) 50 Users: Commercial License",
+      "editionId": "newPricingPlanItem:is.origo.jira.tempo-plugin:user-tier:50:COMMERCIAL",
+      "editionDescription": "50 users",
+      "editionType": "user-tier",
+      "amount": 3500.0,
+      "renewalAmount": 1750.0,
+      "unitCount": 50,
+      "monthsValid": 12,
+      "licenseType": "COMMERCIAL",
+      "localCurrencyAmount": 3500.0,
+      "localCurrencyRenewalAmount": 1750.0,
+      "localCurrency": "USD"
+    },
+    {
+      "description": "Timesheets by Tempo - Jira Time Tracking for JIRA (Server) 100 Users: Commercial License",
+      "editionId": "newPricingPlanItem:is.origo.jira.tempo-plugin:user-tier:100:COMMERCIAL",
+      "editionDescription": "100 users",
+      "editionType": "user-tier",
+      "amount": 7000.0,
+      "renewalAmount": 3500.0,
+      "unitCount": 100,
+      "monthsValid": 12,
+      "licenseType": "COMMERCIAL",
+      "localCurrencyAmount": 7000.0,
+      "localCurrencyRenewalAmount": 3500.0,
+      "localCurrency": "USD"
+    },
+    {
+      "description": "Timesheets by Tempo - Jira Time Tracking for JIRA (Server) 250 Users: Commercial License",
+      "editionId": "newPricingPlanItem:is.origo.jira.tempo-plugin:user-tier:250:COMMERCIAL",
+      "editionDescription": "250 users",
+      "editionType": "user-tier",
+      "amount": 14000.0,
+      "renewalAmount": 7000.0,
+      "unitCount": 250,
+      "monthsValid": 12,
+      "licenseType": "COMMERCIAL",
+      "localCurrencyAmount": 14000.0,
+      "localCurrencyRenewalAmount": 7000.0,
+      "localCurrency": "USD"
+    },
+    {
+      "description": "Timesheets by Tempo - Jira Time Tracking for JIRA (Server) 500 Users: Commercial License",
+      "editionId": "newPricingPlanItem:is.origo.jira.tempo-plugin:user-tier:500:COMMERCIAL",
+      "editionDescription": "500 users",
+      "editionType": "user-tier",
+      "amount": 23000.0,
+      "renewalAmount": 11500.0,
+      "unitCount": 500,
+      "monthsValid": 12,
+      "licenseType": "COMMERCIAL",
+      "localCurrencyAmount": 23000.0,
+      "localCurrencyRenewalAmount": 11500.0,
+      "localCurrency": "USD"
+    },
+    {
+      "description": "Timesheets by Tempo - Jira Time Tracking for JIRA (Server) 2000 Users: Commercial License",
+      "editionId": "newPricingPlanItem:is.origo.jira.tempo-plugin:user-tier:2000:COMMERCIAL",
+      "editionDescription": "2000 users",
+      "editionType": "user-tier",
+      "amount": 30000.0,
+      "renewalAmount": 15000.0,
+      "unitCount": 2000,
+      "monthsValid": 12,
+      "licenseType": "COMMERCIAL",
+      "localCurrencyAmount": 30000.0,
+      "localCurrencyRenewalAmount": 15000.0,
+      "localCurrency": "USD"
+    },
+    {
+      "description": "Timesheets by Tempo - Jira Time Tracking for JIRA (Server) 10000 Users: Commercial License",
+      "editionId": "newPricingPlanItem:is.origo.jira.tempo-plugin:user-tier:10000:COMMERCIAL",
+      "editionDescription": "10000 users",
+      "editionType": "user-tier",
+      "amount": 48000.0,
+      "renewalAmount": 24000.0,
+      "unitCount": 10000,
+      "monthsValid": 12,
+      "licenseType": "COMMERCIAL",
+      "localCurrencyAmount": 48000.0,
+      "localCurrencyRenewalAmount": 24000.0,
+      "localCurrency": "USD"
+    },
+    {
+      "description": "Timesheets by Tempo - Jira Time Tracking for JIRA (Server) Unlimited Users: Commercial License",
+      "editionId": "newPricingPlanItem:is.origo.jira.tempo-plugin:user-tier:987654321:COMMERCIAL",
+      "editionDescription": "Unlimited users",
+      "editionType": "user-tier",
+      "amount": 100000.0,
+      "renewalAmount": 50000.0,
+      "unitCount": -1,
+      "monthsValid": 12,
+      "licenseType": "COMMERCIAL",
+      "localCurrencyAmount": 100000.0,
+      "localCurrencyRenewalAmount": 50000.0,
+      "localCurrency": "USD"
+    }
+  ],
+  "expertDiscountOptOut": false,
+  "contactSalesForAdditionalPricing": false,
+  "parent": "jira",
+  "lastModified": "2023-02-15T21:09:30.536Z",
+  "status": "live",
+  "default": false,
+  "hasPublishedPrices": true,
+  "canChangePrices": false
+}

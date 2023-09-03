@@ -1,14 +1,21 @@
 import httpServices from "@/src/utils/httpServices";
 import { App_Config } from "@/config";
 //--------------------------------------------------------------//
-export const jiraAuth = async (code: string | null) => {
+export const jiraAuth = async (
+  apiKey: string | null,
+  jiraDomain: string | null,
+  email: string | null
+) => {
   try {
     await httpServices.post(
       `${App_Config.API_BASE_URL}/api/jira/exchange-code`,
       {
-        code: code,
         organizationId: localStorage.getItem("organizationId"),
-        applicationId: 5, // 1-->quickbooks , 2-->zohobooks, 3-->zohopeople, 4-->freshbooks, 5-->jira
+        applicationId: 5, // 1-->quickbooks , 2-->zohobooks, 3-->zohopeople, 4-->freshbooks, 5-->jira, 6--> jira
+        api_key: apiKey,
+        domain: jiraDomain,
+        email,
+        //apiKey: "00xzM9LkM_xw2fmneMN1WxTMDjlAvezttk8FGMyzwX", //Hardcoded now, should be removed
       },
       {
         headers: {
@@ -17,6 +24,7 @@ export const jiraAuth = async (code: string | null) => {
       }
     );
     window.close();
+
     return;
   } catch (error: any | null) {
     if (error?.response?.status !== 500)
@@ -25,20 +33,19 @@ export const jiraAuth = async (code: string | null) => {
   }
 };
 //--------------------------------------------------------------//
-//--------------------------------------------------------------//
 export const jiraSyncData = async () => {
   try {
-    await httpServices.post(
-      `${App_Config.API_BASE_URL}/api/jira/validate-tokens`,
-      {
-        organizationId: localStorage.getItem("organizationId"),
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    // await httpServices.post(
+    //   `${App_Config.API_BASE_URL}/api/jira/validate-tokens`,
+    //   {
+    //     organizationId: localStorage.getItem("organizationId"),
+    //   },
+    //   {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // );
     const response = await httpServices.post(
       `${App_Config.API_BASE_URL}/api/jira/sync-data`,
       {
@@ -59,17 +66,17 @@ export const jiraSyncData = async () => {
 //--------------------------------------------------------------//
 export const jiraGetData = async () => {
   try {
-    await httpServices.post(
-      `${App_Config.API_BASE_URL}/api/jira/validate-tokens`,
-      {
-        organizationId: localStorage.getItem("organizationId"),
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    // await httpServices.post(
+    //   `${App_Config.API_BASE_URL}/api/jira/validate-tokens`,
+    //   {
+    //     organizationId: localStorage.getItem("organizationId"),
+    //   },
+    //   {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // );
     const response = await httpServices.post(
       `${App_Config.API_BASE_URL}/api/jira/get-data`,
       {

@@ -7,11 +7,13 @@
 /* -------------------------------------------------------- */
 /* -------------------------------------------------------- */
 /* Imports ------------------------------------------------ */
-@import "react-accessible-accordion/dist/fancy-example.css";
+@import 'react-accessible-accordion/dist/fancy-example.css';
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-@import "react-accessible-accordion/dist/fancy-example.css";
-@import "rc-dropdown/assets/index.css";
+@import 'react-accessible-accordion/dist/fancy-example.css';
+@import 'rc-dropdown/assets/index.css';
+@import 'react-modern-drawer/dist/index.css';
+@import 'react-responsive-modal/styles.css';
 /* -------------------------------------------------------- */
 /* -------------------------------------------------------- */
 /* -------------------------------------------------------- */
@@ -41,10 +43,13 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+* {
+  font-family: 'Quicksand' !important;
+}
 
 .accordion__button {
   position: relative;
-  background-color: #F4F4F4 !important;
+  background-color: #f4f4f4 !important;
 }
 
 .accordion__panel {
@@ -109,11 +114,11 @@ body {
 }
 
 /* On mouse-over, add a grey background color */
-.checkbox-container:hover input~.checkmark {
+.checkbox-container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
-.checkbox-container input:checked~.checkmark {
+.checkbox-container input:checked ~ .checkmark {
   background-color: transparent;
 }
 
@@ -125,7 +130,7 @@ body {
 }
 
 /* Show the checkmark when checked */
-.checkbox-container input:checked~.checkmark:after {
+.checkbox-container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -148,7 +153,6 @@ body {
   padding-bottom: 16px !important;
   padding-right: 11px !important;
   padding-left: 7px !important;
-
 }
 
 .rc-menu-item {
@@ -163,9 +167,8 @@ body {
 }
 
 .react-switch-handle {
-  border: solid 1px white !important
+  border: solid 1px white !important;
 }
-
 
 /* Scrollbar */
 
@@ -186,6 +189,6 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #2ACB48;
+  background: #2acb48;
   border-radius: 4px;
 }

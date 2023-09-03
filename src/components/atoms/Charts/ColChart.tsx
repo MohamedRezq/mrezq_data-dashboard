@@ -1,14 +1,45 @@
 import React from "react";
+import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
 const ColChart = (props: any) => {
+  //----------------------------------------------------------------------------------//
+  const { theme, setTheme } = useTheme();
+  //----------------------------------------------------------------------------------//
+
   const data: any = {
-    series: props.chartSeries,
+    // series: props.chartSeries,
 
     options: {
+      noData: {
+        text: "No Data",
+        align: "center",
+        verticalAlign: "middle",
+        offsetX: 0,
+        offsetY: 0,
+        style: {
+          color: "#A99AFF",
+          fontSize: "14px",
+          fontFamily: "Quicksand",
+        },
+      },
+      legend: {
+        fontFamily: "Quicksand",
+        color: "#2C2C2C",
+        offsetY: 0,
+        labels: {
+          colors: ["#A99AFF", "#FF4E00"],
+          useSeriesColors: false,
+        },
+        margin: 0,
+        itemMargin: {
+          horizontal: 10,
+          vertical: 0,
+        },
+      },
       chart: {
         type: "bar",
         height: 200,
@@ -42,18 +73,25 @@ const ColChart = (props: any) => {
           show: true,
           rotate: 0,
           style: {
-            colors: [],
+            colors: theme === "dark" && Array(props.xData.length).fill("white"),
             fontSize: "8px",
-            fontFamily: "Quicksand",
-            color: "#2C2C2C",
             fontWeight: 600,
           },
         },
       },
+      tooltip: {
+        theme,
+      },
       yaxis: {
         labels: {
           formatter: (value: any) => {
-            return `$ ${value}`;
+            return `$ ${Math.round(value || 0)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+          },
+          style: {
+            colors: theme === "dark" && ["white"],
+            fontFamily: "Quicksand",
           },
         },
       },
@@ -63,12 +101,12 @@ const ColChart = (props: any) => {
     },
   };
   return (
-    <div id="chart" className="w-full mr-5">
+    <div id="chart" className="w-full mr-5 dark:text-white">
       <ReactApexChart
         options={data.options}
-        series={data.series}
+        series={props.chartSeries}
         type="bar"
-        height={200}
+        height={170}
         width="100%"
       />
     </div>

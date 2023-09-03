@@ -19,7 +19,7 @@ const AllSetPage = () => {
             alt="all set"
             className=" w-[200px] h-[200px]"
           />
-          <div className="text-center text-mineshaft text-sm font-bold opacity-75">
+          <div className="text-center text-mineshaft dark:text-white text-sm font-bold opacity-75">
             All Set! Hurray!
           </div>
         </div>

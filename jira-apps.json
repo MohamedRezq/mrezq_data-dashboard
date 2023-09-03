@@ -1,0 +1,124 @@
+{
+    "addons": [
+        {
+            "name": "draw.io Diagrams & Whiteboards",
+            "key": "com.mxgraph.confluence.plugins.diagramly",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/1210933/draw-io-diagrams-whiteboards?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/56011bf0-9e81-4b23-9836-83650d9a9154"
+                }
+            }
+        },
+        {
+            "name": "ScriptRunner for Jira",
+            "key": "com.onresolve.jira.groovy.groovyrunner",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/6820/scriptrunner-for-jira?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/0116fec2-5a28-41cf-b1d8-3170412bbfec"
+                }
+            }
+        },
+        {
+            "name": "Zephyr Scale - Test Management for Jira",
+            "key": "com.kanoah.test-manager",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/1213259/zephyr-scale-test-management-for-jira?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/e895ed11-9004-421d-9a22-6accf2ba6aeb"
+                }
+            }
+        },
+        {
+            "name": "Timesheets by Tempo - Jira Time Tracking",
+            "key": "is.origo.jira.tempo-plugin",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/6572/timesheets-by-tempo-jira-time-tracking?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/b1fa350e-c07a-40b4-be7a-7cc9b8fadb3b"
+                }
+            }
+        },
+        {
+            "name": "Jira Misc Workflow Extensions (JMWE)",
+            "key": "com.innovalog.jmwe.jira-misc-workflow-extensions",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/292/jira-misc-workflow-extensions-jmwe?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/b5966309-943e-4503-8f56-d560143108a4"
+                }
+            }
+        },
+        {
+            "name": "Timesheet Tracking for Jira",
+            "key": "com.tda.timesheet.report",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/1216988/timesheet-tracking-for-jira?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/f2ef01c9-5f34-4109-b75d-3341f7eb120e"
+                }
+            }
+        },
+        {
+            "name": "Table Filter and Charts for Confluence",
+            "key": "com.stiltsoft.confluence.plugin.tablefilter.tablefilter",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/27447/table-filter-and-charts-for-confluence?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/f67807a9-11a6-4e0f-a28c-5284f89693fb"
+                }
+            }
+        },
+        {
+            "name": "JSU Automation Suite for Jira Workflows",
+            "key": "com.googlecode.jira-suite-utilities",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/5048/jsu-automation-suite-for-jira-workflows?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/0344fff3-a90a-4909-93f7-f0cd45c88cf8"
+                }
+            }
+        },
+        {
+            "name": "Structure by Tempo - Jira Resource Management & Planning PPM",
+            "key": "com.almworks.jira.structure",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/34717/structure-by-tempo-jira-resource-management-planning-ppm?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/e6715b0f-10c4-4f84-bb2a-388f44e343a4"
+                }
+            }
+        },
+        {
+            "name": "Git Integration for Jira (GitHub, GitLab and more)",
+            "key": "com.xiplink.jira.git.jira_git_plugin",
+            "_links": {
+                "alternate": {
+                    "href": "/apps/4984/git-integration-for-jira-github-gitlab-and-more?tab=overview"
+                },
+                "logo": {
+                    "href": "https://marketplace-cdn.atlassian.com/files/5711191f-fb65-4f78-8190-33c071337660"
+                }
+            }
+        }
+    ]
+}

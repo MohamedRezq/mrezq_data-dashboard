@@ -1,13 +1,33 @@
 import React from "react";
+import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
 const LineChart = (props: any) => {
+  //----------------------------------------------------------------------------------//
+  const { theme, setTheme } = useTheme();
+  //----------------------------------------------------------------------------------//
+
   const opt: any = {
     series: props.chartSeries,
     options: {
+      tooltip: {
+        theme,
+      },
+      noData: {
+        text: "No Data",
+        align: "center",
+        verticalAlign: "middle",
+        offsetX: 0,
+        offsetY: 0,
+        style: {
+          color: "#A99AFF",
+          fontSize: "14px",
+          fontFamily: "Quicksand",
+        },
+      },
       chart: {
         height: 200,
         type: "line",
@@ -20,17 +40,21 @@ const LineChart = (props: any) => {
           formatter: (value: any) => {
             return `$ ${value}`;
           },
-          fontFamily: "Quicksand",
+          style: {
+            colors: theme === "dark" && ["white"],
+            fontFamily: "Quicksand",
+          },
         },
-        fontFamily: "Quicksand",
       },
       legend: {
         fontFamily: "Quicksand",
         color: "#2C2C2C",
+        offsetY: 0,
         labels: {
           colors: ["#509051", "#83C181", "#BAB9CC"],
           useSeriesColors: false,
         },
+        marginTop: "10px",
         itemMargin: {
           horizontal: 10,
           vertical: 0,
@@ -53,6 +77,11 @@ const LineChart = (props: any) => {
         type: "category",
         labels: {
           show: true,
+          style: {
+            colors: theme === "dark" && Array(props.xData.length).fill("white"),
+            fontFamily: "Quicksand",
+            fontSize: "5pt",
+          },
         },
         fontFamily: "Quicksand",
       },
@@ -64,7 +93,7 @@ const LineChart = (props: any) => {
         options={opt.options}
         series={opt.series}
         type="line"
-        height={200}
+        height={170}
       />
     </div>
   );

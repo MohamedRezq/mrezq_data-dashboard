@@ -1,5 +1,5 @@
-export const quickbooksDefault = () => {
-  return new Array(5).fill({
+export const homeDashboardDefault = () => {
+  return {
     statsCards: [
       {
         title: "Renewals",
@@ -60,45 +60,61 @@ export const quickbooksDefault = () => {
     ],
     chartsData: [
       {
-        title: "Spend Summary by department",
-        subTitle: "Total Spend",
         value: 0, // 2478
-        subValues: new Array(3).fill({
-          subValue: 0, // "$78"
-          subTitle: "HR", // "HR"
-        }),
-        chartType: "line",
+        subValues: [
+          {
+            subValue: 0, // "$78"
+            subTitle: "HR", // "HR"
+          },
+          {
+            subValue: 0, // "$78"
+            subTitle: "HR", // "HR"
+          },
+          {
+            subValue: 0, // "$78"
+            subTitle: "HR", // "HR"
+          },
+        ],
         chartSeries: [
           {
             name: "Human R.", // name: "Finance"
-            data: [250, 250, 250, 250, 250, 250, 250, 250, 250], // [260, 360, 320, 560, 750, 660, 510, 200, 250]
+            data: [250], // [260, 360, 320, 560, 750, 660, 510, 200, 250]
           },
           {
             name: "Marketing", // name: "Finance"
-            data: [250, 250, 250, 250, 250, 250, 250, 250, 250], // [260, 360, 320, 560, 750, 660, 510, 200, 250]
+            data: [250], // [260, 360, 320, 560, 750, 660, 510, 200, 250]
           },
           {
             name: "Finance", // name: "Finance"
-            data: [250, 250, 250, 250, 250, 250, 250, 250, 250], // [260, 360, 320, 560, 750, 660, 510, 200, 250]
+            data: [250], // [260, 360, 320, 560, 750, 660, 510, 200, 250]
           },
         ],
-        xData: ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"], // ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"]
+        xData: ["Aug"], // ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"]
       },
       {
-        title: "Top 4 Apps by Spend",
-        subTitle: "Total Spend",
         value: 0, // 4249
-        subValues: new Array(4).fill({
-          subValue: 0, // "$1200"
-          subTitle: "", // "G Suite"
-        }),
-        chartType: "pie",
-        chartSeries: [10, 10, 10, 10], // [30, 25, 25, 10]
-        xData: ["Atlassian", "G Suite", "Hubspot", "Office", ""],
+        subValues: [
+          {
+            subValue: 0, // "$1200"
+            subTitle: "_", // "G Suite"
+          },
+          {
+            subValue: 0, // "$1200"
+            subTitle: "_", // "G Suite"
+          },
+          {
+            subValue: 0, // "$1200"
+            subTitle: "_", // "G Suite"
+          },
+          {
+            subValue: 0, // "$1200"
+            subTitle: "_", // "G Suite"
+          },
+        ],
+        chartSeries: [10], // [30, 25, 25, 10]
+        xData: ["Atlassian"],
       },
       {
-        title: "License Summary",
-        subTitle: "Total Wasted Value",
         value: 0, // 2478
         subValues: [
           {
@@ -113,24 +129,19 @@ export const quickbooksDefault = () => {
             subValue: 0,
             subTitle: "Unused Licenses",
           },
-          {
-            subValue: "$0", // "$1200"
-            subTitle: "G Suite", // "G Suite"
-          },
         ],
-        chartType: "bar",
         chartSeries: [
           {
-            name: "Data 1",
+            name: "Used",
             data: [100, 100, 100, 100, 100, 100], // [1100, 700, 550, 1300, 520, 850]
           },
           {
-            name: "Data 2",
+            name: "Unused",
             data: [100, 100, 100, 100, 100, 100], // [120, 300, 520, 90, 350, 450]
           },
         ],
         xData: ["Marketing", "Finance", "HR", "IT", "Engineering", "R&D"], // ["Marketing", "Finance", "HR", "IT", "Engineering", "R&D"]
       },
     ],
-  });
+  };
 };

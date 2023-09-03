@@ -43,13 +43,13 @@ const DataSyncPage = () => {
   //----------------------------------------------------------------------------------//
   const router = useRouter();
   //----------------------------------------------------------------------------------//
-  const userIntegratedAppsIds = user.info.applications
-    .filter((app: UserIntegratedAppType) => app.integration_status === "active")
-    .map((app: UserIntegratedAppType) => app.application_id);
-  //----------------------------------------------------------------------------------//
   useEffect(() => {
-    const res = syncUserData(userIntegratedAppsIds);
-    console.log("res: ", res);
+    const userIntegratedAppsIds = user.info.applications
+      .filter(
+        (app: UserIntegratedAppType) => app.integration_status === "active"
+      )
+      .map((app: UserIntegratedAppType) => app.application_id);
+    syncUserData(userIntegratedAppsIds);
   }, []);
   //----------------------------------------------------------------------------------//
   useEffect(() => {

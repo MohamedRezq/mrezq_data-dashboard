@@ -43,7 +43,7 @@ const StatsCard = (props: StatsCardProps) => {
       }}
     >
       <hr className="absolute mt-[1px] top-0 left-5 w-5 border rounded-lg border-[#707070] border-opacity-50" />
-      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft cursor-pointer">
+      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
         <Image
           width={8}
           height={8}
@@ -53,7 +53,7 @@ const StatsCard = (props: StatsCardProps) => {
         />{" "}
         <>Pro Mode</>
       </MenuItem>
-      <MenuItem className="text-[10px] pl-4 gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft cursor-pointer">
+      <MenuItem className="text-[10px] pl-4 gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
         <Image
           width={8}
           height={8}
@@ -63,7 +63,7 @@ const StatsCard = (props: StatsCardProps) => {
         />{" "}
         <>Edit</>
       </MenuItem>
-      <MenuItem className="text-[10px] pl-4 gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft cursor-pointer">
+      <MenuItem className="text-[10px] pl-4 gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
         <Image
           width={8}
           height={8}
@@ -77,22 +77,25 @@ const StatsCard = (props: StatsCardProps) => {
   );
 
   return (
-    <div className="rounded-2xl w-[285px] flex bg-wildsand p-1 text-mineshaft">
-      <div className="w-1/2 flex flex-col items-start justify-center h-20 gap-y-1 pl-4">
-        <div className="text-[10px]">{props.title}</div>
+    <div
+      style={{ boxShadow: "0px 3px 5px #00000029" }}
+      className="rounded-2xl w-[285px] lg:w-full h-full flex bg-wildsand p-1 text-mineshaft dark:bg-darkMineShaft dark:text-white"
+    >
+      <div className="w-1/2 flex flex-col items-start justify-center my-auto h-20 gap-y-1 pl-4">
+        <div className="text-[10px] font-bold">{props.title}</div>
         <div
           className={`text-3xl ${valueTypesToStyles.get(
             props.valueType
-          )} font-bold opacity-80`}
+          )} font-bold opacity-80 dark:text-white`}
         >
           {props.value}
         </div>
       </div>
-      <div className="bg-white relative flex flex-col gap-y-1 pl-3 items-start justify-center w-1/2 rounded-tr-2xl rounded-br-2xl text-xxs">
+      <div className="bg-white dark:bg-midMineShaft font-bold relative flex flex-col gap-y-1 pl-3 items-start justify-center w-1/2 rounded-tr-2xl rounded-br-2xl text-[11px]">
         {props.subValues.map((item, i) => (
           <div
             key={`${item.subTitle}-${item.subValue}-${i}`}
-            className="flex items-center gap-x-5"
+            className="flex items-center gap-x-2"
           >
             <div
               className={` w-5 ${subValueStatesToStyles.get(
@@ -110,7 +113,12 @@ const StatsCard = (props: StatsCardProps) => {
             <div>{item.subTitle}</div>
           </div>
         ))}
-        <Dropdown trigger={["click"]} overlay={menu} animation="slide-up">
+        <Dropdown
+          placement="bottomRight"
+          trigger={["click"]}
+          overlay={menu}
+          animation="slide-up"
+        >
           <BsThreeDots className="absolute right-3 top-2 text-dovegray cursor-pointer text-sm" />
         </Dropdown>
       </div>

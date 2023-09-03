@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 
 interface SidebarItemProps {
   icon: string | ReactNode;
-  title: string;
+  title?: string;
   active: boolean;
   link: string;
 }

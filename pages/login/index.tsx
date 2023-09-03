@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 //-----> Assets <----------------------------------------------//
 import logo from "@/public/assets/img/AlphaS wordmark.svg";
 //-----> Redux <----------------------------------------------//
@@ -14,8 +15,14 @@ import { FormLogin } from "@/src/components/molecules";
 //----------------------------------------------------------------------------------//
 
 const LoginPage = () => {
+  //----------------------------------------------------------------------------------//
+  const { theme, setTheme } = useTheme();
+  //----------------------------------------------------------------------------------//
   const { isLoading } = useSelector((state: RootState) => state.loading);
-
+  //----------------------------------------------------------------------------------//
+  useEffect(() => setTheme("light"), []);
+  //----------------------------------------------------------------------------------//
+  //----------------------------------------------------------------------------------//
   return (
     <AuthProvider>
       {isLoading ? (

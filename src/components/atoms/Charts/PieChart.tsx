@@ -11,6 +11,11 @@ const PieChart = (props: any) => {
       chart: {
         type: "donut",
       },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ["transparent"],
+      },
       labels: props.xData,
       colors: ["#40AC54", "#34DD54", "#82F297", "#84BF8F"],
       legend: {
@@ -32,7 +37,7 @@ const PieChart = (props: any) => {
     },
   };
   return (
-    <div id="chart" className="w-full mr-1">
+    <div id="chart" className="w-full mr-1 mt-5">
       <ReactApexChart
         options={data.options}
         series={data.series}

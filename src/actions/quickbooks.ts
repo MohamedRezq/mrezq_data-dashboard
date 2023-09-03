@@ -24,7 +24,7 @@ export const quickbooksAuth = async (url: string | null) => {
   }
 };
 //--------------------------------------------------------------//
-export const quickbooksSyncData = async () => {
+export const quickbooksSyncData = async (fromDate: string, toDate: string) => {
   try {
     await httpServices.post(
       `${App_Config.API_BASE_URL}/api/quickbooks/validate-tokens`,
@@ -41,6 +41,8 @@ export const quickbooksSyncData = async () => {
       `${App_Config.API_BASE_URL}/api/quickbooks/sync-data`,
       {
         organizationId: localStorage.getItem("organizationId") || 1,
+        fromDate: new Date(fromDate).toISOString(),
+        toDate: new Date(toDate).toISOString(),
       },
       {
         headers: {
@@ -54,7 +56,7 @@ export const quickbooksSyncData = async () => {
   }
 };
 //--------------------------------------------------------------//
-export const quickbooksGetData = async () => {
+export const quickbooksGetData = async (fromDate: string, toDate: string) => {
   try {
     await httpServices.post(
       `${App_Config.API_BASE_URL}/api/quickbooks/validate-tokens`,
@@ -71,6 +73,8 @@ export const quickbooksGetData = async () => {
       `${App_Config.API_BASE_URL}/api/quickbooks/get-data`,
       {
         organizationId: localStorage.getItem("organizationId") || 1,
+        fromDate,
+        toDate,
       },
       {
         headers: {

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { App_Config } from "@/config";
+import { oktaAuth } from "@/src/actions";
 //-----> Components <-----------------------------------------//
 
 //-----> Assets <---------------------------------------------//
@@ -11,17 +13,15 @@ import { useRouter } from "next/router";
 const OktaLoginPage = () => {
   //----------------------------------------------------------------------------------//
   const [oktaDomain, setOktaDomain] = useState("");
-  const [oktaClientId, setOktaClientId] = useState("");
-  const [oktaClientSecret, setOktaClientSecret] = useState("");
+  const [oktaApiToken, setOktaApiToken] = useState("");
   const [nextActive, setNextActive] = useState(false);
   //----------------------------------------------------------------------------------//
   const router = useRouter();
   //----------------------------------------------------------------------------------//
   useEffect(() => {
-    if (oktaDomain === "" || oktaClientId === "" || oktaClientSecret === "")
-      setNextActive(false);
+    if (oktaDomain === "" || oktaApiToken === "") setNextActive(false);
     else setNextActive(true);
-  }, [oktaDomain, oktaClientId, oktaClientSecret]);
+  }, [oktaDomain, oktaApiToken]);
 
   return (
     <div className="bg-silverchalice font-[helvetica] h-full bg-opacity-5 px-7 py-10">
@@ -50,66 +50,54 @@ const OktaLoginPage = () => {
           <li className="mb-4">Log in to your Okta admin dashboard.</li>
           <li className="mb-4">
             Navigate to the &quot;
-            <span className="font-bold underline">Applications</span>&quot;
-            menu.
+            <span className="font-bold underline">Developer Console</span>&quot;
+            in the top-right corner of the dashboard.
           </li>
           <li className="mb-4">
             Click on the &quot;
-            <span className="font-bold underline">Add Application</span>&quot;
-            button and select &quot;
-            <span className="font-bold underline">Create New App</span>
-            &quot;.
+            <span className="font-bold underline">API</span>&quot; tab located
+            in the top menu.
           </li>
           <li className="mb-4">
-            Choose &quot;
-            <span className="font-bold underline">Single-Page App</span>&quot;
-            as the application type.
+            On the API page, you will see a list of API options. Look for the
+            &quot;
+            <span className="font-bold underline">Tokens</span>&quot; as the tab
+            and click on it.
           </li>
           <li className="mb-4">
-            Give your app name:{" "}
+            In the Tokens section, click on the &quot;
+            <span className="font-bold underline">Create Token</span>&quot;
+            button to generate a new API token.
+          </li>
+          <li className="mb-4">
+            A dialog box will appear asking you to provide a name for the token.
+            Enter:{" "}
             <span className=" bg-stone-400 w-fit text-white px-2 font-mono rounded-md py-1">
               AlphaSaas
             </span>
           </li>
           <li className="mb-4">
-            Under &quot;
-            <span className="font-bold underline">Grant type allowed</span>
-            &quot;, select &quot;
-            <span className="font-bold underline">Authorization Code</span>
-            &quot; and &quot;
-            <span className="font-bold underline">Refresh Token</span>&quot;.
+            After entering the token name, click on the &quot;
+            <span className="font-bold underline">Create</span>
+            &quot; button to generate the token.
           </li>
           <li className="mb-4">
-            In the &quot;
-            <span className="font-bold underline">Login redirect URIs</span>
-            &quot; field, enter{" "}
-            <div className=" bg-stone-400 w-fit mx-3 mt-1 text-white px-2 font-mono rounded-md py-1">
-              http://localhost:3000/welcome/customize-access
-            </div>
+            Once the token is created, you will see a success message along with
+            the generated token value. Take note of the token value as it will
+            not be shown again for security reasons.
           </li>
           <li className="mb-4">
-            Click &quot;<span className="font-bold underline">Save</span>&quot;
-            to create the new application.
-          </li>
-          <li className="mb-4">
-            Under &quot;
-            <span className="font-bold underline">Client Credentials</span>
-            &quot; section, Copy and Paste the values below:
+            Copy the generated token and securely store it in a safe place. Note
+            that this token grants access to your Okta organization's APIs, so
+            treat it like a password and do not share it with unauthorized
+            individuals.
             <input
               type="text"
-              name="okta_client_id"
-              id="okta_client_id"
-              placeholder="Client ID"
+              name="okta_api_token"
+              id="okta_api_token"
+              placeholder="Api Token"
               className="w-full border rounded my-2 ml-4 py-2 px-4"
-              onChange={(e) => setOktaClientId(e.target.value)}
-            />
-            <input
-              type="text"
-              name="okta_client_secret"
-              id="okta_client_secret"
-              placeholder="Client Secret"
-              className="w-full border rounded my-2 ml-4 py-2 px-4"
-              onChange={(e) => setOktaClientSecret(e.target.value)}
+              onChange={(e) => setOktaApiToken(e.target.value)}
             />
           </li>
         </ol>
@@ -123,12 +111,8 @@ const OktaLoginPage = () => {
             onClick={(e) => {
               e.preventDefault();
               if (nextActive) {
-                localStorage.setItem("oktaDomain", oktaDomain);
-                localStorage.setItem("oktaClientId", oktaClientId);
-                localStorage.setItem("oktaClientSecret", oktaClientSecret);
-                router.push(
-                  `https://${oktaDomain}.okta.com/oauth2/v1/authorize?client_id=${oktaClientId}&response_type=code&scope=${process.env.NEXT_PUBLIC_OKTA_SCOPE}&redirect_uri=${process.env.NEXT_PUBLIC_JIRA_REDIRECT_URL}&state=${process.env.NEXT_PUBLIC_OKTA_STATE}`
-                );
+                oktaAuth(oktaApiToken, oktaDomain);
+                router.push("/welcome/customize-access?code=success");
               }
             }}
           >

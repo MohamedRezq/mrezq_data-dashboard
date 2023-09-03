@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import { ThemeProvider } from "next-themes";
 //-----> Redux <--------------------------------------------------//
 import { store, persistor } from "@/src/store";
 import { Provider } from "react-redux";
@@ -16,7 +17,9 @@ export default function App({
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Component {...pageProps} />
+        <ThemeProvider attribute="class">
+          <Component {...pageProps} />
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   );
