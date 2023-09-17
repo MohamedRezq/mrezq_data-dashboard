@@ -38,7 +38,7 @@ const Sidebar = () => {
     {
       icon: "/assets/img/icons/lightbulb-dollar.svg",
       title: "Opportunities",
-      link: "/dashboard",
+      link: "/dashboard/opportunities",
     },
     {
       icon: "/assets/img/icons/renewable.svg",

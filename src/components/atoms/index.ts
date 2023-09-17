@@ -1,5 +1,5 @@
 export { AccordionTickItem } from "./AccordionTickItem";
-export { PieChart, LineChart, ColChart, BarChart } from "./Charts";
+export { PieChart, LineChart, ColChart, BarChart, BubbleChart } from "./Charts";
 export { HideChip } from "./Chip";
 export {
   SearchInput,

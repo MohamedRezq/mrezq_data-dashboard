@@ -11,6 +11,9 @@ export {
   HomeChart_1,
   HomeChart_2,
   HomeChart_3,
+  OppChart_1,
+  OppChart_2,
+  OppChart_3,
 } from "./ChartCard";
 export { FormLogin } from "./FormLogin";
 export { SaasCard, SaasSyncCard } from "./SaasCard";

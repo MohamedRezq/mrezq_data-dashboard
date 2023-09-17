@@ -9,3 +9,6 @@ export { default as DepartmentCard } from "./Department/DepartmentCard";
 export { default as HomeChart_1 } from "./Home/HomeChart_1";
 export { default as HomeChart_2 } from "./Home/HomeChart_2";
 export { default as HomeChart_3 } from "./Home/HomeChart_3";
+export { default as OppChart_1 } from "./Opp/OppChart_1";
+export { default as OppChart_2 } from "./Opp/OppChart_2";
+export { default as OppChart_3 } from "./Opp/OppChart_3";

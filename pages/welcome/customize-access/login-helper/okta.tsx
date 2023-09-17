@@ -88,8 +88,8 @@ const OktaLoginPage = () => {
           </li>
           <li className="mb-4">
             Copy the generated token and securely store it in a safe place. Note
-            that this token grants access to your Okta organization&apos;s APIs,
-            so treat it like a password and do not share it with unauthorized
+            that this token grants access to your Okta organization's APIs, so
+            treat it like a password and do not share it with unauthorized
             individuals.
             <input
               type="text"

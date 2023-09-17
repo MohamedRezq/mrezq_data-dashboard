@@ -162,8 +162,10 @@ body {
   padding-bottom: 5px !important;
 }
 
-.apexcharts-menu-icon {
-  display: none;
+.apexcharts-menu-icon,
+.apexcharts-text,
+.apexcharts-toolbar {
+  display: none !important;
 }
 
 .react-switch-handle {

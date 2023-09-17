@@ -27,11 +27,12 @@ const ColChart = (props: any) => {
         },
       },
       legend: {
+        show: props.showLegend ?? true,
         fontFamily: "Quicksand",
         color: "#2C2C2C",
         offsetY: 0,
         labels: {
-          colors: ["#A99AFF", "#FF4E00"],
+          colors: props.colors || ["#A99AFF", "#FF4E00"],
           useSeriesColors: false,
         },
         margin: 0,
@@ -45,7 +46,7 @@ const ColChart = (props: any) => {
         height: 200,
         width: "100%",
       },
-      colors: ["#A99AFF", "#FF4E00"],
+      colors: props.colors || ["#A99AFF", "#FF4E00"],
       plotOptions: {
         bar: {
           horizontal: false,
