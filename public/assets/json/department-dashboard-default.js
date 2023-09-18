@@ -2,6 +2,23 @@ export const dashboardDepartmentDefault = () => {
   return {
     statsCards: [
       {
+        title: "Per User Spent",
+        value: 0, // "$2k"
+        valueType: "value",
+        subValues: [
+          {
+            subValue: 0, // "10"
+            subValueState: "negative",
+            subTitle: "Wasted",
+          },
+          {
+            subValue: 0, // "$200"
+            subValueState: "positive",
+            subTitle: "Utilised",
+          },
+        ],
+      },
+      {
         title: "Renewals",
         value: 0,
         valueType: "stats",
@@ -21,23 +38,6 @@ export const dashboardDepartmentDefault = () => {
           //   subValueState: "positive",
           //   subTitle: "Renewed",
           // },
-        ],
-      },
-      {
-        title: "Per User Spent",
-        value: 0, // "$2k"
-        valueType: "value",
-        subValues: [
-          {
-            subValue: 0, // "10"
-            subValueState: "negative",
-            subTitle: "Wasted",
-          },
-          {
-            subValue: 0, // "$200"
-            subValueState: "positive",
-            subTitle: "Utilised",
-          },
         ],
       },
       // {

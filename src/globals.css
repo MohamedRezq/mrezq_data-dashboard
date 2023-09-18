@@ -8,12 +8,17 @@
 /* -------------------------------------------------------- */
 /* Imports ------------------------------------------------ */
 @import 'react-accessible-accordion/dist/fancy-example.css';
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 @import 'react-accessible-accordion/dist/fancy-example.css';
 @import 'rc-dropdown/assets/index.css';
 @import 'react-modern-drawer/dist/index.css';
 @import 'react-responsive-modal/styles.css';
+/* @font-face {
+  font-family: 'Quicksand';
+  src: url('/assets/fonts/Quicksand-Light.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+} */
 /* -------------------------------------------------------- */
 /* -------------------------------------------------------- */
 /* -------------------------------------------------------- */
@@ -41,6 +46,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  overflow-y: hidden;
 }
 
 * {

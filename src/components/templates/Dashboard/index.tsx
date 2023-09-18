@@ -41,14 +41,25 @@ const DashboardTemplate = (props: DashboardTemplateProps) => {
           <MiniSideBar />
         </div>
         <div
-          className={`flex flex-col ${!displayMiniSidebar && "max-w-4xl"} ${
-            displayMiniSidebar && "mr-5"
-          } gap-y-5 w-full ${
-            !displayMiniSidebar && "mx-auto"
-          } h-fit lg:h-[96vh]`}
+          className={`flex flex-col max-w-6xl ${
+            displayMiniSidebar && "ml-6"
+          } w-full ${!displayMiniSidebar && "mx-auto"} h-fit lg:h-[96vh]`}
         >
-          <DashboardHeader headerTitle={props.headerTitle} date={props.date} />
-          <div className="w-full flex flex-col md:pr-10 mx-auto gap-y-4 py-3 lg:overflow-y-auto">
+          <div
+            className={`w-full ${displayMiniSidebar && "pl-0"} ${
+              !displayMiniSidebar && "px-[133px]"
+            } mb-[25px]`}
+          >
+            <DashboardHeader
+              headerTitle={props.headerTitle}
+              date={props.date}
+            />
+          </div>
+          <div
+            className={`w-full ${displayMiniSidebar && "pl-0 pr-[200px]"} ${
+              !displayMiniSidebar && "px-[133px]"
+            } mb-[25px] flex flex-col gap-y-[25px] lg:overflow-y-auto`}
+          >
             {props.children !== undefined ? props.children : <></>}
           </div>
         </div>

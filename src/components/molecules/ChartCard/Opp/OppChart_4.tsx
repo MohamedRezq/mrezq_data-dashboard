@@ -81,7 +81,7 @@ const OppChart_4 = () => {
           trigger={["click"]}
           overlay={ChartMenu}
           animation="slide-up"
-          placement="bottomRight"
+          placement="bottomLeft"
         >
           <BsThreeDots className="absolute right-5 top-2 text-dovegray cursor-pointer text-base" />
         </Dropdown>

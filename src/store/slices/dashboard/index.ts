@@ -10,24 +10,19 @@ const initialState: any = {
     mainInterval: "Month",
     homeStats: [
       {
-        title: "Renewals",
-        value: 0,
-        valueType: "stats",
+        title: "Total Saas Spent",
+        value: 0, // "$2k"
+        valueType: "value",
         subValues: [
           {
-            subValue: 0,
-            subValueState: "negative",
-            subTitle: "Pending",
-          },
-          {
-            subValue: 0,
-            subValueState: "normal",
-            subTitle: "Upcoming",
-          },
-          {
-            subValue: 0,
+            subValue: 0, // "10"
             subValueState: "positive",
-            subTitle: "Renewed",
+            subTitle: "Total User",
+          },
+          {
+            subValue: 0, // "$200"
+            subValueState: "positive",
+            subTitle: "Per user spend",
           },
         ],
       },
@@ -49,19 +44,24 @@ const initialState: any = {
         ],
       },
       {
-        title: "Total Saas Spent",
-        value: 0, // "$2k"
-        valueType: "value",
+        title: "Renewals",
+        value: 0,
+        valueType: "stats",
         subValues: [
           {
-            subValue: 0, // "10"
-            subValueState: "positive",
-            subTitle: "Total User",
+            subValue: 0,
+            subValueState: "negative",
+            subTitle: "Pending",
           },
           {
-            subValue: 0, // "$200"
+            subValue: 0,
+            subValueState: "normal",
+            subTitle: "Upcoming",
+          },
+          {
+            subValue: 0,
             subValueState: "positive",
-            subTitle: "Per user spend",
+            subTitle: "Renewed",
           },
         ],
       },
@@ -174,6 +174,23 @@ const initialState: any = {
     },
     departmentStats: [
       {
+        title: "Per User Spent",
+        value: 0, // "$2k"
+        valueType: "value",
+        subValues: [
+          {
+            subValue: 0, // "10"
+            subValueState: "negative",
+            subTitle: "Wasted",
+          },
+          {
+            subValue: 0, // "$200"
+            subValueState: "positive",
+            subTitle: "Utilised",
+          },
+        ],
+      },
+      {
         title: "Renewals",
         value: 0,
         valueType: "stats",
@@ -193,23 +210,6 @@ const initialState: any = {
           //   subValueState: "positive",
           //   subTitle: "Renewed",
           // },
-        ],
-      },
-      {
-        title: "Per User Spent",
-        value: 0, // "$2k"
-        valueType: "value",
-        subValues: [
-          {
-            subValue: 0, // "10"
-            subValueState: "negative",
-            subTitle: "Wasted",
-          },
-          {
-            subValue: 0, // "$200"
-            subValueState: "positive",
-            subTitle: "Utilised",
-          },
         ],
       },
       // {

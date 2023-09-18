@@ -23,10 +23,11 @@ const CustomDropMenu = (props: CustomDropMenuProps) => {
   //----------------------------------------------------------------------------------//
   return (
     <Menu
-      className="p-5 w-44"
+      className="p-5 w-[145px]"
       onSelect={(e) => {
         dispatch(props.setterFunction(e.key));
       }}
+      style={{ zIndex: 99999 }}
     >
       {props.options.map((opt) => (
         <MenuItem

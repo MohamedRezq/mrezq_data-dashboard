@@ -65,7 +65,7 @@ const Sidebar = () => {
             dispatch(setDisplayMiniSidebar(true));
             console.log("now displayMini:", displayMiniSidebar);
           }}
-          className="mb-16 cursor-pointer font-quicksandLogo text-[30px] font-bold text-center"
+          className="mb-16 cursor-pointer text-[30px] font-bold text-center"
         >
           alpha
         </div>

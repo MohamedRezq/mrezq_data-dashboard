@@ -78,20 +78,21 @@ const DepartmentCard = (props: DepartmentCardProps) => {
       className="col-span-1 text-mineshaft dark:text-white rounded-2xl h-fit mb-5 font-semibold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
-      <Link
-        href={`/dashboard/department/detail?department=${encodeURIComponent(
-          cardData?.title === "All Employees" ? "All" : cardData?.title
-        )}`}
-        passHref
-        className=" bg-gallery h-8 dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1"
-      >
-        {cardData.title}
+      <div className=" bg-gallery h-8 dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-5 py-1">
+        <Link
+          href={`/dashboard/department/detail?department=${encodeURIComponent(
+            cardData?.title === "All Employees" ? "All" : cardData?.title
+          )}`}
+          passHref
+        >
+          {cardData.title}
+        </Link>
         <Dropdown trigger={["click"]} overlay={ChartMenu} animation="slide-up">
           <BsThreeDots className="absolute right-5 top-2 text-dovegray cursor-pointer text-base" />
         </Dropdown>
-      </Link>
+      </div>
       <div
-        className={`h-fit  px-7 bg-wildsand dark:bg-darkMineShaft text-white flex flex-col justify-between gap-y-1 whitespace-nowrap py-5 rounded-br-2xl rounded-bl-2xl`}
+        className={`h-fit pl-5 pr-3 bg-wildsand dark:bg-darkMineShaft text-white flex flex-col justify-between gap-y-1 whitespace-nowrap pt-[11px] pb-[29px] rounded-br-2xl rounded-bl-2xl`}
       >
         <div className="flex text-mineshaft dark:text-white flex-col gap-y-1 text-[10px]">
           <div>Total Spend</div>
@@ -114,7 +115,7 @@ const DepartmentCard = (props: DepartmentCardProps) => {
             </div>
           </div>
           <div className="mt-2">{cardData?.apps?.length || 0} apps</div>
-          <div className=" flex gap-2 flex-wrap">
+          <div className=" grid grid-cols-5 gap-2 mr-[83px]">
             {cardData?.apps?.map((app: AppInfoType, i: number) => (
               <Tooltip
                 key={`dept-card-info-${app?.title}-${i}`}
@@ -125,7 +126,10 @@ const DepartmentCard = (props: DepartmentCardProps) => {
                     className={`w-7 h-7 rounded-md flex justify-center items-center`}
                   >
                     <img
-                      src={app.logo}
+                      src={
+                        app.logo ||
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2slI8T_f12PxFTpgNOSkFQKVFJ2UQcIkJJOafROU&s"
+                      }
                       alt={app.title}
                       className="rounded-sm w-inherit h-inherit"
                     />
@@ -136,7 +140,7 @@ const DepartmentCard = (props: DepartmentCardProps) => {
             ))}
           </div>
           <div className="mt-3">{cardData?.users?.length || 0} users</div>
-          {cardData?.users?.length > 25 ? (
+          {cardData?.users?.length > 8 ? (
             <div className="flex items-center -space-x-3">
               {cardData?.users
                 ?.slice(0, 3)
@@ -148,7 +152,9 @@ const DepartmentCard = (props: DepartmentCardProps) => {
                     key={`dept-card-info-${user?.name}-${i}`}
                     element={
                       <img
-                        src={user?.avatar}
+                        src={`/assets/img/avatar_${
+                          Math.floor(Math.random() * (8 - 1 + 1)) + 1
+                        }.png`}
                         alt={user?.name}
                         className="rounded-full h-7 w-7 border-2 border-white"
                       />
@@ -157,20 +163,25 @@ const DepartmentCard = (props: DepartmentCardProps) => {
                   />
                 ))}
               <div className="text-[8px] bg-opacity-100 opacity-100 z-50 rounded-full border border-white h-6 w-6 flex items-center justify-center bg-hippiegreen text-white">
-                25+
+                {cardData?.users.length}
               </div>
             </div>
           ) : (
             <div className=" flex gap-1 flex-wrap">
               {cardData?.users?.map((user: UserInfoType, i: number) => (
                 <Tooltip
+                  additionalClassNames={`z-${
+                    (i + 1) * 10
+                  }  bg-opacity-100 opacity-100`}
                   key={`dept-card-info-${user?.name}-${i}`}
                   element={
-                    <div className="flex gap-x-1 items-center">
-                      <div className="rounded-full h-7 w-7 border border-cuttysark p-1">
-                        <img src={user?.avatar} alt={user?.name} />
-                      </div>
-                    </div>
+                    <img
+                      src={`/assets/img/avatar_${
+                        Math.floor(Math.random() * (8 - 1 + 1)) + 1
+                      }.png`}
+                      alt={user?.name}
+                      className="rounded-full h-7 w-7 border-2 border-white"
+                    />
                   }
                   text={user.name}
                 />

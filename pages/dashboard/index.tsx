@@ -90,30 +90,31 @@ const Home = () => {
       date={date}
     >
       <div className="flex flex-col gap-y-5 w-full">
-        <div className="flex justify-between">
-          <div className="flex w-44 justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6">
-            <Image src={monthIcon} alt="calendar" />
-            <div className="text-center font-medium text-sm w-40 text-mineshaft">
-              {homeInterval}
-            </div>
-            <Dropdown
-              trigger={["click"]}
-              overlay={
-                <CustomDropMenu
-                  selectedOption={homeInterval}
-                  options={["Month", "Quarter", "Year"]}
-                  setterFunction={setHomeInterval}
-                />
-              }
-              animation="slide-up"
-            >
+        <div className="flex justify-between mb-[14px]">
+          <Dropdown
+            trigger={["click"]}
+            overlay={
+              <CustomDropMenu
+                selectedOption={homeInterval}
+                options={["Month", "Quarter", "Year"]}
+                setterFunction={setHomeInterval}
+              />
+            }
+            animation="slide-up"
+          >
+            <div className="flex w-[145px] justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6">
+              <Image src={monthIcon} alt="calendar" />
+              <div className="text-center font-medium text-sm w-40 text-mineshaft">
+                {homeInterval}
+              </div>
               <Image
                 src={dropDown}
                 alt="Menu"
                 className="w-[10px] h-[6px] cursor-pointer"
               />
-            </Dropdown>
-          </div>
+            </div>
+          </Dropdown>
+
           <div
             onClick={() => {
               const appIds = user?.info?.applications?.map(
@@ -136,13 +137,13 @@ const Home = () => {
           <PageLoading />
         ) : (
           <>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 h-[100px] lg:grid-cols-3 gap-[15px]">
               {statsData.map((item: any, i: number) => (
                 <StatsCard
                   key={`${item.title}-${item.value}-${i}`}
                   title={item.title}
                   value={
-                    i === 2
+                    i === 0
                       ? item.value >= 1000
                         ? `$${roundNumbers(item?.value)}`
                         : `$${item.value}`
@@ -153,7 +154,7 @@ const Home = () => {
                 />
               ))}
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-3">
+            <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-[15px]">
               <HomeChart_1 />
               <HomeChart_2 />
               <HomeChart_3 />

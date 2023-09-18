@@ -53,7 +53,7 @@ const ChartCard = (props: ChartCardProps) => {
   ]);
 
   const menuItems = new Map([
-    ["Pro Mode", "/assets/img/icons/edit.svg"],
+    ["Info", "/assets/img/icons/edit.svg"],
     ["Edit", "/assets/img/icons/edit.svg"],
     ["Remove", "/assets/img/icons/delete.svg"],
   ]);
@@ -69,11 +69,11 @@ const ChartCard = (props: ChartCardProps) => {
         <Image
           width={8}
           height={8}
-          src={menuItems.get("Pro Mode") || ""}
+          src={menuItems.get("Info") || ""}
           className="ml-4"
-          alt="Pro Mode"
+          alt="Info"
         />{" "}
-        <>Pro Mode</>
+        <>Info</>
       </MenuItem>
       <MenuItem className="text-[10px] pl-4 gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
         <Image
@@ -81,7 +81,7 @@ const ChartCard = (props: ChartCardProps) => {
           height={8}
           src={menuItems.get("Edit") || ""}
           className="ml-4"
-          alt="Pro Mode"
+          alt="Info"
         />{" "}
         <>Edit</>
       </MenuItem>
@@ -91,7 +91,7 @@ const ChartCard = (props: ChartCardProps) => {
           height={8}
           src={menuItems.get("Remove") || ""}
           className="ml-4"
-          alt="Pro Mode"
+          alt="Info"
         />{" "}
         <>Remove</>
       </MenuItem>

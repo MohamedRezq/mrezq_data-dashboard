@@ -107,7 +107,7 @@ const ColChart = (props: any) => {
         options={data.options}
         series={props.chartSeries}
         type="bar"
-        height={170}
+        height={props.height ?? 170}
         width="100%"
       />
     </div>

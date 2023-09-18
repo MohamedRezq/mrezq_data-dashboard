@@ -120,7 +120,7 @@ const DashboardIntegrations = () => {
       <div className="flex flex-col gap-y-8 justify-center">
         <div className="flex gap-x-5 h-10">
           <RoundedSearchInput />
-          <div className="flex w-44 justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6">
+          <div className="flex w-[145px] justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6">
             <Image
               src={documentIcon}
               className=" w-[16px] h-[16px]"
@@ -147,7 +147,7 @@ const DashboardIntegrations = () => {
               />
             </Dropdown>
           </div>
-          <Link
+          {/* <Link
             href=""
             className="flex w-[200px] justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6"
           >
@@ -155,7 +155,7 @@ const DashboardIntegrations = () => {
             <div className="text-center font-medium text-sm w-40 text-mineshaft">
               Integration Settings
             </div>
-          </Link>
+          </Link> */}
         </div>
         <div className="flex gap-x-2">
           {selectedCategories?.map((cat: any, i: number) => (
@@ -175,7 +175,7 @@ const DashboardIntegrations = () => {
                 <div
                   className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${
                     displayMiniSidebar ? "5" : "3"
-                  } gap-3`}
+                  } gap-[10px]`}
                 >
                   {cat.apps?.map((item: SaasCardProps, i: number) => (
                     <SaasCard
@@ -193,6 +193,9 @@ const DashboardIntegrations = () => {
             </div>
           ))}
         </div>
+        <button className="text-white w-[120px] text-sm my-[60px] bg-[##5EBF60] dark:bg-[#5EBF60] rounded-2xl px-[33px] py-[12px]">
+          Lets Go!
+        </button>
       </div>
     </DashboardTemplate>
   );

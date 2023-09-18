@@ -69,7 +69,7 @@ const DepartmentChart_5 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 rounded-2xl h-fit lg:h-[300px] dark:bg-darkMineShaft dark:text-white  mb-5 text-[#2B2B2B] font-semibold w-full"
+      className="col-span-1 rounded-2xl h-fit lg:h-[240px] dark:bg-darkMineShaft dark:text-white  mb-5 text-[#2B2B2B] font-semibold w-full"
       style={{ boxShadow: '0px 3px 5px #00000029' }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -78,13 +78,13 @@ const DepartmentChart_5 = () => {
           trigger={['click']}
           overlay={ChartMenu}
           animation="slide-up"
-          placement="bottomRight"
+          placement="bottomLeft"
         >
           <BsThreeDots className="absolute right-5 top-2 text-dovegray cursor-pointer text-base" />
         </Dropdown>
       </div>
       <div
-        className={`lg:h-[270px]  h-fit px-7 bg-wildsand dark:bg-darkMineShaft dark:text-white  flex flex-col gap-y-1 whitespace-nowrap py-5 rounded-br-2xl rounded-bl-2xl`}
+        className={`lg:h-[210px] h-fit pl-[29px] pr-[40px] bg-wildsand dark:bg-darkMineShaft dark:text-white  flex flex-col gap-y-1 whitespace-nowrap py-5 rounded-br-2xl rounded-bl-2xl`}
       >
         <div className=" flex justify-between items-start">
           <div className="flex flex-col gap-y-1 text-[10px]">

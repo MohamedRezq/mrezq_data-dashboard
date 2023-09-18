@@ -72,7 +72,7 @@ const DepartmentChart_2 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 rounded-2xl h-[260px] text-[#2B2B2B] font-semibold w-full"
+      className="col-span-1 rounded-2xl h-[240px] text-[#2B2B2B] font-semibold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -81,13 +81,13 @@ const DepartmentChart_2 = () => {
           trigger={["click"]}
           overlay={ChartMenu}
           animation="slide-up"
-          placement="bottomRight"
+          placement="bottomLeft"
         >
           <BsThreeDots className="absolute right-5 top-2 text-dovegray cursor-pointer text-base" />
         </Dropdown>
       </div>
       <div
-        className={`h-[228px]  px-7 bg-wildsand dark:bg-darkMineShaft text-white flex flex-col justify-between gap-y-1 whitespace-nowrap py-5 rounded-br-2xl rounded-bl-2xl`}
+        className={`h-[208px]  px-7 bg-wildsand dark:bg-darkMineShaft text-white flex flex-col justify-between gap-y-1 whitespace-nowrap py-5 rounded-br-2xl rounded-bl-2xl`}
       >
         <div>
           <div className="mt-3 mb-4 flex justify-between items-end">

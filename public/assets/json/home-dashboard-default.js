@@ -2,24 +2,19 @@ export const homeDashboardDefault = () => {
   return {
     statsCards: [
       {
-        title: "Renewals",
-        value: 0,
-        valueType: "stats",
+        title: "Total Saas Spent",
+        value: 0, // "$2k"
+        valueType: "value",
         subValues: [
           {
-            subValue: 0,
-            subValueState: "negative",
-            subTitle: "Pending",
-          },
-          {
-            subValue: 0,
-            subValueState: "normal",
-            subTitle: "Upcoming",
-          },
-          {
-            subValue: 0,
+            subValue: 0, // "10"
             subValueState: "positive",
-            subTitle: "Renewed",
+            subTitle: "Total User",
+          },
+          {
+            subValue: 0, // "$200"
+            subValueState: "positive",
+            subTitle: "Per user spend",
           },
         ],
       },
@@ -41,19 +36,24 @@ export const homeDashboardDefault = () => {
         ],
       },
       {
-        title: "Total Saas Spent",
-        value: 0, // "$2k"
-        valueType: "value",
+        title: "Renewals",
+        value: 0,
+        valueType: "stats",
         subValues: [
           {
-            subValue: 0, // "10"
-            subValueState: "positive",
-            subTitle: "Total User",
+            subValue: 0,
+            subValueState: "negative",
+            subTitle: "Pending",
           },
           {
-            subValue: 0, // "$200"
+            subValue: 0,
+            subValueState: "normal",
+            subTitle: "Upcoming",
+          },
+          {
+            subValue: 0,
             subValueState: "positive",
-            subTitle: "Per user spend",
+            subTitle: "Renewed",
           },
         ],
       },
