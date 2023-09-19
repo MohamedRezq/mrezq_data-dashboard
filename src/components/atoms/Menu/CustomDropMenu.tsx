@@ -32,7 +32,7 @@ const CustomDropMenu = (props: CustomDropMenuProps) => {
       {props.options.map((opt) => (
         <MenuItem
           key={`${opt}`}
-          className="flex rounded-md items-center text-xs font-semibold hover:bg-lightMercury dark:hover:bg-mineshaft dark:hover:text-white text-dovegray cursor-pointer"
+          className="flex rounded-md items-center text-xs font-bold hover:bg-lightMercury dark:hover:bg-mineshaft dark:hover:text-white text-dovegray cursor-pointer"
         >
           <input
             type="radio"

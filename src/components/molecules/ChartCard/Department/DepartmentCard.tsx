@@ -3,7 +3,7 @@ import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 //-----> Actions <----------------------------------------------//
 
 //-----> Redux <----------------------------------------------//
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/src/store";
 //-----> Components <----------------------------------------------//
 import Dropdown from "rc-dropdown";
@@ -13,6 +13,9 @@ import { ChartMenu, Tooltip } from "@/src/components/atoms";
 import httpServices from "@/src/utils/httpServices";
 import { App_Config } from "@/config";
 import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { setSelectedDepartment } from "@/src/store/slices/dashboard";
 //----------------------------------------------------------------------------------//
 //-----> END OF IMPORTS <-------------------------------------//
 //----------------------------------------------------------------------------------//
@@ -71,22 +74,31 @@ const DepartmentCard = (props: DepartmentCardProps) => {
       if (apiData !== undefined) setCardData(apiData);
     });
   }, []);
-
+  const router = useRouter();
+  const dispatch = useDispatch();
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 text-mineshaft dark:text-white rounded-2xl h-fit mb-5 font-semibold w-full"
+      className="w-[285px] text-mineshaft dark:text-white rounded-2xl h-fit font-bold"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8 dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-5 py-1">
-        <Link
-          href={`/dashboard/department/detail?department=${encodeURIComponent(
-            cardData?.title === "All Employees" ? "All" : cardData?.title
-          )}`}
-          passHref
+        <div
+          onClick={() => {
+            dispatch(setSelectedDepartment(cardData?.title));
+            router.push({
+              pathname: "/dashboard/department/detail",
+              query: {
+                department: `${encodeURIComponent(
+                  cardData?.title === "All Employees" ? "All" : cardData?.title
+                )}`,
+              },
+            });
+          }}
+          className=" cursor-pointer"
         >
-          {cardData.title}
-        </Link>
+          <div>{cardData.title}</div>
+        </div>
         <Dropdown trigger={["click"]} overlay={ChartMenu} animation="slide-up">
           <BsThreeDots className="absolute right-5 top-2 text-dovegray cursor-pointer text-base" />
         </Dropdown>
@@ -97,13 +109,13 @@ const DepartmentCard = (props: DepartmentCardProps) => {
         <div className="flex text-mineshaft dark:text-white flex-col gap-y-1 text-[10px]">
           <div>Total Spend</div>
           <div className="flex gap-x-4 items-center">
-            <div className="text-[20px] font-extrabold text-[#2C2C2C] opacity-90 dark:text-white  mt-1 mb-1">
+            <div className="text-[20px] font-bold text-emperor dark:text-white  mb-1">
               $
               {Math.round(cardData?.totalSpend || 0)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </div>
-            <div className="flex items-center mt-1 justify-center flex-col text-hippiegreen text-[6px]">
+            <div className="flex items-center justify-center flex-col text-hippiegreen text-[6px]">
               <div className="text-[8px]">
                 {cardData?.increasePercent > 0 ? (
                   <BiSolidUpArrow />
@@ -125,12 +137,14 @@ const DepartmentCard = (props: DepartmentCardProps) => {
                     target="_blank"
                     className={`w-7 h-7 rounded-md flex justify-center items-center`}
                   >
-                    <img
+                    <Image
                       src={
                         app.logo ||
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2slI8T_f12PxFTpgNOSkFQKVFJ2UQcIkJJOafROU&s"
                       }
                       alt={app.title}
+                      width={25}
+                      height={25}
                       className="rounded-sm w-inherit h-inherit"
                     />
                   </Link>
@@ -151,11 +165,13 @@ const DepartmentCard = (props: DepartmentCardProps) => {
                     }  bg-opacity-100 opacity-100`}
                     key={`dept-card-info-${user?.name}-${i}`}
                     element={
-                      <img
+                      <Image
                         src={`/assets/img/avatar_${
                           Math.floor(Math.random() * (8 - 1 + 1)) + 1
                         }.png`}
                         alt={user?.name}
+                        width={25}
+                        height={25}
                         className="rounded-full h-7 w-7 border-2 border-white"
                       />
                     }
@@ -163,11 +179,11 @@ const DepartmentCard = (props: DepartmentCardProps) => {
                   />
                 ))}
               <div className="text-[8px] bg-opacity-100 opacity-100 z-50 rounded-full border border-white h-6 w-6 flex items-center justify-center bg-hippiegreen text-white">
-                {cardData?.users.length}
+                {cardData?.users.length - 3}+
               </div>
             </div>
           ) : (
-            <div className=" flex gap-1 flex-wrap">
+            <div className="flex gap-1 flex-wrap">
               {cardData?.users?.map((user: UserInfoType, i: number) => (
                 <Tooltip
                   additionalClassNames={`z-${
@@ -175,11 +191,13 @@ const DepartmentCard = (props: DepartmentCardProps) => {
                   }  bg-opacity-100 opacity-100`}
                   key={`dept-card-info-${user?.name}-${i}`}
                   element={
-                    <img
+                    <Image
                       src={`/assets/img/avatar_${
                         Math.floor(Math.random() * (8 - 1 + 1)) + 1
                       }.png`}
                       alt={user?.name}
+                      width={25}
+                      height={25}
                       className="rounded-full h-7 w-7 border-2 border-white"
                     />
                   }

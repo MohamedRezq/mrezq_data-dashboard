@@ -46,23 +46,6 @@ const DashboardDepartmentsHome = () => {
   //-------------------------------------------------------------------------//
   const fetchData = async () => {
     try {
-      // const res = await httpServices.post(
-      //   `${App_Config.API_BASE_URL}/api/dashboard/department/get-department-stats`,
-      //   {
-      //     organizationId: localStorage.getItem("organizationId"),
-      //     fromDate: new Date(
-      //       new Date().getFullYear() - 1,
-      //       new Date().getMonth(),
-      //       new Date().getDate()
-      //     ).toISOString(),
-      //     toDate: new Date().toISOString(),
-      //   },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
-      // );
       const res = await httpServices.get(
         `${
           App_Config.API_BASE_URL
@@ -98,9 +81,9 @@ const DashboardDepartmentsHome = () => {
       }, ${user.info.firstName}!`}
       date={date}
     >
-      <div className="flex flex-col gap-y-5 w-full">
+      <div className="w-full xl:w-[885px] mx-auto flex flex-col gap-y-[15px]">
         <div className="flex w-[145px] justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6">
-          <Image src={monthIcon} alt="calendar" />
+          <Image src={monthIcon} alt="calendar" width={16} />
           <div className="text-center font-medium text-sm w-40 text-mineshaft">
             {departmentMainInterval}
           </div>
@@ -118,6 +101,7 @@ const DashboardDepartmentsHome = () => {
             <Image
               src={dropDown}
               alt="Menu"
+              width={10}
               className="w-[10px] h-[6px] cursor-pointer"
             />
           </Dropdown>
@@ -131,7 +115,7 @@ const DashboardDepartmentsHome = () => {
           <PageLoading />
         ) : (
           <>
-            <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-3">
+            <div className="flex flex-wrap gap-[15px] items-start">
               <DepartmentCard />
               {departments.map((dept: any) => (
                 <DepartmentCard

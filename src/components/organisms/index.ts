@@ -1,2 +1,2 @@
-export { Sidebar, MiniSideBar } from "./Sidebar";
+export { Sidebar } from "./Sidebar";
 export { DashboardHeader } from "./DashboardHeader";

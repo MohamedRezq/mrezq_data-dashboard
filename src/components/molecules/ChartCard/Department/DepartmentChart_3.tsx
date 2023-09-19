@@ -66,7 +66,7 @@ const DepartmentChart_3 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-2 rounded-2xl h-fit lg:h-[240px] mb-2 text-[#2B2B2B] font-semibold w-full"
+      className="col-span-2 rounded-2xl h-fit lg:h-[239px] mb-2 text-lightMineShaft font-bold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -86,8 +86,8 @@ const DepartmentChart_3 = () => {
         <div className=" flex justify-between items-start">
           <div className="flex flex-col gap-y-1 text-[10px]">
             <div>Total Budget:</div>
-            <div className="text-[16px] font-extrabold text-[#2C2C2C] dark:text-white opacity-90 mt-1">
-              ${" "}
+            <div className="text-[20px] font-bold text-mineshaft dark:text-white opacity-80 mt-1">
+              $
               {Math.round(chartData.value || 0)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -95,7 +95,12 @@ const DepartmentChart_3 = () => {
           </div>
           <div className="flex gap-x-3">
             <div className="flex w-20 cursor-pointer justify-around items-center gap-x-2 text-xxs bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6">
-              <Image src={editIcon} alt="Edit" className="w-[12px] h-[6px]" />
+              <Image
+                src={editIcon}
+                alt="Edit"
+                className="w-[12px] h-[6px]"
+                width={12}
+              />
               <div className="text-center font-medium text-xxs w-16 dark:text-mineshaft">
                 Edit Data
               </div>
@@ -112,6 +117,7 @@ const DepartmentChart_3 = () => {
                 <Image
                   src={dropDown}
                   alt="Menu"
+                  width={8}
                   className="w-[8px] h-[4px] cursor-pointer"
                 />
               </Dropdown>

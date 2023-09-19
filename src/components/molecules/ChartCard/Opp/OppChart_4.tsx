@@ -72,7 +72,7 @@ const OppChart_4 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-2 h-full rounded-2xl text-[#2B2B2B] font-semibold w-full"
+      className="col-span-2 h-full rounded-2xl text-lightMineShaft font-bold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -125,6 +125,7 @@ const OppChart_4 = () => {
                 <Image
                   src={dropDown}
                   alt="Menu"
+                  width={8}
                   className="w-[8px] h-[4px] cursor-pointer"
                 />
               </Dropdown>

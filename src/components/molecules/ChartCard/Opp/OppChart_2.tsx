@@ -77,7 +77,7 @@ const OppChart_2 = (props: OppChart_2_Props) => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-2 rounded-2xl h-fit lg:h-[300px] text-[#2B2B2B] font-semibold w-full"
+      className="col-span-2 rounded-2xl h-fit lg:h-[300px] text-lightMineShaft font-bold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -99,7 +99,7 @@ const OppChart_2 = (props: OppChart_2_Props) => {
             <div className=" text-mineshaft dark:text-white">
               Total Spent - Monthly
             </div>
-            <div className="text-[20px] font-extrabold text-[#2C2C2C] dark:text-white opacity-90">
+            <div className="text-[20px] font-bold text-[#2C2C2C] dark:text-white opacity-90">
               <span className="text-[#509051]">$10,000</span>/
               <span className="text-[#FF6C6C]">$12,000</span>
             </div>
@@ -123,6 +123,7 @@ const OppChart_2 = (props: OppChart_2_Props) => {
                 <Image
                   src={dropDown}
                   alt="Menu"
+                  width={8}
                   className="w-[8px] h-[4px] cursor-pointer"
                 />
               </Dropdown>
@@ -145,6 +146,7 @@ const OppChart_2 = (props: OppChart_2_Props) => {
                 <Image
                   src={dropDown}
                   alt="Menu"
+                  width={8}
                   className="w-[8px] h-[4px] cursor-pointer"
                 />
               </Dropdown>
@@ -171,6 +173,7 @@ const OppChart_2 = (props: OppChart_2_Props) => {
                 <Image
                   src={dropDown}
                   alt="Menu"
+                  width={8}
                   className="w-[8px] h-[4px] cursor-pointer"
                 />
               </Dropdown>

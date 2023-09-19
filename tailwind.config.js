@@ -32,6 +32,7 @@ module.exports = {
         lightMercury: "#EAEAEA",
         grayish2: "#939393",
         darkMineShaft: "#262626",
+        lightMineShaft: "#2B2B2B",
         midMineShaft: "#303030",
         gallery: "#EBEBEB",
       },

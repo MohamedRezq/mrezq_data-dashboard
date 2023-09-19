@@ -23,12 +23,12 @@ const LoginMenu = () => {
 
   return (
     <Menu className="px-4" onSelect={() => {}}>
-      <MenuItem className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold">
+      <MenuItem className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-bold">
         Profile
       </MenuItem>
       <MenuItem
         onClick={handleUserLogout}
-        className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold"
+        className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-bold"
       >
         Sign out
       </MenuItem>

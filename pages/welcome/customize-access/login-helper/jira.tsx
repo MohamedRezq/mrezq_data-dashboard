@@ -94,8 +94,8 @@ const JiraLoginPage = () => {
           </li>
           <li className="mb-4">
             Copy the generated token and securely store it in a safe place. Note
-            that this token grants access to your Jira organization&apos;s APIs,
-            so treat it like a password and do not share it with unauthorized
+            that this token grants access to your Jira organization's APIs, so
+            treat it like a password and do not share it with unauthorized
             individuals.
             <input
               type="text"
@@ -113,7 +113,7 @@ const JiraLoginPage = () => {
               nextActive
                 ? "bg-emerald hover:bg-hippiegreen cursor-pointer"
                 : "bg-alto cursor-progress"
-            } rounded-xl px-6 py-3 text-white text-[10px] font-semibold`}
+            } rounded-xl px-6 py-3 text-white text-[10px] font-bold`}
             onClick={(e) => {
               e.preventDefault();
               if (nextActive) {

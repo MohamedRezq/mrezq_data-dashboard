@@ -21,7 +21,7 @@ const ChartMenu = () => {
       builtinPlacements={["bottomRight"]}
     >
       <hr className="absolute mt-[1px] top-0 left-5 w-5 border rounded-lg border-[#707070] border-opacity-50" />
-      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-mineshaft cursor-pointer">
+      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-bold hover:bg-[#EAEAEA] text-mineshaft dark:text-mineshaft cursor-pointer">
         <Image
           width={8}
           height={8}
@@ -30,7 +30,7 @@ const ChartMenu = () => {
         />{" "}
         <>Info</>
       </MenuItem>
-      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-mineshaft cursor-pointer">
+      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-bold hover:bg-[#EAEAEA] text-mineshaft dark:text-mineshaft cursor-pointer">
         <Image
           width={8}
           height={8}
@@ -39,7 +39,7 @@ const ChartMenu = () => {
         />{" "}
         <>Edit</>
       </MenuItem>
-      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-mineshaft cursor-pointer">
+      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-bold hover:bg-[#EAEAEA] text-mineshaft dark:text-mineshaft cursor-pointer">
         <Image
           width={8}
           height={8}

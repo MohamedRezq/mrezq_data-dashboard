@@ -39,6 +39,9 @@ const DepartmentChart_6 = (props: DepartmentChart_6_Props) => {
   const department = useSelector(
     (state: RootState) => state.dashboard.department.selectedDepartment
   );
+  const totalBudget = useSelector(
+    (state: RootState) => state.dashboard.department.departmentChart_2
+  );
   //-------------------------------------------------------------------------//
   const fetchData = async () => {
     try {
@@ -47,7 +50,6 @@ const DepartmentChart_6 = (props: DepartmentChart_6_Props) => {
         {
           organizationId: localStorage.getItem("organizationId"),
           department: department,
-          interval: "Month",
         },
         {
           headers: {
@@ -55,7 +57,6 @@ const DepartmentChart_6 = (props: DepartmentChart_6_Props) => {
           },
         }
       );
-      console.log("rx data chart 6: ", res.data);
       return res.data;
     } catch (error: any | null) {
       // console.log(error);
@@ -77,7 +78,7 @@ const DepartmentChart_6 = (props: DepartmentChart_6_Props) => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-2 rounded-2xl h-fit lg:h-[240px] text-[#2B2B2B] font-semibold w-full"
+      className="col-span-2 rounded-2xl h-fit lg:h-[239px] text-lightMineShaft font-bold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -97,9 +98,9 @@ const DepartmentChart_6 = (props: DepartmentChart_6_Props) => {
         <div className=" flex justify-between items-start">
           <div className="flex flex-col gap-y-1 text-[10px]">
             <div className=" text-mineshaft dark:text-white">Total Budget</div>
-            <div className="text-[16px] font-extrabold text-[#2C2C2C] dark:text-white opacity-90 mt-1">
+            <div className="text-[20px] font-bold text-mineshaft dark:text-white mt-1">
               $
-              {Math.round(chartData.value || 0)
+              {Math.round(totalBudget[0].budget || 0)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </div>
@@ -123,6 +124,7 @@ const DepartmentChart_6 = (props: DepartmentChart_6_Props) => {
                 <Image
                   src={dropDown}
                   alt="Menu"
+                  width={8}
                   className="w-[8px] h-[4px] cursor-pointer"
                 />
               </Dropdown>

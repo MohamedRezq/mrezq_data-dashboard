@@ -7,7 +7,7 @@ import { SidebarItem } from "../../molecules";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab } from "@/src/store/slices/sidebar";
 import { RootState } from "@/src/store";
-import { setDisplayMiniSidebar } from "@/src/store/slices/dashboard";
+import { useRouter } from "next/router";
 //----------------------------------------------------------------------------------//
 //-----> END OF IMPORTS <-------------------------------------//
 //----------------------------------------------------------------------------------//
@@ -46,24 +46,19 @@ const Sidebar = () => {
       link: "/dashboard",
     },
   ];
-  const displayMiniSidebar = useSelector(
-    (state: RootState) => state.dashboard.displayMiniSidebar
-  );
   //----------------------------------------------------------------------------------//
   const { activeTab } = useSelector((state: RootState) => state.sidebar);
   const dispatch = useDispatch();
+  const router = useRouter();
   //----------------------------------------------------------------------------------//
   return (
     <div
-      className={`w-full ${
-        displayMiniSidebar && "none"
-      } lg:w-[240px] h-full dark:bg-darkMineShaft lg:h-[95vh] lg:flex mr-5 flex-col px-5 py-10 justify-between lg:rounded-2xl bg-hippiegreen text-white`}
+      className={`w-[250px] min-w-[250px] dark:bg-darkMineShaft h-full xl:h-[96vh] flex flex-col px-5 py-10 justify-between lg:rounded-2xl bg-hippiegreen text-white`}
     >
       <div>
         <div
           onClick={() => {
-            dispatch(setDisplayMiniSidebar(true));
-            console.log("now displayMini:", displayMiniSidebar);
+            router.push("/");
           }}
           className="mb-16 cursor-pointer text-[30px] font-bold text-center"
         >
@@ -84,16 +79,14 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
-      <div className="flex flex-col">
-        <SidebarItem
+      <div className="flex flex-col justify-center items-center">
+        {/* <SidebarItem
           title="Settings"
           active={false}
           icon={<IoSettingsSharp />}
           link="/dashboard"
-        />
-        <div className="text-[10px] opacity-50 font-light mx-12 pl-1">
-          Version 0.01
-        </div>
+        /> */}
+        <div className="text-[10px] opacity-50 font-light">Version 0.01</div>
       </div>
     </div>
   );

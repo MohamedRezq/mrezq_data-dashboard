@@ -54,8 +54,7 @@ const DepartmentChart_4 = () => {
         `${App_Config.API_BASE_URL}/api/dashboard/department/get-department-chart-4`,
         {
           organizationId: localStorage.getItem("organizationId"),
-          interval: "Month",
-          appCategory: "Free",
+          appCategory: appCategory,
           department: department,
         },
         {
@@ -67,7 +66,7 @@ const DepartmentChart_4 = () => {
       console.log("rx chart 4: ", res.data);
       return res.data;
     } catch (error: any | null) {
-      // console.log(error);
+      console.log(error);
       return undefined;
     }
   };
@@ -76,12 +75,12 @@ const DepartmentChart_4 = () => {
     fetchData().then((apiData) => {
       if (apiData !== undefined) dispatch(setDepartmentChart_4(apiData));
     });
-  }, []);
+  }, [appCategory]);
 
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 rounded-2xl h-fit lg:h-[240px] dark:bg-darkMineShaft dark:text-white  mb-5 text-[#2B2B2B] font-semibold w-full"
+      className="col-span-1 rounded-2xl h-fit lg:h-[239px] dark:bg-darkMineShaft dark:text-white  mb-5 text-lightMineShaft font-bold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -101,7 +100,7 @@ const DepartmentChart_4 = () => {
         <div className=" flex justify-between items-start">
           <div className="flex flex-col gap-y-1 text-[10px]">
             <div>Apps</div>
-            <div className="text-[18px] font-extrabold text-[#2C2C2C] opacity-90 dark:text-white  mt-1 mb-5">
+            <div className="text-[18px] font-bold text-[#2C2C2C] opacity-90 dark:text-white  mt-1 mb-5">
               {chartData.value}
             </div>
           </div>
@@ -115,7 +114,7 @@ const DepartmentChart_4 = () => {
                 overlay={
                   <CustomDropMenu
                     selectedOption={appCategory}
-                    options={["Paid", "Free"]}
+                    options={["paid", "free"]}
                     setterFunction={setDepartmentChart_4_AppCategory}
                   />
                 }
@@ -124,6 +123,7 @@ const DepartmentChart_4 = () => {
                 <Image
                   src={dropDown}
                   alt="Menu"
+                  width={8}
                   className="w-[8px] h-[4px] cursor-pointer"
                 />
               </Dropdown>
@@ -141,10 +141,15 @@ const DepartmentChart_4 = () => {
                     target="_blank"
                     className={`w-7 h-7 rounded-md flex justify-center items-center`}
                   >
-                    <img
-                      src={app.logo}
+                    <Image
+                      src={
+                        app.logo ||
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2slI8T_f12PxFTpgNOSkFQKVFJ2UQcIkJJOafROU&s"
+                      }
                       alt={app.title}
                       className="rounded-sm w-inherit h-inherit"
+                      width={25}
+                      height={25}
                     />
                   </Link>
                 }

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import Switch from "react-switch";
 import { setPopupOpen } from "@/src/store/slices/popup";
 import { PopupDiv } from "../../atoms";
+import Image from "next/image";
 //----------------------------------------------------------------------------------//
 //-----> END OF IMPORTS <-------------------------------------//
 //----------------------------------------------------------------------------------//
@@ -39,7 +40,13 @@ const SaasCard = (props: SaasCardProps) => {
             checked ? "bg-hippiegreen" : "bg-grayish"
           }`}
         >
-          <img src={props.logo} alt="Logo" className="" />
+          <Image
+            src={props.logo}
+            alt="Logo"
+            className=""
+            width={25}
+            height={25}
+          />
         </div>
         <div className="text-emperor text-sm font-bold ml-3">{props.title}</div>
       </div>

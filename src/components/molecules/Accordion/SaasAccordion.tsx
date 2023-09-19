@@ -19,6 +19,7 @@ import { RootState } from "@/src/store";
 //-----> Config <---------------------------------------------//
 import { Integrations } from "@/config";
 import { getLoggedUser } from "@/src/actions";
+import Image from "next/image";
 //----------------------------------------------------------------------------------//
 //-----> END OF IMPORTS <-------------------------------------//
 //----------------------------------------------------------------------------------//
@@ -84,7 +85,7 @@ export default function SaasAccordion(props: any) {
                 <div
                   className={` w-6 h-6 rounded-md p-1 flex justify-center items-center bg-hippiegreen`}
                 >
-                  <img src={props.logo} alt="Logo" className="" />
+                  <Image src={props.logo} alt="Logo" className="" />
                 </div>
                 <div className="text-emperor text-sm font-bold ml-3">
                   {props.title}

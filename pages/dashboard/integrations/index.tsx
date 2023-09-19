@@ -56,9 +56,6 @@ const DashboardIntegrations = () => {
   const dispatch = useDispatch();
   //-------------------------------------------------------------------------//
   const user = useSelector((state: RootState) => state.user);
-  const displayMiniSidebar = useSelector(
-    (state: RootState) => state.dashboard.displayMiniSidebar
-  );
   const [allCategories, setAllCategories] = useState([]);
   const selectedCategories = useSelector(
     (state: RootState) => state.dashboard.integration.selectedCategories
@@ -123,6 +120,7 @@ const DashboardIntegrations = () => {
           <div className="flex w-[145px] justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6">
             <Image
               src={documentIcon}
+              width={16}
               className=" w-[16px] h-[16px]"
               alt="calendar"
             />
@@ -143,6 +141,7 @@ const DashboardIntegrations = () => {
               <Image
                 src={dropDown}
                 alt="Menu"
+                width={10}
                 className="w-[10px] h-[6px] cursor-pointer"
               />
             </Dropdown>
@@ -173,9 +172,7 @@ const DashboardIntegrations = () => {
               </div>
               <div className="flex w-fit items-center">
                 <div
-                  className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${
-                    displayMiniSidebar ? "5" : "3"
-                  } gap-[10px]`}
+                  className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]`}
                 >
                   {cat.apps?.map((item: SaasCardProps, i: number) => (
                     <SaasCard

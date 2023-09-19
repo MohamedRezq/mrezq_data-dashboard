@@ -72,7 +72,7 @@ const OppChart_1 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="w-full rounded-2xl text-[#2B2B2B] font-semibold"
+      className="w-full rounded-2xl text-lightMineShaft font-bold"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div

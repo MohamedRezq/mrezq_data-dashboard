@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 
@@ -17,7 +18,13 @@ const SidebarItem = (props: SidebarItemProps) => {
       } text-white rounded-xl flex items-center gap-x-5 hover:bg-killarney hover:bg-opacity-80`}
     >
       {typeof props.icon == "string" ? (
-        <img src={props.icon} alt={props.title} className="w-4 h-4" />
+        <Image
+          src={props.icon}
+          alt={props.title || ""}
+          className="w-4 h-4"
+          width={16}
+          height={16}
+        />
       ) : (
         props.icon
       )}

@@ -13,14 +13,13 @@ import {
 //-----> Components <----------------------------------------------//
 import Dropdown from "rc-dropdown";
 import { BsThreeDots } from "react-icons/bs";
-import { ChartMenu } from "@/src/components/atoms";
+import { ChartMenu, Tooltip } from "@/src/components/atoms";
 import CustomDropMenu from "@/src/components/atoms/Menu/CustomDropMenu";
 //-----> Assets <----------------------------------------------//
 import dropDown from "@/public/assets/img/icons/arrow-down-sign-to-navigate.svg";
 //----------------------------------------------------------------------------------//
 //-----> END OF IMPORTS <-------------------------------------//
 //----------------------------------------------------------------------------------//
-
 const DepartmentChart_2 = () => {
   //-------------------------------------------------------------------------//
   const dispatch = useDispatch();
@@ -31,6 +30,9 @@ const DepartmentChart_2 = () => {
   const chartInterval = useSelector(
     (state: RootState) => state.dashboard.department.departmentChart_2_Interval
   );
+  const department = useSelector(
+    (state: RootState) => state.dashboard.department.selectedDepartment
+  );
   //-------------------------------------------------------------------------//
   const fetchData = async () => {
     try {
@@ -38,12 +40,7 @@ const DepartmentChart_2 = () => {
         `${App_Config.API_BASE_URL}/api/dashboard/department/get-department-chart-2`,
         {
           organizationId: localStorage.getItem("organizationId"),
-          fromDate: new Date(
-            new Date().getFullYear() - 1,
-            new Date().getMonth(),
-            new Date().getDate()
-          ).toISOString(),
-          toDate: new Date().toISOString(),
+          department: department,
         },
         {
           headers: {
@@ -72,7 +69,7 @@ const DepartmentChart_2 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 rounded-2xl h-[240px] text-[#2B2B2B] font-semibold w-full"
+      className="col-span-1 rounded-2xl h-[239px] text-lightMineShaft font-bold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -94,8 +91,8 @@ const DepartmentChart_2 = () => {
             <div className="flex flex-col gap-y-1 text-[10px]">
               <div className="text-mineshaft dark:text-white">Total Budget</div>
               <div className="text-[20px] font-bold text-[#2C2C2C] opacity-90 dark:text-white ">
-                ${" "}
-                {Math.round(chartData.value || 0)
+                $
+                {Math.round(chartData[0].budget || 0)
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </div>
@@ -118,18 +115,26 @@ const DepartmentChart_2 = () => {
                 <Image
                   src={dropDown}
                   alt="Menu"
+                  width={8}
                   className="w-[8px] h-[4px] cursor-pointer"
                 />
               </Dropdown>
             </div>
           </div>
           <div
-            className={`bg-alto w-full flex items-start h-16 rounded-[10px]`}
+            className={`bg-alto relative w-full flex items-start h-16 rounded-[10px]`}
           >
             <div
               className={`bg-[#2ACB48] h-16 rounded-l-[10px]`}
-              style={{ width: `50%` }}
-            ></div>
+              style={{
+                width: `${(chartData[0].spent / chartData[0].budget) * 100}%`,
+              }}
+            >
+              <Tooltip
+                text={`$${chartData[0].spent}`}
+                element={<div className="h-full w-full"></div>}
+              />
+            </div>
           </div>
         </div>
         <div className="flex text-mineshaft dark:text-white gap-x-5 text-xxs items-center">

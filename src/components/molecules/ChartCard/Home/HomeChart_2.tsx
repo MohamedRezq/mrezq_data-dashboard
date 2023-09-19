@@ -66,7 +66,7 @@ const HomeChart_2 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 rounded-2xl h-fit lg:h-[240px] dark:bg-darkMineShaft dark:text-white  mb-5 text-[#2B2B2B] font-semibold w-full"
+      className="col-span-1 rounded-2xl h-fit lg:h-[239px] dark:bg-darkMineShaft dark:text-white  mb-5 text-lightMineShaft font-bold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -83,10 +83,10 @@ const HomeChart_2 = () => {
       <div
         className={`lg:h-[210px] h-fit px-4 gap-x-0 bg-wildsand dark:text-white dark:bg-darkMineShaft flex flex-col md:flex-row gap-y-1 whitespace-nowrap pt-2 pb-5 rounded-br-2xl rounded-bl-2xl`}
       >
-        <div className="flex flex-col mt-5 gap-y-1 text-[10px]">
+        <div className="flex flex-col mt-5 text-[10px]">
           <div>Total Spend</div>
-          <div className="text-[16px] font-extrabold text-[#2C2C2C] dark:text-white opacity-90 mt-1 mb-5">
-            ${" "}
+          <div className="text-[20px] font-bold text-mineshaft dark:text-white opacity-80 mt-1 mb-5">
+            $
             {Math.round(chartData.value || 0)
               .toString()
               .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -97,7 +97,7 @@ const HomeChart_2 = () => {
               className="flex items-center gap-x-4 ml-1 text-[10px] font-medium"
             >
               <div className="font-bold w-7">
-                $ {roundNumbers(item?.subValue)}
+                ${roundNumbers(item?.subValue)}
               </div>
               <div className="text-grayish font-medium dark:text-white">
                 {item?.subTitle?.length > 15

@@ -32,15 +32,16 @@ import {
 import httpServices from "@/src/utils/httpServices";
 import { App_Config } from "@/config";
 import CustomDropMenu from "@/src/components/atoms/Menu/CustomDropMenu";
+import { GetServerSideProps, NextPageContext } from "next";
 //----------------------------------------------------------------------------------//
 //-----> END OF IMPORTS <-------------------------------------//
 //----------------------------------------------------------------------------------//
 
-const DashboardDepartmentDetail = () => {
+const DashboardDepartmentDetail = (props: any) => {
+  const router = useRouter();
   //-------------------------------------------------------------------------//
   const [fetchError, setFetchError] = useState(false);
   //-------------------------------------------------------------------------//
-  const router = useRouter();
   //-------------------------------------------------------------------------//
   const user = useSelector((state: RootState) => state.user);
   const department = useSelector(
@@ -65,12 +66,7 @@ const DashboardDepartmentDetail = () => {
         `${App_Config.API_BASE_URL}/api/dashboard/department/get-department-stats`,
         {
           organizationId: localStorage.getItem("organizationId"),
-          fromDate: new Date(
-            new Date().getFullYear() - 1,
-            new Date().getMonth(),
-            new Date().getDate()
-          ).toISOString(),
-          toDate: new Date().toISOString(),
+          department: department,
         },
         {
           headers: {
@@ -87,16 +83,18 @@ const DashboardDepartmentDetail = () => {
   };
   //-------------------------------------------------------------------------//
   useEffect(() => {
-    fetchData().then((apiData) => {
-      if (apiData !== undefined) dispatch(setDepartmentStats(apiData));
-    });
-    if (router.query.department) {
-      // Ensure that router.query.department is a string
-      const departmentValue = Array.isArray(router.query.department)
-        ? router.query.department[0]
-        : router.query.department;
-
-      dispatch(setSelectedDepartment(departmentValue));
+    if (router.isReady) {
+      // console.log("query: ", router.query.department);
+      // if (router.query.department) {
+      //   // Ensure that router.query.department is a string
+      //   const departmentValue = Array.isArray(router.query.department)
+      //     ? router.query.department[0]
+      //     : router.query.department;
+      //   dispatch(setSelectedDepartment(departmentValue));
+      // }
+      fetchData().then((apiData) => {
+        if (apiData !== undefined) dispatch(setDepartmentStats(apiData));
+      });
     }
   }, []);
 
@@ -109,9 +107,9 @@ const DashboardDepartmentDetail = () => {
       }, ${user.info.firstName}!`}
       date={date}
     >
-      <div className="flex flex-col gap-y-5 w-full">
+      <div className="w-full xl:w-[885px] mx-auto flex flex-col gap-y-[15px]">
         <div className="flex w-[145px] justify-around items-center gap-x-2 text-sm bg-bonjour rounded-[15px] px-5 py-2 text-mineshaft dark:text-white pr-6">
-          <Image src={monthIcon} alt="calendar" />
+          <Image src={monthIcon} alt="calendar" width={16} />
           <div className="text-center font-medium text-sm w-40 text-mineshaft">
             {mainInterval}
           </div>
@@ -129,6 +127,7 @@ const DashboardDepartmentDetail = () => {
             <Image
               src={dropDown}
               alt="Menu"
+              width={10}
               className="w-[10px] h-[6px] cursor-pointer"
             />
           </Dropdown>
@@ -140,7 +139,7 @@ const DashboardDepartmentDetail = () => {
             }}
             className=" cursor-pointer text-cuttysark bg-mercury w-[37px] h-[28px] rounded-[10px] flex items-center justify-center"
           >
-            <BsArrowLeft className=" w-[12px] h-[10px] font-extrabold" />
+            <BsArrowLeft className=" w-[12px] h-[10px] font-bold" />
           </div>
           <div className="text-[15px] font-normal">{department}</div>
         </div>
@@ -154,15 +153,15 @@ const DashboardDepartmentDetail = () => {
         ) : (
           <>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-[18px]">
-              <DepartmentChart_1 />
               <DepartmentChart_2 />
+              <DepartmentChart_1 />
               <div className="flex flex-col gap-y-3 justify-between">
                 {statsData?.map((item: any, i: number) => (
                   <StatsCard
                     key={`${item.title}-${item.value}-${i}`}
                     title={item.title}
                     value={
-                      i === 1
+                      i === 0
                         ? item.value >= 1000
                           ? `$${Math.round(item.value / 1000)}k`
                           : `$${item.value}`
@@ -189,3 +188,8 @@ const DashboardDepartmentDetail = () => {
 };
 
 export default DashboardDepartmentDetail;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { query } = context;
+  return { props: { query } };
+};

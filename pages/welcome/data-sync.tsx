@@ -87,7 +87,7 @@ const DataSyncPage = () => {
       </div>
       <div className="flex gap-y-2 mt-10 items-center w-full px-10 sm:w-[410px] lg:w-[615px] justify-between">
         <Link href="/welcome/customize-access">
-          <button className="bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-semibold`">
+          <button className="bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-bold`">
             Back
           </button>
         </Link>
@@ -99,7 +99,7 @@ const DataSyncPage = () => {
             nextActive
               ? "bg-emerald hover:bg-hippiegreen cursor-pointer"
               : "bg-alto cursor-progress"
-          } rounded-xl px-6 py-3 text-white text-[10px] font-semibold`}
+          } rounded-xl px-6 py-3 text-white text-[10px] font-bold`}
           onClick={(e) => {
             e.preventDefault();
             if (nextActive) {

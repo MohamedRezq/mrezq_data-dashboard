@@ -27,9 +27,6 @@ const DashboardOpportunities = () => {
   const dispatch = useDispatch();
   //-------------------------------------------------------------------------//
   const user = useSelector((state: RootState) => state.user);
-  const displayMiniSidebar = useSelector(
-    (state: RootState) => state.dashboard.displayMiniSidebar
-  );
   //-------------------------------------------------------------------------//
   const [fetchError, setFetchError] = useState(false);
   const [allCategories, setAllCategories] = useState([]);

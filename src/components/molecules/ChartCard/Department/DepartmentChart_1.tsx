@@ -74,7 +74,7 @@ const DepartmentChart_1 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 rounded-2xl h-[240px] text-[#2B2B2B] font-semibold w-full"
+      className="col-span-1 rounded-2xl h-[239px] text-lightMineShaft font-bold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -95,7 +95,7 @@ const DepartmentChart_1 = () => {
           <div className="flex flex-col gap-y-1 text-[10px]">
             <div className="text-mineshaft dark:text-white">Total Wasted</div>
             <div className="text-[20px] font-bold text-[#2C2C2C] opacity-90 dark:text-white ">
-              ${" "}
+              $
               {Math.round(chartData.value || 0)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -119,6 +119,7 @@ const DepartmentChart_1 = () => {
               <Image
                 src={dropDown}
                 alt="Menu"
+                width={8}
                 className="w-[8px] h-[4px] cursor-pointer"
               />
             </Dropdown>

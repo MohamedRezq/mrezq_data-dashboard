@@ -59,14 +59,14 @@ const SelectSaasPage = () => {
       <div className="flex gap-y-2 mt-16 items-center w-full px-10 sm:w-[410px] lg:w-[615px] justify-between">
         <button
           disabled
-          className="bg-alto rounded-xl px-6 py-3 text-white text-[10px] font-semibold"
+          className="bg-alto rounded-xl px-6 py-3 text-white text-[10px] font-bold"
         >
           Back
         </button>
         <div className="text-emperor text-[10px]">Select your Saas</div>
         <Link href="/welcome/customize-access">
           <button
-            className={`bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-semibold`}
+            className={`bg-emerald hover:bg-hippiegreen rounded-xl px-6 py-3 text-white text-[10px] font-bold`}
           >
             Next
           </button>

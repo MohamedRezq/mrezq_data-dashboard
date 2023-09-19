@@ -5,7 +5,6 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 //----------------------------------------------------------------------------------//
 
 const initialState: any = {
-  displayMiniSidebar: false,
   home: {
     mainInterval: "Month",
     homeStats: [
@@ -34,12 +33,12 @@ const initialState: any = {
           {
             subValue: 0,
             subValueState: "positive",
-            subTitle: "Free",
+            subTitle: "free",
           },
           {
             subValue: 0,
             subValueState: "positive",
-            subTitle: "Paid",
+            subTitle: "paid",
           },
         ],
       },
@@ -155,7 +154,7 @@ const initialState: any = {
     selectedDepartment: "All Employees",
     departmentChart_1_Interval: "Month",
     departmentChart_2_Interval: "Month",
-    departmentChart_4_AppCategory: "Paid",
+    departmentChart_4_AppCategory: "paid",
     departmentChart_5_PaymentType: "Cr. Card",
     departmentChart_6_Interval: "Month",
     departmentCard: {
@@ -241,38 +240,20 @@ const initialState: any = {
       chartSeries: [30, 25, 25, 10], // [30, 25, 25, 10]
       xData: ["Office", "GitHub", "Atlassian", "Zoho"], // ["Office", "GitHub", "Atlassian", "Zoho"]
     },
-    departmentChart_2: {
-      value: 0, // 2478
-      subValues: [
-        {
-          subValue: 0, // "$78"
-          subTitle: "HR", // "HR"
-        },
-        {
-          subValue: 0, // "$78"
-          subTitle: "HR", // "HR"
-        },
-        {
-          subValue: 0, // "$78"
-          subTitle: "HR", // "HR"
-        },
-      ],
-      chartSeries: [
-        {
-          name: "Human R.", // name: "Finance"
-          data: [250], // [260, 360, 320, 560, 750, 660, 510, 200, 250]
-        },
-        {
-          name: "Marketing", // name: "Finance"
-          data: [250], // [260, 360, 320, 560, 750, 660, 510, 200, 250]
-        },
-        {
-          name: "Finance", // name: "Finance"
-          data: [250], // [260, 360, 320, 560, 750, 660, 510, 200, 250]
-        },
-      ],
-      xData: ["Aug"], // ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"]
-    },
+    departmentChart_2: [
+      {
+        budget: 0, // 0
+        spent: 0, // 0
+      },
+      {
+        budget: 0, // 0
+        spent: 0, // 0
+      },
+      {
+        budget: 0, // 0
+        spent: 0, // 0
+      },
+    ],
     departmentChart_3: {
       value: 0, // 4249
       subValues: [],
@@ -280,7 +261,7 @@ const initialState: any = {
       xData: [""],
     },
     departmentChart_4: {
-      value: 120, // 4249
+      value: 0, // 4249
       apps: [],
     },
     departmentChart_5: {
@@ -323,10 +304,6 @@ export const dashboardSlice = createSlice({
   name: "dashboard",
   initialState,
   reducers: {
-    setDisplayMiniSidebar: (state: any, action: PayloadAction<boolean>) => {
-      state.displayMiniSidebar = action.payload;
-      return;
-    },
     setOrgDepartments: (state: any, action: PayloadAction<any>) => {
       state.orgDepartments = action.payload;
       return;
@@ -450,7 +427,6 @@ export const dashboardSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-  setDisplayMiniSidebar,
   setOrgDepartments,
   setHomeInterval,
   setDepartmentMainInterval,

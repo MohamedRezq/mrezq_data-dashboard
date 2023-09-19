@@ -26,28 +26,25 @@ const LineChart = (props: any) => {
           color: "#A99AFF",
           fontSize: "14px",
           fontFamily: "Quicksand",
-        },
-      },
-      chart: {
-        height: 200,
-        type: "line",
-        zoom: {
-          enabled: false,
+          fontWeight: 700,
         },
       },
       yaxis: {
+        showAlways: true,
         labels: {
           formatter: (value: any) => {
-            return `$ ${value}`;
+            return `$${value}`;
           },
           style: {
             colors: theme === "dark" && ["white"],
             fontFamily: "Quicksand",
+            fontWeight: 700,
           },
         },
       },
       legend: {
         fontFamily: "Quicksand",
+        fontWeight: 500,
         color: "#2C2C2C",
         offsetY: 0,
         labels: {
@@ -80,10 +77,12 @@ const LineChart = (props: any) => {
           style: {
             colors: theme === "dark" && Array(props.xData.length).fill("white"),
             fontFamily: "Quicksand",
+            fontWeight: 700,
             fontSize: "5pt",
           },
         },
         fontFamily: "Quicksand",
+        fontWeight: 700,
       },
     },
   };
@@ -94,6 +93,7 @@ const LineChart = (props: any) => {
         series={opt.series}
         type="line"
         height={170}
+        width={"100%"}
       />
     </div>
   );

@@ -15,7 +15,7 @@ const NotificationMenu = () => {
       {["Notification 1", "Notification 2"].map((item, i) => (
         <MenuItem
           key={`${item}-${i}`}
-          className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-semibold"
+          className="hover:bg-hippiegreen hover:text-white text-dovegray cursor-pointer text-xs font-bold"
         >
           {item}
         </MenuItem>

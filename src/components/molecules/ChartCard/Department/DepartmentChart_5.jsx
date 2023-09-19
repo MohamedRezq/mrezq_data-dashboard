@@ -69,7 +69,7 @@ const DepartmentChart_5 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 rounded-2xl h-fit lg:h-[240px] dark:bg-darkMineShaft dark:text-white  mb-5 text-[#2B2B2B] font-semibold w-full"
+      className="col-span-1 rounded-2xl h-fit lg:h-[239px] dark:bg-darkMineShaft dark:text-white  mb-5 text-lightMineShaft font-bold w-full"
       style={{ boxShadow: '0px 3px 5px #00000029' }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -91,7 +91,7 @@ const DepartmentChart_5 = () => {
             <div>
               Paid via <span className=" text-[#32AD49]">{paymentType}</span>
             </div>
-            <div className="text-[20px] font-extrabold text-[#2C2C2C] opacity-90 dark:text-white  mt-1 mb-5">
+            <div className="text-[20px] font-bold text-[#2C2C2C] opacity-90 dark:text-white  mt-1 mb-5">
               ${' '}
               {Math.round(chartData[paymentType]?.total || 0)
                 .toString()
@@ -117,6 +117,7 @@ const DepartmentChart_5 = () => {
                 <Image
                   src={dropDown}
                   alt="Menu"
+                  width={8}
                   className="w-[8px] h-[4px] cursor-pointer"
                 />
               </Dropdown>

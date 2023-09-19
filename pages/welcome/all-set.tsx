@@ -14,7 +14,7 @@ const AllSetPage = () => {
     <OnboardingTemplate>
       <div className="max-h-80 w-full px-10 sm:max-w-lg flex justify-center items-center gap-y-5 flex-col">
         <div>
-          <img
+          <Image
             src="/assets/img/animation_500_lhaqq5rg.gif"
             alt="all set"
             className=" w-[200px] h-[200px]"

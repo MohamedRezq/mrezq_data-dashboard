@@ -23,12 +23,12 @@ const ColChart = (props: any) => {
         style: {
           color: "#A99AFF",
           fontSize: "14px",
-          fontFamily: "Quicksand",
         },
       },
       legend: {
         show: props.showLegend ?? true,
         fontFamily: "Quicksand",
+        fontWeight: 500,
         color: "#2C2C2C",
         offsetY: 0,
         labels: {
@@ -93,6 +93,7 @@ const ColChart = (props: any) => {
           style: {
             colors: theme === "dark" && ["white"],
             fontFamily: "Quicksand",
+            fontWeight: 700,
           },
         },
       },

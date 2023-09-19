@@ -109,7 +109,7 @@ export const dashboardDepartmentDefault = () => {
         xData: [""],
       },
       {
-        value: 120, // 4249
+        value: 0, // 4249
         apps: [],
       },
       {

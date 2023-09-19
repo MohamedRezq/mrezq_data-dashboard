@@ -37,7 +37,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
   //----------------------------------------------------------------------------------//
 
   return (
-    <div className="flex flex-col-reverse gap-y-3 items-center md:flex-row justify-between text-mineshaft dark:text-white">
+    <div className="w-full flex flex-col-reverse gap-y-3 items-center md:flex-row justify-between text-mineshaft dark:text-white">
       <div className="text-[30px] font-medium opacity-70 self-start md:self-auto mt-3">
         {props.headerTitle}
       </div>
@@ -75,8 +75,8 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
             />
           </svg>
         )}
-        <div className="flex text-mineshaft items-center gap-x-2 text-sm bg-bonjour rounded-xl px-4 py-2 pr-6">
-          <Image src={calendarIcon} alt="calendar" />
+        <div className="flex text-mineshaft items-center gap-x-2 text-xs sm:text-sm bg-bonjour rounded-xl px-4 py-2 pr-6">
+          <Image src={calendarIcon} alt="calendar" width={16} />
           <div className="opacity-70">{props.date}</div>
         </div>
         <Dropdown
@@ -87,7 +87,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
         >
           <div className="relative cursor-pointer hover:bg-mineshaft rounded-full hover:bg-opacity-10">
             <HiBell className="text-cuttysark w-7 h-7" />
-            <div className="h-4 w-4 bg-thunderbird font-semibold rounded-full flex items-center justify-center text-xxs absolute top-[2px] border border-white -right-1 text-white p-2">
+            <div className="h-4 w-4 bg-thunderbird font-bold rounded-full flex items-center justify-center text-xxs absolute top-[2px] border border-white -right-1 text-white p-2">
               12
             </div>
           </div>
@@ -95,7 +95,13 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
 
         <div className="flex gap-x-1 items-center">
           <div className="rounded-full h-12 w-12 border border-cuttysark p-1">
-            <img src="/assets/img/user.png" alt="user" />
+            <Image
+              src="/assets/img/user.png"
+              alt="user"
+              width={40}
+              height="0"
+              className="h-auto"
+            />
           </div>
           <Dropdown
             trigger={["click"]}
@@ -106,6 +112,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
             <Image
               src={dropDownIcon}
               alt="Menu"
+              width={12}
               className="w-3 cursor-pointer"
             />
           </Dropdown>

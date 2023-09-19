@@ -26,12 +26,12 @@ export const homeDashboardDefault = () => {
           {
             subValue: 0,
             subValueState: "positive",
-            subTitle: "Free",
+            subTitle: "free",
           },
           {
             subValue: 0,
             subValueState: "positive",
-            subTitle: "Paid",
+            subTitle: "paid",
           },
         ],
       },

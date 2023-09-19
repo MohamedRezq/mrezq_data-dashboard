@@ -65,7 +65,7 @@ const ChartCard = (props: ChartCardProps) => {
       }}
     >
       <hr className="absolute mt-[1px] top-0 left-5 w-5 border rounded-lg border-[#707070] border-opacity-50" />
-      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
+      <MenuItem className="text-[10px] gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-bold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
         <Image
           width={8}
           height={8}
@@ -75,7 +75,7 @@ const ChartCard = (props: ChartCardProps) => {
         />{" "}
         <>Info</>
       </MenuItem>
-      <MenuItem className="text-[10px] pl-4 gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
+      <MenuItem className="text-[10px] pl-4 gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-bold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
         <Image
           width={8}
           height={8}
@@ -85,7 +85,7 @@ const ChartCard = (props: ChartCardProps) => {
         />{" "}
         <>Edit</>
       </MenuItem>
-      <MenuItem className="text-[10px] pl-4 gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-semibold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
+      <MenuItem className="text-[10px] pl-4 gap-x-2 py-1 rounded-[7px] h-[19px] w-[110px] flex items-center font-bold hover:bg-[#EAEAEA] text-mineshaft dark:text-white cursor-pointer">
         <Image
           width={8}
           height={8}
@@ -100,7 +100,7 @@ const ChartCard = (props: ChartCardProps) => {
 
   return (
     <div
-      className="rounded-2xl h-fit lg:h-[240px] text-[#2B2B2B] font-semibold w-full"
+      className="rounded-2xl h-fit lg:h-[239px] text-lightMineShaft font-bold w-full"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -114,7 +114,7 @@ const ChartCard = (props: ChartCardProps) => {
       >
         <div className="flex flex-col gap-y-1 text-[10px]">
           <div>{props.subTitle}</div>
-          <div className="text-[16px] font-extrabold text-[#2C2C2C] dark:text-white opacity-90 mt-1 mb-5">
+          <div className="text-[20px] font-bold text-mineshaft dark:text-white opacity-80 mt-1 mb-5">
             $
             {Math.round(props.value)
               .toString()
@@ -126,7 +126,7 @@ const ChartCard = (props: ChartCardProps) => {
               className="flex items-center gap-x-4 ml-1 text-[10px] font-medium"
             >
               <div className="font-bold w-7">
-                ${" "}
+                $
                 {Math.round(item.subValue)
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
