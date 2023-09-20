@@ -23,7 +23,7 @@ const Sidebar = () => {
     {
       icon: "/assets/img/icons/application.svg",
       title: "Applications",
-      link: "/dashboard/integrations",
+      link: "/dashboard/applications",
     },
     {
       icon: "/assets/img/icons/category.svg",
@@ -43,7 +43,7 @@ const Sidebar = () => {
     {
       icon: "/assets/img/icons/renewable.svg",
       title: "Renewal hub",
-      link: "/dashboard",
+      link: "/dashboard/renewal",
     },
   ];
   //----------------------------------------------------------------------------------//
