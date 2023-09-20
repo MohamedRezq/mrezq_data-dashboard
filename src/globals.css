@@ -172,6 +172,13 @@ body {
   border: solid 1px white !important;
 }
 
+.user-menu .rc-menu {
+  padding-left: 0 !important;
+  padding-top: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 20px;
+}
 /* Scrollbar */
 
 /* width */

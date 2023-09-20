@@ -18,7 +18,6 @@ type DashboardTemplateProps = {
 
 const DashboardTemplate = (props: DashboardTemplateProps) => {
   //----------------------------------------------------------------------------------//
-  const { theme, setTheme } = useTheme();
   //----------------------------------------------------------------------------------//
   //----------------------------------------------------------------------------------//
   //----------------------------------------------------------------------------------//
@@ -32,7 +31,7 @@ const DashboardTemplate = (props: DashboardTemplateProps) => {
           className={`w-full md:pr-3 lg:pr-6 flex flex-col gap-y-[25px] h-[96vh]`}
         >
           <DashboardHeader headerTitle={props.headerTitle} date={props.date} />
-          <div className={`w-full pr-10 mb-[25px] overflow-y-auto`}>
+          <div className={`w-full h-full pr-10 mb-[25px] overflow-y-auto`}>
             {props.children !== undefined ? props.children : <></>}
           </div>
         </div>

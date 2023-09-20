@@ -33,9 +33,7 @@ const AuthProvider = ({ children, redirectUrl }: AuthProviderProps) => {
           if (inactiveApplications.length > 0)
             router.push("/welcome/select-saas");
           else {
-            router.pathname.includes("/dashboard")
-              ? router.push(router.pathname)
-              : router.push("/dashboard");
+            router.push(router.pathname);
           }
         }
       }
