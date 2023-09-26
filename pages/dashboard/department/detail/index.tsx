@@ -118,7 +118,7 @@ const DashboardDepartmentDetail = (props: any) => {
             overlay={
               <CustomDropMenu
                 selectedOption={mainInterval}
-                options={["Month", "Quarter", "Year"]}
+                options={["All Time", "Month", "Quarter", "Year"]}
                 setterFunction={setDepartmentMainInterval}
               />
             }
@@ -161,11 +161,9 @@ const DashboardDepartmentDetail = (props: any) => {
                     key={`${item.title}-${item.value}-${i}`}
                     title={item.title}
                     value={
-                      i === 0
-                        ? item.value >= 1000
-                          ? `$${Math.round(item.value / 1000)}k`
-                          : `$${item.value}`
-                        : item.value
+                      item.value >= 1000
+                        ? `$${Math.round(item.value / 1000)}k`
+                        : `$${Math.round(item.value)}`
                     }
                     valueType={item.valueType}
                     subValues={item.subValues}

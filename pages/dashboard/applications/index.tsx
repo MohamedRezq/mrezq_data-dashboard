@@ -96,7 +96,7 @@ const Home = () => {
             overlay={
               <CustomDropMenu
                 selectedOption={homeInterval}
-                options={["Month", "Quarter", "Year"]}
+                options={["All Time", "Month", "Quarter", "Year"]}
                 setterFunction={setHomeInterval}
               />
             }

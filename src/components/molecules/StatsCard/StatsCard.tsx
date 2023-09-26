@@ -1,8 +1,6 @@
 import React from "react";
-import Image from "next/image";
 //-----> Components <-----------------------------------------//
 import Dropdown from "rc-dropdown";
-import Menu, { Item as MenuItem } from "rc-menu";
 import { BsThreeDots } from "react-icons/bs";
 import { ChartMenu } from "../../atoms";
 //----------------------------------------------------------------------------------//
@@ -11,7 +9,7 @@ import { ChartMenu } from "../../atoms";
 
 type StatsCardProps = {
   title: string;
-  value: number;
+  value: any;
   valueType: string;
   subValues: {
     subValue: number;
@@ -37,12 +35,12 @@ const StatsCard = (props: StatsCardProps) => {
       className="rounded-2xl h-[112px] w-[285px] flex bg-wildsand p-1 text-emperor dark:bg-darkMineShaft dark:text-white"
     >
       <div className="w-1/2 flex flex-col items-start justify-center my-auto h-20 gap-y-1 pl-4">
-        <div className="text-[10px] font-bold">{props.title}</div>
-        <div className={`text-3xl font-bold dark:text-white`}>
+        <div className="text-[10px] font-medium">{props.title}</div>
+        <div className={`text-3xl font-bold dark:text-white text-ellipsis`}>
           {props.value}
         </div>
       </div>
-      <div className="bg-white dark:bg-midMineShaft font-bold relative flex flex-col gap-y-1 pl-3 items-start justify-center w-1/2 rounded-tr-2xl rounded-br-2xl text-[11px]">
+      <div className="bg-white dark:bg-midMineShaft font-medium relative flex flex-col gap-y-1 pl-3 items-start justify-center w-1/2 rounded-tr-2xl rounded-br-2xl text-[11px]">
         {props.subValues.map((item, i) => (
           <div
             key={`${item.subTitle}-${item.subValue}-${i}`}

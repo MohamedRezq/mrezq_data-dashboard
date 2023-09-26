@@ -11,6 +11,14 @@ const PieChart = (props: any) => {
       chart: {
         type: "donut",
       },
+      yaxis: {
+        showAlways: true,
+        labels: {
+          formatter: (value: any) => {
+            return `${value}%`;
+          },
+        },
+      },
       stroke: {
         show: true,
         width: 2,

@@ -100,7 +100,7 @@ const ChartCard = (props: ChartCardProps) => {
 
   return (
     <div
-      className="rounded-2xl h-fit lg:h-[239px] text-lightMineShaft font-bold w-full"
+      className="rounded-2xl h-fit lg:h-[239px] text-lightMineShaft w-full font-semibold"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">

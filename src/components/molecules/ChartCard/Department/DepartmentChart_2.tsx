@@ -69,7 +69,7 @@ const DepartmentChart_2 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 rounded-2xl h-[239px] text-lightMineShaft font-bold w-full"
+      className="col-span-1 rounded-2xl h-[239px] text-lightMineShaft w-full font-semibold"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -105,7 +105,7 @@ const DepartmentChart_2 = () => {
                 trigger={["click"]}
                 overlay={
                   <CustomDropMenu
-                    options={["Month", "Quarter", "Year"]}
+                    options={["All Time", "Month", "Quarter", "Year"]}
                     selectedOption={chartInterval}
                     setterFunction={setDepartmentChart_2_Interval}
                   />
@@ -125,15 +125,31 @@ const DepartmentChart_2 = () => {
             className={`bg-alto relative w-full flex items-start h-16 rounded-[10px]`}
           >
             <div
-              className={`bg-[#2ACB48] h-16 rounded-l-[10px]`}
+              className={`bg-[#2ACB48] h-16 rounded-l-[10px] z-50`}
               style={{
                 width: `${(chartData[0].spent / chartData[0].budget) * 100}%`,
               }}
             >
-              <Tooltip
-                text={`$${chartData[0].spent}`}
-                element={<div className="h-full w-full"></div>}
-              />
+              <div className={`w-full h-full`}>
+                <div className="group relative w-full h-full">
+                  {<div className="h-full w-full hoverable z-50"></div>}
+                  <span className="pointer-events-none dark:bg-bonjour font-bold dark:text-darkMineShaft bg-mineshaft bg-opacity-80 dark:bg-opacity-90 px-2 rounded-md py-1 text-white text-[10px] absolute -top-4 left-2 w-max opacity-0 transition-opacity group-hover:opacity-100">
+                    {`$ ${Math.round(chartData[0].spent || 0)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className={`w-full h-full`}>
+              <div className="group relative w-full h-full">
+                {<div className="h-full w-full hoverable z-50"></div>}
+                <span className="pointer-events-none dark:bg-bonjour font-bold dark:text-darkMineShaft bg-mineshaft bg-opacity-80 dark:bg-opacity-90 px-2 rounded-md py-1 text-white text-[10px] absolute -top-4 left-2 w-max opacity-0 transition-opacity group-hover:opacity-100">
+                  {`$ ${Math.round(chartData[0].budget - chartData[0].spent)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+                </span>
+              </div>
             </div>
           </div>
         </div>

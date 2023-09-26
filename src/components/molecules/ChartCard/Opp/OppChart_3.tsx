@@ -72,7 +72,7 @@ const OppChart_3 = () => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-1 h-full rounded-2xl text-lightMineShaft font-bold w-full"
+      className="col-span-1 h-full rounded-2xl text-lightMineShaft w-full font-semibold"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">

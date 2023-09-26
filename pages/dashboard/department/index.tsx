@@ -91,7 +91,7 @@ const DashboardDepartmentsHome = () => {
             trigger={["click"]}
             overlay={
               <CustomDropMenu
-                options={["Month", "Quarter", "Year"]}
+                options={["All Time", "Month", "Quarter", "Year"]}
                 selectedOption={departmentMainInterval}
                 setterFunction={setDepartmentMainInterval}
               />

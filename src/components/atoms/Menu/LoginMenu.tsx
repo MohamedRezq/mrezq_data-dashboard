@@ -71,10 +71,7 @@ const LoginMenu = ({ them }: { them: string }) => {
       <div className="h-[279px] text-mineshaft text-[10px] dark:text-white px-[8px] pt-[8px] pb-[23px] w-[285px] rounded-2xl bg-white dark:bg-[#3E3E3E] flex flex-col justify-between">
         <div className="w-full bg-[#F9F9F9] pt-[23px] pb-[40px] gap-y-[28px] px-[30px] rounded-2xl h-[188px] dark:bg-darkMineShaft grid grid-cols-3">
           {icons.map((icon: IconType, index: number) => (
-            <div
-              key={`user-menu-icon-${icon.text}`}
-              className="flex w-[68px] flex-col justify-center items-center gap-y-[10px]"
-            >
+            <div className="flex w-[68px] flex-col justify-center items-center gap-y-[10px]">
               <Image
                 src={icon.url}
                 alt={icon.text}

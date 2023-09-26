@@ -78,7 +78,7 @@ const DepartmentChart_6 = (props: DepartmentChart_6_Props) => {
   //-------------------------------------------------------------------------//
   return (
     <div
-      className="col-span-2 rounded-2xl h-fit lg:h-[239px] text-lightMineShaft font-bold w-full"
+      className="col-span-2 rounded-2xl h-fit lg:h-[239px] text-lightMineShaft w-full font-semibold"
       style={{ boxShadow: "0px 3px 5px #00000029" }}
     >
       <div className=" bg-gallery h-8  dark:bg-[#3E3E3E] dark:text-white flex items-center text-[10px] rounded-tr-2xl rounded-tl-2xl relative px-7 py-1">
@@ -114,7 +114,7 @@ const DepartmentChart_6 = (props: DepartmentChart_6_Props) => {
                 trigger={["click"]}
                 overlay={
                   <CustomDropMenu
-                    options={["Month", "Quarter", "Year"]}
+                    options={["All Time", "Month", "Quarter", "Year"]}
                     selectedOption={chartInterval}
                     setterFunction={setDepartmentChart_6_Interval}
                   />

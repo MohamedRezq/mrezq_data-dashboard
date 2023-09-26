@@ -6,7 +6,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: any = {
   home: {
-    mainInterval: "Month",
+    mainInterval: "All Time",
     homeStats: [
       {
         title: "Total Saas Spent",
@@ -150,13 +150,13 @@ const initialState: any = {
     },
   },
   department: {
-    mainInterval: "Month",
+    mainInterval: "All Time",
     selectedDepartment: "All Employees",
-    departmentChart_1_Interval: "Month",
-    departmentChart_2_Interval: "Month",
+    departmentChart_1_Interval: "All Time",
+    departmentChart_2_Interval: "All Time",
     departmentChart_4_AppCategory: "paid",
     departmentChart_5_PaymentType: "Cr. Card",
-    departmentChart_6_Interval: "Month",
+    departmentChart_6_Interval: "All Time",
     departmentCard: {
       title: "", // "All Employees"
       totalSpend: 0, // 10,000
