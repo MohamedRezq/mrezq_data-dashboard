@@ -132,7 +132,7 @@ const DepartmentChart_6 = (props: DepartmentChart_6_Props) => {
           </div>
         </div>
 
-        <div className="dark:bg-midMineShaft h-full w-full px-2 rounded-[15px]">
+        <div className="dark:bg-midMineShaft h-full w-full py-1 px-2 rounded-[15px] bg-white">
           <ColChart
             chartSeries={[{ name: department, data: chartData.chartSeries }]}
             xData={chartData.xData}
