@@ -76,7 +76,8 @@ const Home = () => {
   //-------------------------------------------------------------------------//
   useEffect(() => {
     fetchData().then((apiData) => {
-      if (apiData !== undefined) dispatch(setHomeStats(apiData));
+      if (apiData !== undefined)
+        dispatch(setHomeStats([apiData[0], apiData[1], statsData[2]]));
     });
   }, []);
 

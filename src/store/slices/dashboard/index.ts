@@ -235,10 +235,10 @@ const initialState: any = {
       // },
     ],
     departmentChart_1: {
-      value: 0, // 4249
+      value: 4249, // 4249
       subValues: [],
-      chartSeries: [30, 25, 25, 10], // [30, 25, 25, 10]
-      xData: ["Office", "GitHub", "Atlassian", "Zoho"], // ["Office", "GitHub", "Atlassian", "Zoho"]
+      chartSeries: [75, 65, 90], // [30, 25, 25, 10]
+      xData: ["Office", "GitHub", "Atlassian"], // ["Office", "GitHub", "Atlassian", "Zoho"]
     },
     departmentChart_2: [
       {

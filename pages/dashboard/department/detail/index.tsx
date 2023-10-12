@@ -93,7 +93,8 @@ const DashboardDepartmentDetail = (props: any) => {
       //   dispatch(setSelectedDepartment(departmentValue));
       // }
       fetchData().then((apiData) => {
-        if (apiData !== undefined) dispatch(setDepartmentStats(apiData));
+        if (apiData !== undefined)
+          dispatch(setDepartmentStats([apiData[0], statsData[1]]));
       });
     }
   }, []);
