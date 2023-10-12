@@ -127,7 +127,7 @@ const DepartmentChart_1 = () => {
         </div>
         <BarChart
           chartSeries={chartData.chartSeries || []}
-          xData={chartData.xData || []}
+          xData={chartData.xData ?? []}
           barHeight={2}
         />
         <div className="flex text-mineshaft dark:text-white gap-x-5 mt-3 text-xxs items-center">

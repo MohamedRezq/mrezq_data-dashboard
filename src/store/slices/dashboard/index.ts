@@ -154,7 +154,7 @@ const initialState: any = {
     selectedDepartment: "All Employees",
     departmentChart_1_Interval: "All Time",
     departmentChart_2_Interval: "All Time",
-    departmentChart_4_AppCategory: "paid",
+    departmentChart_4_AppCategory: "free",
     departmentChart_5_PaymentType: "Cr. Card",
     departmentChart_6_Interval: "All Time",
     departmentCard: {

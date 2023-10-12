@@ -114,7 +114,7 @@ const DepartmentChart_4 = () => {
                 overlay={
                   <CustomDropMenu
                     selectedOption={appCategory}
-                    options={["paid", "free"]}
+                    options={["free", "paid"]}
                     setterFunction={setDepartmentChart_4_AppCategory}
                   />
                 }

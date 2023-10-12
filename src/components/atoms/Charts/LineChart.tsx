@@ -16,21 +16,20 @@ const LineChart = (props: any) => {
       tooltip: {
         theme,
       },
-      noData: {
-        text: "No Data",
-        align: "center",
-        verticalAlign: "middle",
-        offsetX: 0,
-        offsetY: 0,
-        style: {
-          color: "#A99AFF",
-          fontSize: "14px",
-          fontFamily: "Quicksand",
-          fontWeight: 700,
-        },
-      },
+      // noData: {
+      //   text: "No Data",
+      //   align: "center",
+      //   verticalAlign: "middle",
+      //   offsetX: 0,
+      //   offsetY: 0,
+      //   style: {
+      //     color: "#A99AFF",
+      //     fontSize: "14px",
+      //     fontFamily: "Quicksand",
+      //     fontWeight: 700,
+      //   },
+      // },
       yaxis: {
-        showAlways: true,
         labels: {
           formatter: (value: any) => {
             return `$${value}`;
