@@ -71,7 +71,7 @@ const LineChart = (props: any) => {
       },
       xaxis: {
         categories: props.xData,
-        type: "category",
+        // type: "category",
         labels: {
           show: true,
           style: {
