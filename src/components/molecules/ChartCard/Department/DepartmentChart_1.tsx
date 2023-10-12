@@ -25,7 +25,7 @@ import CustomDropMenu from "@/src/components/atoms/Menu/CustomDropMenu";
 
 const DepartmentChart_1 = () => {
   //-------------------------------------------------------------------------//
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   //-------------------------------------------------------------------------//
   const chartData = useSelector(
     (state: RootState) => state.dashboard.department.departmentChart_1
@@ -34,31 +34,31 @@ const DepartmentChart_1 = () => {
     (state: RootState) => state.dashboard.department.departmentChart_1_Interval
   );
   //-------------------------------------------------------------------------//
-  const fetchData = async () => {
-    try {
-      const res = await httpServices.post(
-        `${App_Config.API_BASE_URL}/api/dashboard/department/get-department-chart-1`,
-        {
-          organizationId: localStorage.getItem("organizationId"),
-          fromDate: new Date(
-            new Date().getFullYear() - 1,
-            new Date().getMonth(),
-            new Date().getDate()
-          ).toISOString(),
-          toDate: new Date().toISOString(),
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      return res.data;
-    } catch (error: any | null) {
-      // console.log(error);
-      return undefined;
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const res = await httpServices.post(
+  //       `${App_Config.API_BASE_URL}/api/dashboard/department/get-department-chart-1`,
+  //       {
+  //         organizationId: localStorage.getItem("organizationId"),
+  //         fromDate: new Date(
+  //           new Date().getFullYear() - 1,
+  //           new Date().getMonth(),
+  //           new Date().getDate()
+  //         ).toISOString(),
+  //         toDate: new Date().toISOString(),
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     return res.data;
+  //   } catch (error: any | null) {
+  //     // console.log(error);
+  //     return undefined;
+  //   }
+  // };
   //-------------------------------------------------------------------------//
   // useEffect(() => {
   //   fetchData().then((apiData) => {
@@ -66,11 +66,11 @@ const DepartmentChart_1 = () => {
   //   });
   // }, []);
   //-------------------------------------------------------------------------//
-  useEffect(() => {
-    fetchData().then((apiData) => {
-      if (apiData !== undefined) dispatch(setDepartmentChart_1(apiData));
-    });
-  }, [chartInterval]);
+  // useEffect(() => {
+  //   fetchData().then((apiData) => {
+  //     if (apiData !== undefined) dispatch(setDepartmentChart_1(apiData));
+  //   });
+  // }, [chartInterval]);
   //-------------------------------------------------------------------------//
   return (
     <div

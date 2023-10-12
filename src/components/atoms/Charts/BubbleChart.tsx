@@ -1,70 +1,58 @@
 import React from "react";
-import { useTheme } from "next-themes";
-import dynamic from "next/dynamic";
-const ReactApexChart = dynamic(() => import("react-apexcharts"), {
-  ssr: false,
-});
+import { Tooltip } from "../Tooltip";
 
-const BubbleChart = (props: any) => {
-  //----------------------------------------------------------------------------------//
-  const { theme, setTheme } = useTheme();
-  //----------------------------------------------------------------------------------//
-  const opt: any = {
-    series: [
-      {
-        name: "Bubble1",
-        data: [[new Date().getTime(), 43, 28]],
-      },
-      {
-        name: "Bubble2",
-        data: [[new Date().getTime(), 60, 28]],
-      },
-      {
-        name: "Bubble3",
-        data: [[new Date().getTime(), 45, 15]],
-      },
-    ],
-    options: {
-      chart: {
-        height: 350,
-        type: "bubble",
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      fill: {
-        opacity: 0.8,
-      },
-      grid: {
-        show: true,
-      },
-      legend: {
-        show: false,
-      },
-      yaxis: {
-        enabled: false,
-        show: false,
-      },
-      xaxis: {
-        enabled: false,
-        show: false,
-      },
-      title: {
-        enabled: false,
-        show: false,
-      },
-    },
-  };
+export interface IBubble {
+  label: string;
+  xPos: number;
+  yPos: number;
+  radius: number;
+  color: string;
+  value?: number;
+}
+interface ISimpleBubbleChartProps {
+  height: number;
+  width: number;
+  bubbles: IBubble[];
+}
+
+const SimpleBubbleChart = (props: ISimpleBubbleChartProps) => {
+  //-------------------------------------------------------------------------------//
+  const squareSize = 30;
+  //-------------------------------------------------------------------------------//
   return (
-    <div id="chart" className="w-full mr-1">
-      <ReactApexChart
-        options={opt.options}
-        series={opt.series}
-        type="bubble"
-        height={170}
-      />
+    <div className={`w-full relative h-full items-center`}>
+      <div className="absolute w-full h-full z-0 grid grid-cols-8">
+        {Array.from({ length: 48 }, (_, index) => (
+          <div
+            key={index}
+            className={`z-0 p-0 m-0 w-full h-full border border-gray-200 inline-block`}
+          ></div>
+        ))}
+      </div>
+      <div className="absolute w-full h-full overflow-x-auto">
+        {props.bubbles.map((bubble: IBubble, i: number) => {
+          return (
+            <div
+              key={`bubble-chart-${i}-${bubble.label}`}
+              className={`absolute cursor-pointer z-20 opacity-90 hover:opacity-80 text-[8px] text-wrap rounded-full px] flex items-center justify-center`}
+              style={{
+                width: `${bubble.radius * squareSize * 2}px`,
+                height: `${bubble.radius * squareSize * 2}px`,
+                backgroundColor: `${bubble.color}`,
+                left: `${(bubble.xPos * squareSize) / 2}px`,
+                bottom: `${(bubble.yPos * squareSize) / 2}px`,
+              }}
+            >
+              <Tooltip
+                text={bubble.label}
+                element={<div className="mx-5">{bubble.label}</div>}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
 
-export default BubbleChart;
+export default SimpleBubbleChart;

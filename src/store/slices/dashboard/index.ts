@@ -44,21 +44,21 @@ const initialState: any = {
       },
       {
         title: "Renewals",
-        value: 0,
+        value: 64,
         valueType: "stats",
         subValues: [
           {
-            subValue: 0,
+            subValue: 30,
             subValueState: "negative",
             subTitle: "Pending",
           },
           {
-            subValue: 0,
+            subValue: 24,
             subValueState: "normal",
             subTitle: "Upcoming",
           },
           {
-            subValue: 0,
+            subValue: 10,
             subValueState: "positive",
             subTitle: "Renewed",
           },
@@ -121,29 +121,29 @@ const initialState: any = {
       xData: ["Atlassian"],
     },
     homeChart_3: {
-      value: 0, // 2478
+      value: 2478, // 2478
       subValues: [
         {
-          subValue: 0,
+          subValue: 110,
           subTitle: "Total Licenses",
         },
         {
-          subValue: 0,
+          subValue: 80,
           subTitle: "Used Licenses",
         },
         {
-          subValue: 0,
+          subValue: 30,
           subTitle: "Unused Licenses",
         },
       ],
       chartSeries: [
         {
           name: "Used",
-          data: [100, 100, 100, 100, 100, 100], // [1100, 700, 550, 1300, 520, 850]
+          data: [100, 250, 300, 250, 150, 100], // [1100, 700, 550, 1300, 520, 850]
         },
         {
           name: "Unused",
-          data: [100, 100, 100, 100, 100, 100], // [120, 300, 520, 90, 350, 450]
+          data: [50, 150, 120, 170, 80, 60], // [120, 300, 520, 90, 350, 450]
         },
       ],
       xData: ["Marketing", "Finance", "HR", "IT", "Engineering", "R&D"], // ["Marketing", "Finance", "HR", "IT", "Engineering", "R&D"]
@@ -191,16 +191,16 @@ const initialState: any = {
       },
       {
         title: "Renewals",
-        value: 0,
+        value: 54,
         valueType: "stats",
         subValues: [
           {
-            subValue: 0,
+            subValue: 30,
             subValueState: "negative",
             subTitle: "Pending",
           },
           {
-            subValue: 0,
+            subValue: 24,
             subValueState: "normal",
             subTitle: "Upcoming",
           },
@@ -266,10 +266,25 @@ const initialState: any = {
     },
     departmentChart_5: {
       "Cr. Card": {
-        total: 0,
+        total: 10000,
         apps: [
           {
             title: "Office",
+            payment: "Anually",
+            verified: true,
+          },
+          {
+            title: "Hubspot",
+            payment: "Monthly",
+            verified: true,
+          },
+          {
+            title: "Atlassian",
+            payment: "Monthly",
+            verified: true,
+          },
+          {
+            title: "G Suite",
             payment: "Anually",
             verified: true,
           },
@@ -280,6 +295,21 @@ const initialState: any = {
         apps: [
           {
             title: "Office",
+            payment: "Anually",
+            verified: true,
+          },
+          {
+            title: "Hubspot",
+            payment: "Monthly",
+            verified: true,
+          },
+          {
+            title: "Atlassian",
+            payment: "Monthly",
+            verified: true,
+          },
+          {
+            title: "G Suite",
             payment: "Anually",
             verified: true,
           },

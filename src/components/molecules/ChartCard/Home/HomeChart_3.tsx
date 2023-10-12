@@ -21,38 +21,38 @@ import { roundNumbers } from "@/src/utils/roundNumbers";
 const HomeChart_3 = () => {
   //-------------------------------------------------------------------------//
   //-------------------------------------------------------------------------//
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   //-------------------------------------------------------------------------//
   const chartData = useSelector(
     (state: RootState) => state.dashboard.home.homeChart_3
   );
   //-------------------------------------------------------------------------//
-  const fetchData = async () => {
-    try {
-      const res = await httpServices.post(
-        `${App_Config.API_BASE_URL}/api/dashboard/home/get-home-chart-3`,
-        {
-          organizationId: localStorage.getItem("organizationId"),
-          fromDate: new Date(
-            new Date().getFullYear() - 1,
-            new Date().getMonth(),
-            new Date().getDate()
-          ).toISOString(),
-          toDate: new Date().toISOString(),
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("chart 3: ", res.data);
-      return res.data;
-    } catch (error: any | null) {
-      // console.log(error);
-      return undefined;
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const res = await httpServices.post(
+  //       `${App_Config.API_BASE_URL}/api/dashboard/home/get-home-chart-3`,
+  //       {
+  //         organizationId: localStorage.getItem("organizationId"),
+  //         fromDate: new Date(
+  //           new Date().getFullYear() - 1,
+  //           new Date().getMonth(),
+  //           new Date().getDate()
+  //         ).toISOString(),
+  //         toDate: new Date().toISOString(),
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     console.log("chart 3: ", res.data);
+  //     return res.data;
+  //   } catch (error: any | null) {
+  //     // console.log(error);
+  //     return undefined;
+  //   }
+  // };
   //-------------------------------------------------------------------------//
   // useEffect(() => {
   //   fetchData().then((apiData) => {
@@ -95,7 +95,7 @@ const HomeChart_3 = () => {
               className="flex items-center gap-x-4 ml-1 text-[10px] font-medium"
             >
               <div className="font-bold w-7">
-                ${roundNumbers(item?.subValue)}
+                {roundNumbers(item?.subValue)}
               </div>
               <div className="text-grayish font-medium dark:text-white">
                 {item?.subTitle?.length > 15
