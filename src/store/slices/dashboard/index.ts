@@ -44,16 +44,16 @@ const initialState: any = {
       },
       {
         title: "Renewals",
-        value: 64,
+        value: 0,
         valueType: "stats",
         subValues: [
           {
-            subValue: 30,
+            subValue: 0,
             subValueState: "negative",
             subTitle: "Pending",
           },
           {
-            subValue: 24,
+            subValue: 0,
             subValueState: "normal",
             subTitle: "Upcoming",
           },
@@ -191,16 +191,16 @@ const initialState: any = {
       },
       {
         title: "Renewals",
-        value: 54,
+        value: 0,
         valueType: "stats",
         subValues: [
           {
-            subValue: 30,
+            subValue: 0,
             subValueState: "negative",
             subTitle: "Pending",
           },
           {
-            subValue: 24,
+            subValue: 0,
             subValueState: "normal",
             subTitle: "Upcoming",
           },
@@ -235,7 +235,7 @@ const initialState: any = {
       // },
     ],
     departmentChart_1: {
-      value: 4249, // 4249
+      value: 850, // 4249
       subValues: [],
       chartSeries: [75, 65, 90], // [30, 25, 25, 10]
       xData: ["Office", "GitHub", "Atlassian"], // ["Office", "GitHub", "Atlassian", "Zoho"]
