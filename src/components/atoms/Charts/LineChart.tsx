@@ -71,17 +71,17 @@ const LineChart = (props: any) => {
       xaxis: {
         categories: props.xData,
         // type: "category",
-        labels: {
-          show: true,
-          style: {
-            colors: theme === "dark" && Array(props.xData.length).fill("white"),
-            fontFamily: "Quicksand",
-            fontWeight: 700,
-            fontSize: "5pt",
-          },
-        },
-        fontFamily: "Quicksand",
-        fontWeight: 700,
+        // labels: {
+        //   show: true,
+        //   style: {
+        //     colors: theme === "dark" && Array(props.xData.length).fill("white"),
+        //     fontFamily: "Quicksand",
+        //     fontWeight: 700,
+        //     fontSize: "5pt",
+        //   },
+        // },
+        // fontFamily: "Quicksand",
+        // fontWeight: 700,
       },
     },
   };
