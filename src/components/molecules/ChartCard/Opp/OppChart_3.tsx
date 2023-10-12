@@ -97,7 +97,7 @@ const OppChart_3 = () => {
                 Total Savings
               </div>
               <div className="text-[20px] font-bold text-[#2C2C2C] opacity-90 dark:text-white ">
-                $3956
+                $540
                 {/* {Math.round(chartData.value || 0)
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} */}
@@ -138,6 +138,7 @@ const OppChart_3 = () => {
             bubbles={[
               {
                 label: "Unused",
+                value: 320,
                 color: "#ED3131",
                 xPos: 0.5,
                 yPos: 0.75,
@@ -145,6 +146,7 @@ const OppChart_3 = () => {
               },
               {
                 label: "Inactive",
+                value: 160,
                 color: "#B4B4B4",
                 xPos: 6,
                 yPos: 4.75,
@@ -152,6 +154,7 @@ const OppChart_3 = () => {
               },
               {
                 label: "Low Usage",
+                value: 60,
                 color: "#E0D33E",
                 xPos: 7,
                 yPos: 1.15,

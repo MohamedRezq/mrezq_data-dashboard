@@ -47,7 +47,7 @@ const SimpleBubbleChart = (props: ISimpleBubbleChartProps) => {
               }}
             >
               <Tooltip
-                text={bubble.label}
+                text={`$ ${bubble.value}`}
                 element={<div className="mx-5">{bubble.label}</div>}
               />
             </div>
