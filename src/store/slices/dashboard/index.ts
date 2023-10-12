@@ -121,7 +121,7 @@ const initialState: any = {
       xData: ["Atlassian"],
     },
     homeChart_3: {
-      value: 2478, // 2478
+      value: 900, // 2478
       subValues: [
         {
           subValue: 110,
