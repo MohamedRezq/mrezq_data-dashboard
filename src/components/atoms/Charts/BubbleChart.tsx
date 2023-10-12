@@ -20,9 +20,12 @@ const SimpleBubbleChart = (props: ISimpleBubbleChartProps) => {
   const squareSize = 30;
   //-------------------------------------------------------------------------------//
   return (
-    <div className={`w-full relative h-full items-center`}>
+    <div
+      className={`w-full relative h-full items-center`}
+      style={{ height: `${props.height}px` }}
+    >
       <div className="absolute w-full h-full z-0 grid grid-cols-8">
-        {Array.from({ length: 48 }, (_, index) => (
+        {Array.from({ length: 24 }, (_, index) => (
           <div
             key={index}
             className={`z-0 p-0 m-0 w-full h-full border border-gray-200 inline-block`}
